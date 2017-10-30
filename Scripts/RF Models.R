@@ -9,6 +9,8 @@ easy.formula<-function(response,predictors){
                            paste(predictors, collapse= "+"))); return(easy)}
 
 waterlevelclusterID <- read.csv("~/Documents/GitHub/waterlevels/data/waterlevelclusterID.csv")
+
+#Getting the data frame in the correct format for random forest model
 waterlevelclusterID = waterlevelclusterID[,c(1,3,7,2,8,4,5,6)]
 hucids = merge(hucids,hu4)
 hucids = merge(hucids,hu8)
@@ -17,21 +19,24 @@ waterlevelclusterID = merge(waterlevelclusterID,hucids)
 names(waterlevelclusterID)
 factor.cols = c(3,4,5,9:11)
 
+#assigning factor to correct variables
 for(i in 1:length(factor.cols)){
   waterlevelclusterID[,factor.cols[i]] = as.factor(waterlevelclusterID[,factor.cols[i]]) 
 }
 
-(response = names(waterlevelclusterID)[5])
+
+##########Random Forest Modeling
+#set response variable
+(response= names(waterlevelclusterID)[5])
+#check counts for balancing RF model
 table(waterlevelclusterID[,5])
 
-(predictors = names(waterlevelclusterID)[c(6:8,10:179)])
-# predictors = predictors[c(5,6,7,8,9,11,12,13)]
+(predictors = names(waterlevelclusterID)[c(6:8,10:182)])
 big.formula = easy.formula(response, predictors)
 
 
 
-rf.data = randomForest(big.formula,data=waterlevelclusterID,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=39)
-rf.data
+(rf.data = randomForest(big.formula,data=waterlevelclusterID,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=34))
 pred = predict(rf.data)
 (conf.out = confusionMatrix(pred,waterlevelclusterID$clusterid_dtw1_3))
 
