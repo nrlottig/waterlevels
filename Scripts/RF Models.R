@@ -17,7 +17,7 @@ hucids = merge(hucids,hu8)
 hucids = merge(hucids,huc12)
 waterlevelclusterID = merge(waterlevelclusterID,hucids)
 names(waterlevelclusterID)
-factor.cols = c(3,4,5,9:11)
+factor.cols = c(3:7,10:12)
 
 #assigning factor to correct variables
 for(i in 1:length(factor.cols)){
@@ -26,31 +26,26 @@ for(i in 1:length(factor.cols)){
 
 
 ##########Random Forest Modeling
+
 #set response variable
-(response= names(waterlevelclusterID)[3])
+Y = waterlevelclusterID[[3]]
+names(waterlevelclusterID)[3]
 #check counts for balancing RF model
-table(waterlevelclusterID[,5])
-
-(predictors = names(waterlevelclusterID)[c(6:8,10:182)])
-big.formula = easy.formula(response, predictors)
+table(waterlevelclusterID[,3])
 
 
-
-(rf.data = randomForest(big.formula,data=waterlevelclusterID,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=39))
-pred = predict(rf.data)
-(conf.out = confusionMatrix(pred,waterlevelclusterID$clusterid_dtw1_3))
-
-Y = waterlevelclusterID[[5]]
-X = waterlevelclusterID[,c(6,10:182)]
-(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=34))
+# X = waterlevelclusterID[,c(6,10:182)] 
+X = waterlevelclusterID[,c(7:9,11:24,29:80,85:155,160:180,182:183)] #remove runnoff
+X[,160] = log10(X[,160])
+(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=46))
 pred = predict(rf.data)
 (conf.out = confusionMatrix(pred,Y))
 
-med.vsurf = VSURF(x = X,y = Y)
+med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7)
 length(med.vsurf$varselect.interp)
 names(X[med.vsurf$varselect.pred])
 X = X[,med.vsurf$varselect.pred]
-(rf.data2 = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=34))
+(rf.data2 = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=46))
 pred = predict(rf.data2)
 (conf.out = confusionMatrix(pred,Y))
 

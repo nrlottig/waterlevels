@@ -6,8 +6,8 @@ library(scales)
 map.regions = c('wisconsin')
 dev.new(width=5,height=5)
 map('state',region=map.regions,col=grey(.98),fill=TRUE,resolution = 0,mar=c(0,0,0,0),border=grey(.5),lty=5)
-points(waterlevelclusterID$Longitude,waterlevelclusterID$Latitude,col=alpha(as.numeric(waterlevelclusterID$clusterid_dtw2_4),.7),pch=16)
-legend("topright",legend=c(1:4),pch=16,col=c(1:4),title = "Cluster ID",bty="n")       
+points(waterlevelclusterID$Longitude,waterlevelclusterID$Latitude,col=alpha(as.numeric(waterlevelclusterID$clusterid_dtw1_3),.7),pch=16)
+legend("topright",legend=c(1:3),pch=16,col=c(1:3),title = "Cluster ID",bty="n")       
 
 
 rf.drivers = data.frame(wiscwaterlevelid=waterlevelclusterID$wiscwaterlevelid,clusterid = waterlevelclusterID$clusterid_dtw2_4,clusterpred=pred,meanrunnoff=waterlevelclusterID$hu12_runoff_mean,maxrunnoff=waterlevelclusterID$hu12_runoff_max,maxprecip=waterlevelclusterID$hu12_prism_ppt_30yr_normal_800mm2_annual_max)
