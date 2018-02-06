@@ -151,11 +151,12 @@ lakes = unique(dat$WiscID)
 pdf("myOut.pdf",width=8,height=10.5,onefile = TRUE)
 par(mfrow=c(3,3))
 for (i in 1:length(lakes)){
-  plot(x = (dat %>% filter(WiscID==i) %>% select(precipCMDV))[[1]], y = (dat %>% filter(WiscID==i) %>% select(Value))[[1]],xlab="PrecipCMDV (mm)",ylab="Water Level (mm)",pch=16)
+  plot(x = (dat %>% filter(WiscID==i) %>% select(precipCMDV))[[1]], y = (dat %>% filter(WiscID==i) %>% select(Value))[[1]],xlab="PrecipCMDV (mm)",ylab="Water Level (mm)",pch=16,ylim=range(dat$Value),xlim=range(dat$precipCMDV))
   tryCatch({
     abline(lm((dat %>% filter(WiscID==i) %>% select(Value))[[1]]~(dat %>% filter(WiscID==i) %>% select(precipCMDV))[[1]]),col="lightblue",lwd=2)
   },error=function(e){})
   abline(a = reg.coef[i,1],b=reg.coef[i,2],col="red",lwd=2)
+  abline(a = out$BUGSoutput$mean$mu.alpha,b=out$BUGSoutput$mean$mu.beta,col="green",lwd=2)
   mtext(side=3,line=1,paste("WiscID: ",i))
 }
 dev.off()
