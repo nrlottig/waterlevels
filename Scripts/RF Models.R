@@ -2,82 +2,75 @@ library(randomForest)
 library(caret)
 library(e1071)
 require(VSURF)
-library(forestFloor)
 
 easy.formula<-function(response,predictors){
   easy <- as.formula(paste(paste(response," ~"),
                            paste(predictors, collapse= "+"))); return(easy)}
 
-waterlevelclusterID <- read.csv("~/Documents/GitHub/waterlevels/data/waterlevelclusterID.csv")
+waterlevelclusterID <- read.csv("~/Documents/GitHub/waterlevels/data/waterlevelclusterID.csv") #Data with all LTER wells
+dataset = merge(waterlevelclusterID,dataset) #Data with representative LTER well
 
-#Getting the data frame in the correct format for random forest model
-waterlevelclusterID = waterlevelclusterID[,c(1,3,7,2,8,4,5,6)]
-hucids = merge(hucids,hu4)
-hucids = merge(hucids,hu8)
-hucids = merge(hucids,huc12)
-waterlevelclusterID = merge(waterlevelclusterID,hucids)
-names(waterlevelclusterID)
 
-factor.cols = c(3:7,10:12,184,185)
+model.data = dataset #choose which dataset to use so code works without editing further down
+
+factor.cols = c(3:7,10:12,184,185,189)
 
 #assigning factor to correct variables
-waterlevelclusterID = as.data.frame(waterlevelclusterID)
+model.data = as.data.frame(model.data)
 for(i in 1:length(factor.cols)){
-  waterlevelclusterID[,factor.cols[i]] = as.factor(waterlevelclusterID[,factor.cols[i]]) 
+  model.data[,factor.cols[i]] = as.factor(model.data[,factor.cols[i]]) 
 }
 
 
 ##########Random Forest Modeling
 
 #set response variable
-Y = waterlevelclusterID[[3]]
-names(waterlevelclusterID)[3]
+Y = model.data[[189]]
+names(model.data)[189]
 #check counts for balancing RF model
-table(waterlevelclusterID[,3])
+table(Y)
 
 
-X = waterlevelclusterID[,c(7,13:180,182:183,185)]
-X = waterlevelclusterID[,c(7,13:24,29:80,85:155,160:180,182:183,185:188)] #remove runnoff
-X2 = waterlevelclusterID[which(waterlevelclusterID$clusterid_dtw1_3!=1),c(7,13:24,29:80,85:155,160:180,182:183,185:188)]
+X = model.data[,c(7,13:180,182:183,185:188)]
+X = model.data[,c(7,13:24,29:80,85:155,160:180,182:183,186:188)] #remove runnoff
 names(X)
-X[,160] = log10(X[,160])
-(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=c(46,46,46),strata=Y))
+(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y))
 pred = predict(rf.data)
 (conf.out = confusionMatrix(pred,Y))
 
 med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7,ntree = 5001,nfor.thres = 5001,nfor.interp = 5001,nfor.pred = 5001,clusterType = "FORK",sampsize=c(46,46,46),strata=Y,keep.inbag=TRUE)
-med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7,sampsize=c(46,46,46),strata=Y,clusterType = "FORK",keep.inbag=TRUE)
+med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y,clusterType = "FORK",keep.inbag=TRUE)
 names(X[med.vsurf$varselect.interp])
 names(X[med.vsurf$varselect.pred])
 # med.vsurf.dtw13.dmv13 = med.vsurf #Save output for future use 4.5 run time.
 X = X[,med.vsurf$varselect.pred]
-(rf.data2 = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=c(46,46,46),strata=Y))
+(rf.data2 = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y))
 pred = predict(rf.data2)
 (conf.out = confusionMatrix(pred,Y))
 
 (imp.out = importance(rf.data2,type=1,scale=FALSE))
-X = X[,c(2,1,3)]#X[order(imp.out[,1],decreasing = TRUE)]
+X = X[,c(1,2)]#X[order(imp.out[,1],decreasing = TRUE)]
 options(device="quartz")
 dev.new(width=6,height=4)
 par(oma=c(1.2,.8,.2,.2),mar=c(0,0,0,0),family="Times",ps=10)
-good.anmes = c("Evergreen Forest (HU8,%)","Precipitation Cluster","Mean Annual Precip (30yr avg)")
+good.anmes = c("Precipitation Cluster","Mean Annual Precip (30yr avg)")
 attributes(imp.out)$dimnames[[1]] = good.anmes
 dotplot(imp.out[order(imp.out[,1],decreasing = FALSE),1]*100,main="",xlab="Mean Decrease Accuracy (%)")
 
 names(X)
-plot.names = c("Evergreen Forest (HU8,%)","Precipitation Cluster","Mean Annual Precip (30yr avg)")
-dev.new(width=8,height=2)
-par(mfrow=c(1,3),oma=c(0,0,0,0),mar=c(3,3,.2,.2),family="Times",ps=10,cex.axis=1,cex.lab=2,cex.main=1.5)
+plot.names = names(X)#c("Precipitation Cluster","Mean Annual Precip (30yr avg)")
+dev.new(width=6,height=6)
+par(mfrow=c(2,3),oma=c(0,0,0,0),mar=c(3,3,.2,.2),family="Times",ps=10,cex.axis=1,cex.lab=2,cex.main=1.5)
 for(i in 1:ncol(X)){
   out1 = partialPlot(x = rf.data2,pred.data = X,x.var = names(X)[i],which.class = 1,plot=FALSE)
   out2 = partialPlot(x = rf.data2,pred.data = X,x.var = names(X)[i],which.class = 2,plot=FALSE)
-  out3 = partialPlot(x = rf.data2,pred.data = X,x.var = names(X)[i],which.class = 3,plot=FALSE)
+  # out3 = partialPlot(x = rf.data2,pred.data = X,x.var = names(X)[i],which.class = 3,plot=FALSE)
   yrange = range(out1$y,out2$y,out3$y)
   plot(out1,col=1,type="l",ylim=yrange,xlab="",ylab="",lwd=2)
   mtext(side=1,plot.names[i],line=1.8)
   if(i==1 | i==5) mtext(side=2,"Impact on Class Probability",line=1.8)
   lines(out2,col=2,type="l",lwd=2)
-  lines(out3,col=3,type="l",lwd=2)
+  # lines(out3,col=3,type="l",lwd=2)
 }
 
 

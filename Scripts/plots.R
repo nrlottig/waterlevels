@@ -6,8 +6,8 @@ library(scales)
 map.regions = c('wisconsin')
 dev.new(width=5,height=5)
 map('state',region=map.regions,col=grey(.98),fill=TRUE,resolution = 0,mar=c(0,0,0,0),border=grey(.5),lty=5, main="Water Level Clusters")
-points(waterlevelclusterID$Longitude,waterlevelclusterID$Latitude,col=alpha(as.numeric(waterlevelclusterID$clusterid_dtw1_3),.7),pch=16)
-legend("topright",legend=c(1:3),pch=16,col=c(1:3),title = "Cluster ID",bty="n")       
+points(model.data$Longitude,model.data$Latitude,col=alpha(as.numeric(model.data$DTW1_2_ClusterID),.7),pch=16)
+legend("topright",legend=c(1:2),pch=16,col=c(1:2),title = "Cluster ID",bty="n")       
 
 map.regions = c('wisconsin')
 dev.new(width=5,height=5)
@@ -20,9 +20,9 @@ rf.drivers = data.frame(wiscwaterlevelid=waterlevelclusterID$wiscwaterlevelid,cl
 
 dev.new(width=4,height=4)
 par(oma=c(3,3,.2,.2),mar=c(0,0,0,0),family="Times",ps=10)
-boxplot(waterlevelclusterID$hu8_nlcd2006_pct_42~waterlevelclusterID$clusterid_dtw1_3,xlab="",ylab="")
+boxplot(model.data$hu12_prism_ppt_30yr_normal_800mm2_annual_mean~model.data$DTW1_2_ClusterID,xlab="",ylab="")
 mtext(side=1,line=2,"Cluster ID",cex=1.25)
-mtext(side=2,line=2,"Evergreen Forest (HU8,%)",cex=1.25)
+mtext(side=2,line=2,"Annual Precip (30yr avg,mm)",cex=1.25)
 
 dev.new(width=4,height=4)
 par(oma=c(3,3,.2,.2),mar=c(0,0,0,0),family="Times",ps=10)
