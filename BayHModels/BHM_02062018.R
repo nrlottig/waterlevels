@@ -154,14 +154,23 @@ dat$Date = as_date(x = dat$Date)
 pdf("myOut.pdf",width=8,height=10.5,onefile = TRUE)
 par(mfrow=c(3,2))
 for (i in 1:length(lakes)){
-  dat.t = dat %>% filter(WiscID==i)
-  dat.t$predValue = reg.coef[i,1][[1]] + dat.t$precipCMDV*(reg.coef[i,2][[1]])
-  plot(x = dat.t$precipCMDV, y = dat.t$Value,xlab="PrecipCMDV (mm)",ylab="Water Level (mm)",pch=16,ylim=range(dat$Value),xlim=range(dat$precipCMDV))
+  #pull out data for each lake and generate predicted water levels
+  dat.t = dat %>% filter(WiscID==i) %>%
+    mutate(predValue,reg.coef[i,1][[1]] + dat.t$precipCMDV*(reg.coef[i,2][[1]]))
+  #plot relationship between precip and water level
+  plot(x = dat.t$precipCMDV, y = dat.t$Value,xlab="PrecipCMDV (mm)",
+       ylab="Water Level (mm)",pch=16,ylim=range(dat$Value),
+       xlim=range(dat$precipCMDV))
   tryCatch({
     abline(lm(dat.t$Value~dat.t$precipCMDV),col="lightblue",lwd=2)
   },error=function(e){})
   abline(a = reg.coef[i,1][[1]],b=reg.coef[i,2][[1]],col="red",lwd=2)
   abline(a = out$BUGSoutput$mean$mu.alpha,b=out$BUGSoutput$mean$mu.beta,col="green",lwd=2)
   mtext(side=3,line=1,paste("WiscID: ",i))
+  #plot predicted and observed water levels
+  y.range = range(c(dat.t$Value,dat.t$predValue))
+  plot(dat.t$Date,dat.t$Value,type=b,pch=16,ylim=y.range,xlab="Date",ylab="Water Level (mm)")
+  points(dat.t$Date,dat.t$predValue,type="b",pch=16,col="blue")
+  
 }
 dev.off()
