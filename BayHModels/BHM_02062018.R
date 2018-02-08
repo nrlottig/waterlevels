@@ -51,17 +51,17 @@ cat("
     # Likelihood: 
     # Level-1 of the model
     for (i in 1:n){ 
-        y[i] ~ dnorm(mu[i], tau)               
-        mu[i] <- alpha[group[i]] + beta[group[i]] * precip[i]         
-        } 
+    y[i] ~ dnorm(mu[i], tau)               
+    mu[i] <- alpha[group[i]] + beta[group[i]] * precip[i]         
+    } 
     # Level-2 of the model
     for(j in 1:J){
-        alpha[j] <- BB[j,1]
-        beta[j] <- BB[j,2]
-        BB[j,1:K] ~ dmnorm(BB.hat[j,], Tau.B[,]) # bivriate normal
-        BB.hat[j,1] <- mu.alpha
-        BB.hat[j,2] <- mu.beta
-        }
+    alpha[j] <- BB[j,1]
+    beta[j] <- BB[j,2]
+    BB[j,1:K] ~ dmnorm(BB.hat[j,], Tau.B[,]) # bivriate normal
+    BB.hat[j,1] <- mu.alpha
+    BB.hat[j,2] <- mu.beta
+    }
     # Priors and derived quantities
     sigma ~ dunif(0, 100)
     tau <- pow(sigma,-2) # precision
@@ -147,15 +147,20 @@ densityplot(out.mcmc2)
 
 reg.coef = out$BUGSoutput$mean$BB
 lakes = unique(dat$WiscID)
+dat$Date = as.character(dat$Date)
+dat$Date = paste(dat$Date,"/01",sep="")
+dat$Date = as_date(x = dat$Date)
 
 pdf("myOut.pdf",width=8,height=10.5,onefile = TRUE)
-par(mfrow=c(3,3))
+par(mfrow=c(3,2))
 for (i in 1:length(lakes)){
-  plot(x = (dat %>% filter(WiscID==i) %>% select(precipCMDV))[[1]], y = (dat %>% filter(WiscID==i) %>% select(Value))[[1]],xlab="PrecipCMDV (mm)",ylab="Water Level (mm)",pch=16,ylim=range(dat$Value),xlim=range(dat$precipCMDV))
+  dat.t = dat %>% filter(WiscID==i)
+  dat.t$predValue = reg.coef[i,1][[1]] + dat.t$precipCMDV*(reg.coef[i,2][[1]])
+  plot(x = dat.t$precipCMDV, y = dat.t$Value,xlab="PrecipCMDV (mm)",ylab="Water Level (mm)",pch=16,ylim=range(dat$Value),xlim=range(dat$precipCMDV))
   tryCatch({
-    abline(lm((dat %>% filter(WiscID==i) %>% select(Value))[[1]]~(dat %>% filter(WiscID==i) %>% select(precipCMDV))[[1]]),col="lightblue",lwd=2)
+    abline(lm(dat.t$Value~dat.t$precipCMDV),col="lightblue",lwd=2)
   },error=function(e){})
-  abline(a = reg.coef[i,1],b=reg.coef[i,2],col="red",lwd=2)
+  abline(a = reg.coef[i,1][[1]],b=reg.coef[i,2][[1]],col="red",lwd=2)
   abline(a = out$BUGSoutput$mean$mu.alpha,b=out$BUGSoutput$mean$mu.beta,col="green",lwd=2)
   mtext(side=3,line=1,paste("WiscID: ",i))
 }
