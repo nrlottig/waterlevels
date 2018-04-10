@@ -12,7 +12,7 @@ library(lattice)  # plot
 library(lubridate)
 
 # Input data
-dat = read.csv("BHM_input_02212018.csv")
+dat = read.csv("BayHModels/BHM_input_20180410.csv")
 ####Look at the data
 str(dat)
 summary(dat)
@@ -93,6 +93,7 @@ K = 2
 # Number of lakes
 J = length(unique(dat$BHMID))
 # Load data raw water level data
+dat = as.data.frame(dat)
 data = list(y = dat$Value, group = as.numeric(dat$BHMID), n = dim(dat)[1], J = J,
             precip = dat$precipCMDV, K = K)
 
@@ -113,36 +114,44 @@ inits = function (){
 # 
 parameters = c("mu.alpha","mu.beta","BB","sigma", "sigma.a", "sigma.b","rho")
 # MCMC settings
-ni <- 10000
-nt <- 1
-nb <- 3000
+ni <- 50000
+nt <- 20
+nb <- 20000
 nc <- 3
 
 # Run the model
-out = jags(data, inits, parameters, "model.txt", n.chains = nc, 
-           n.thin = nt, n.iter = ni, n.burnin = nb)
+out = jags.parallel(data = data, 
+                    inits = inits, 
+                    parameters.to.save = parameters, 
+                    model.file = "model.txt", 
+                    n.chains = 3, 
+                    n.thin = 20, 
+                    n.iter = 50000, 
+                    n.burnin = 20000,
+                    n.cluster = 3)
 
 # Show some of the result
 print(out, dig = 3)
 which(out$BUGSoutput$summary[, c("Rhat")] > 1.1)
 max(out$BUGSoutput$summary[, c("Rhat")])
 
+###NOTE Trying to these just freezes up my computer####
+
 # out.mcmc <- as.mcmc(out)
 # str(out.mcmc)
-# # look at summary
+# require(lattice)
+# look at summary
 # summary(out.mcmc)
 # # Create traceplots
 # xyplot(out.mcmc)
-# # Look at posterior density plots
+# Look at posterior density plots
 # densityplot(out.mcmc)
-# 
-# #### Just make plots for parameters of interest
-# out.mcmc2 <- out.mcmc[,c("mu.alpha","sigma.alpha","sigma")]
-# xyplot(out.mcmc2)
-# densityplot(out.mcmc2)
+
+
 
 
 reg.coef = out$BUGSoutput$mean$BB
+var.coef = out$BUGSoutput$sd$BB
 lakes = unique(dat$BHMID)
 dat$Date = as.character(dat$Date)
 dat$Date = paste(dat$Date,"/15",sep="")
@@ -163,11 +172,13 @@ for (i in 1:length(lakes)){
   },error=function(e){})
   abline(a = reg.coef[i,1][[1]],b=reg.coef[i,2][[1]],col="red",lwd=2)
   abline(a = out$BUGSoutput$mean$mu.alpha,b=out$BUGSoutput$mean$mu.beta,col="green",lwd=2)
-  mtext(side=3,line=1,paste("BHM ID: ",i))
+  mtext(side=3,line=1,paste(dat.t$SiteName[1], " WiscID:",dat.t$WiscID[1], " WIBIC:",dat.t$WBIC[1],sep=""),cex=.8)
+  legend('topleft',legend=c("linear","bayesH","global"),lty=1,col=c("lightblue","red","green"))
   #plot predicted and observed water levels
   y.range = range(c(dat.t$Value,dat.t$predValue))
   plot(dat.t$Date,dat.t$Value,type="b",pch=16,xlab="Date",ylab="Water Level (mm)",ylim=c(1000,max(2000,y.range[2])))
   points(dat.t$Date,dat.t$predValue,type="b",pch=16,col="blue")
+  legend("top",ncol=2,legend=c("obs","modeled"),lty=1,col=c("black","blue"))
   
 }
 dev.off()
