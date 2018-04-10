@@ -10,9 +10,10 @@ library(tidyverse)
 library(R2jags)
 library(lattice)  # plot
 library(lubridate)
+library(MLmetrics)
 
 # Input data
-dat = read.csv("BayHModels/BHM_input_20180410.csv")
+dat = read_tsv("BayHModels/BHM_input_20180410.csv")
 ####Look at the data
 str(dat)
 summary(dat)
@@ -148,21 +149,28 @@ max(out$BUGSoutput$summary[, c("Rhat")])
 # densityplot(out.mcmc)
 
 
-
+CV <- function(mean, sd){
+  (sd/mean)*100
+}
 
 reg.coef = out$BUGSoutput$mean$BB
 var.coef = out$BUGSoutput$sd$BB
+cv.resid = rep(x = NA,466)
+n.dat = rep(NA,466)
 lakes = unique(dat$BHMID)
 dat$Date = as.character(dat$Date)
 dat$Date = paste(dat$Date,"/15",sep="")
 dat$Date = as_date(x = dat$Date)
 
-pdf("myOut.pdf",width=8,height=10.5,onefile = TRUE)
+pdf("BayHModels/myOut.pdf",width=8,height=10.5,onefile = TRUE)
 par(mfrow=c(3,2))
 for (i in 1:length(lakes)){
   #pull out data for each lake and generate predicted water levels
   dat.t = dat %>% filter(BHMID==i) %>% arrange(Date)
   dat.t = dat.t %>% mutate(predValue=reg.coef[i,1] + dat.t$precipCMDV*reg.coef[i,2])
+  cv.resid[i] = MAPE(dat.t$predValue,dat.t$Value)
+    #sqrt(mean((dat.t$Value-dat.t$predValue)^2)) #RMSE predicted values
+  n.dat[i] = length(dat.t$Value)
   #plot relationship between precip and water level
   plot(x = dat.t$precipCMDV, y = dat.t$Value,xlab="PrecipCMDV (mm)",
        ylab="Water Level (mm)",pch=16,ylim=range(dat$Value),
@@ -182,3 +190,6 @@ for (i in 1:length(lakes)){
   
 }
 dev.off()
+
+reg.summary = data.frame(WiscID = allLakeList,slope=reg.coef[,2],sd.slope = var.coef[,2],mape=cv.resid,n.points=n.dat)
+write_csv(reg.summary,"BayHModels/regressionstats.csv")
