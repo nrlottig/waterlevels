@@ -1,19 +1,32 @@
+library(tidyverse)
 library(randomForest)
 library(caret)
 library(e1071)
 require(VSURF)
-
-easy.formula<-function(response,predictors){
-  easy <- as.formula(paste(paste(response," ~"),
-                           paste(predictors, collapse= "+"))); return(easy)}
-
-waterlevelclusterID <- read.csv("~/Documents/GitHub/waterlevels/data/waterlevelclusterID.csv") #Data with all LTER wells
-dataset = merge(waterlevelclusterID,dataset) #Data with representative LTER well
+library(readxl)
 
 
-model.data = dataset #choose which dataset to use so code works without editing further down
+EcoContext <- read_excel("RFModels/EcoContext.xlsx")
+regressionstats <- read_csv("BayHModels/regressionstats.csv")
 
-factor.cols = c(3:7,10:12,184,185,189)
+dat = EcoContext %>% left_join(regressionstats) %>% select(-ID,-OBJECTID,-WATERBODY_NAME,-HYDROID,-HYDROCODE,
+                                                           -HYDROTYPE,-LANDLOCK_C,-WBIC,-SHAPE_AREA,-SHAPE_LEN,
+                                                           -County,-MeanDepth,-problem,-hydro24k,-centroid_x,
+                                                           -centroid_y,-NATURAL_COMMUNITY,-Lake_type,-HYDROLOGY,
+                                                           -`Katie classification`,-`Katie notes`) %>% drop_na()
+summary(dat)
+
+dat = dat %>% select(-W_BD_201,-W_BD_204,-W_BD_205,-W_BD_206,-W_BD_207,-W_BD_208,-W_BD_209,-W_BD_210,-W_BD_MISSI,
+                     -W_BR_2,-W_BR_3,-W_BR_MISSI,-W_QG_3,-W_QG_4,-W_QG_6,-W_QG_7,-W_QG_8,-W_QG_9,-W_QG_10,
+                     -W_QG_11,-W_QG_12,-W_QG_13,-W_QG_14,-W_QG_15,-W_QG_16,-W_QG_17,-W_QG_18,-W_QG_20,
+                     -W_QG_21,-W_QG_22,-W_QG_24,-W_QG_29,-W_QG_99,-W_QG_MISSI,-W_LU06_23,-W_LU06_24,-W_LU06_31)
+
+dat = dat %>% select(everything(),-contains("LU11"))
+summary(dat)
+dat = dat %>% mutate(W_LA_Ratio = WatershedA/Area)
+model.data = dat #choose which dataset to use so code works without editing further down
+
+factor.cols = c(38)
 
 #assigning factor to correct variables
 model.data = as.data.frame(model.data)
@@ -25,20 +38,20 @@ for(i in 1:length(factor.cols)){
 ##########Random Forest Modeling
 
 #set response variable
-Y = model.data[[189]]
-names(model.data)[189]
+Y.col = 39
+Y = model.data[[Y.col]]
+names(model.data)[Y.col]
 #check counts for balancing RF model
-table(Y)
+# table(Y)
 
 
-X = model.data[,c(7,13:180,182:183,185:188)]
-X = model.data[,c(7,13:24,29:80,85:155,160:180,182:183,186:188)] #remove runnoff
+X = model.data[,c(4:38,42)]
 names(X)
-(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y))
+(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001))
 pred = predict(rf.data)
-(conf.out = confusionMatrix(pred,Y))
+# (conf.out = confusionMatrix(pred,Y))
 
-med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7,ntree = 5001,nfor.thres = 5001,nfor.interp = 5001,nfor.pred = 5001,clusterType = "FORK",sampsize=c(46,46,46),strata=Y,keep.inbag=TRUE)
+med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7,ntree = 5001,nfor.thres = 5001,nfor.interp = 5001,nfor.pred = 5001,clusterType = "FORK")
 med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y,clusterType = "FORK",keep.inbag=TRUE)
 names(X[med.vsurf$varselect.interp])
 names(X[med.vsurf$varselect.pred])
