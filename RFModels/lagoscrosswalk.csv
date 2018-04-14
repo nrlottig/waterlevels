@@ -1,0 +1,603 @@
+WiscID,Name,County,MinYr,MaxYr,NumOb,NumYr,source,LakeType,WIBIC,lagoslakeid,lat,long
+3,Forest Lake,Fond Du Lac,1994,2005,16,4,USGS,seepage,8900,4993,43.6088845,-88.1673186
+4,Forest Lake,Fon du Lac,1967,1985,4,4,DNR Historical Data,seepage,8900,4993,43.60762834,-88.16719663
+7,Haneman Lake,Ozaukee,1967,1981,2,2,DNR Historical Data,seepage,26400,43908,43.3642,-87.98659
+11,Dickman Lake,Fon du Lac,1960,1974,3,3,DNR Historical Data,seepage,41900,12453,43.59070071,-88.22917196
+13,Cedar Lake,Fon du Lac,1970,1984,4,4,DNR Historical Data,seepage,42800,94723,43.66049116,-88.19088962
+15,Kettle Moraine Lake,Fon du Lac,1970,1984,6,6,DNR Historical Data,seepage,43900,4586,43.65326715,-88.2103188
+16,Cedar Lake,Manitowoc,1928,1983,4839,48,DNR Historical Data,seepage,45100,4495,43.92490459,-87.93845927
+17,Crystal Lake,Sheboygan,1970,1984,6,6,DNR Historical Data,seepage,45200,5114,43.80633513,-88.01742686
+18,Weyers Lake,Marathon,1970,1981,3,3,DNR Historical Data,seepage,49400,5539,44.0407612,-87.73134195
+20,Spring Lake,Manitowoc,1970,1981,3,3,DNR Historical Data,seepage,63700,4970,43.96897075,-87.89580737
+21,Pigeon Lake,Manitowoc,1974,1981,4,4,DNR Historical Data,seepage,64000,5112,43.98689251,-87.87387125
+23,Bullhead Lake,Manitowoc,1974,1981,2,2,DNR Historical Data,seepage,68300,5450,44.10334256,-88.03720851
+24,Round Lake,Calumet,1974,1981,4,3,DNR Historical Data,seepage,68600,5094,44.1527975,-88.04911773
+25,Schisel Lake,Manitowoc,1970,1981,4,4,DNR Historical Data,seepage,72800,4630,44.12145617,-87.81983138
+26,Becker Lake,Calumet,1975,1981,2,2,DNR Historical Data,seepage,77300,4601,44.13089759,-88.04772566
+27,Long Lake,Manitowoc,1974,1981,3,3,DNR Historical Data,seepage,77500,1078,44.13834421,-88.03791079
+28,Boot Lake,Calumet,1973,1981,4,4,DNR Historical Data,seepage,77600,4426,44.14647208,-88.04505537
+30,Lily Lake,Brown,1974,1981,2,2,DNR Historical Data,seepage,82900,4477,44.42601077,-87.85274858
+34,Lake Europe,Door,1973,1981,4,4,DNR Historical Data,seepage,93100,4760,45.27262917,-86.98636507
+36,West Alaska Lake,Kewaunee,1974,1980,4,3,DNR Historical Data,seepage,94300,5331,44.54064373,-87.50587775
+38,Bean's Lake,Waushara,1973,2015,19,19,Waushara,seepage,101300,5193,44.13763197,-89.2906228
+39,Bing Lake,Waushara,1978,1979,50,2,USGS,seepage,101600,105982,44.0569186,-89.4881776
+40,Bughs Lake,Waushara,1973,1985,3,3,DNR Historical Data,seepage,102100,4366,44.06916056,-89.26226249
+41,Bughs Lake,Waushara,1973,2015,26,23,Waushara,seepage,102100,4366,44.06916056,-89.26226249
+42,Crooked Lake,Adams,1973,1989,12,10,DNR Historical Data,seepage,102600,4456,43.77049424,-89.60758008
+43,Cuff Lake,Columbia,1997,1997,2,1,DNR Historical Data,seepage,102700,119420,43.60850066,-89.3032439
+44,Deer Lake,Waushara,1993,2015,19,19,Waushara,seepage,102900,2512,44.04305832,-89.21679462
+45,Twin Lakes,Marquette,2002,2004,7,2,USGS,seepage,103100,2173,43.90830818,-89.5854014
+46,Fenners Lake,Adams,1974,1985,8,6,DNR Historical Data,seepage,103400,5438,43.86386597,-89.59829648
+47,Goose Lake,Adams,1977,1987,11,6,DNR Historical Data,seepage,103600,1666,43.79776995,-89.63667192
+48,Irogami Lake,Waushara,1966,1979,326,14,USGS,seepage,103900,4593,44.0605336,-89.2367853
+49,Irogami Lake,Waushara,1931,2015,32,31,Waushara,seepage,103900,4593,44.06590828,-89.23238535
+50,Jordon Lake,Adams,1967,1990,20,13,DNR Historical Data,seepage,104000,858,43.74315826,-89.64718218
+51,Jordan Lake,Waushara,1967,1990,20,13,Waushara,seepage,104100,63569,44.02359863,-89.01520694
+52,Kilby Lake,Marquette,1974,1994,8,6,DNR Historical Data,seepage,104200,5391,43.80372058,-89.35406181
+53,Lucerne Lake,Waushara,1963,2015,30,29,Waushara,seepage,104600,2079,44.02402792,-89.20872596
+54,Sharon Lake,Marquette,1976,1990,994,8,DNR Historical Data,seepage,104700,4879,43.97726295,-89.38345197
+55,Sharon Lake,Marquette,1979,1994,10,8,DNR Historical Data,seepage,104700,4879,43.97726295,-89.38345197
+56,Little Hills Lake,Waushara,2001,2015,15,15,Waushara,seepage,105200,3884,44.04569543,-89.21047952
+57,Marl Lake,Waushara,1963,1993,16,13,DNR Historical Data,seepage,105800,4911,44.10928491,-89.38854788
+58,Marl Lake,Waushara,1998,2015,18,17,Waushara,seepage,105800,4911,44.10928491,-89.38854788
+59,Parker Lake,Adams,1964,1990,28,18,DNR Historical Data,seepage,106500,5146,43.77535183,-89.63501796
+60,Patrick Lake,Adams,1984,1989,174,6,USGS,seepage,106600,1019,43.88691889,-89.6556799
+61,Patrick Lake,Adams,1977,1986,9,9,DNR Historical Data,seepage,106600,1019,43.88618932,-89.65884741
+62,Pleasant Lake,Waushara,1973,1994,5,5,DNR Historical Data,seepage,106900,4352,43.98497303,-89.55201905
+63,Pleasant Lake,Waushara,1964,2015,29,25,Waushara,seepage,106900,4352,43.98497303,-89.55201905
+64,School Section Lake,Marquette,1973,1994,8,7,DNR Historical Data,seepage,107500,4883,43.95254128,-89.54801194
+65,Scott Lake,Columbia,1979,1994,7,7,DNR Historical Data,seepage,107600,115201,43.56553947,-89.3217281
+67,Big Silver Lake,Waushara,1966,2015,31,27,Waushara,seepage,107900,4591,44.05476309,-89.23386028
+68,Tuttle Lake,Marquette,1975,1994,9,8,DNR Historical Data,seepage,108200,4940,43.92930473,-89.29149706
+69,Twin Lakes,Marquette,2002,2003,7,2,USGS,seepage,117000,815,43.9105303,-89.5898459
+70,Witters Lake,Waushara,1963,1995,13,10,DNR Historical Data,seepage,117400,5263,44.03343979,-89.3041395
+71,Witters Lake,Waushara,1963,2015,28,26,Waushara,seepage,117400,5263,44.03343979,-89.3041395
+72,Wolf Lake,Adams,1984,1990,4,4,DNR Historical Data,seepage,117500,1165,43.79553175,-89.62234606
+73,Wood Lake,Marquette,1976,1993,6,6,DNR Historical Data,seepage,117600,5063,43.97845238,-89.51199123
+76,DeNeveu Lake,Fond Du Lac,1936,1964,2426,29,USGS,seepage,139300,3945,43.73637949,-88.3962152
+79,Comstock Lake,Marquette,1964,1993,11,9,DNR Historical Data,seepage,155570,5097,43.88530723,-89.27335732
+81,Crystal Lake,Marquette,1975,1994,5,5,DNR Historical Data,seepage,157300,66674,43.97056397,-89.35874877
+85,Maria Lake,Green Lake,1975,1991,19,12,DNR Historical Data,seepage,161900,67685,43.64747634,-89.00156472
+86,Little Green Lake,Green Lake,1936,2003,2238,24,USGS,seepage,162500,5036,43.7397042,-88.9748345
+90,Ennis Lake,Marquette,1967,1979,16,3,USGS,seepage,171000,5326,43.6883132,-89.3945644
+91,Ennis Lake,Marquette,1978,1994,13,9,DNR Historical Data,seepage,171000,5326,43.68848881,-89.39139163
+94,Arbutus Lake,Forest,1970,1981,5,5,DNR Historical Data,seepage,181400,4460,45.40135912,-88.86134588
+95,Bass Lake,Marathon,1978,1981,3,2,DNR Historical Data,seepage,181700,2148,44.85700353,-89.31682718
+96,Bass Lake,Menominee,1990,1991,31,2,USGS,seepage,181800,1874,44.8708212,-88.5009369
+97,Bear Lake,Portage,1965,1979,13,5,USGS,seepage,181900,92641,44.4338612,-89.394838
+98,Bear Lake,Portage,1970,1981,3,3,DNR Historical Data,seepage,181900,92641,44.43532986,-89.39419886
+99,Hills Lake,Waushara,1983,1996,73,6,USGS,seepage,182100,4634,44.15081177,-89.1578946
+100,Hills Lake,Waushara,1975,1995,4,4,DNR Historical Data,seepage,182100,4634,44.1516018,-89.16386665
+101,Big Hills Lake (Hills),Waushara,1995,2015,18,18,Waushara,seepage,182100,4634,44.1516018,-89.16386665
+102,Big Twin Lake,Langlade,1970,1981,3,3,DNR Historical Data,seepage,182200,4659,45.35493058,-88.91487374
+103,Twin Lake,Waushara,1985,1995,5,5,DNR Historical Data,seepage,182300,5173,44.23591107,-89.14031928
+104,Big Twin Lake,Waushara,1975,2015,21,20,Waushara,seepage,182300,5173,44.23591107,-89.14031928
+105,Crystal Lake,Langlade,1970,1981,7,6,DNR Historical Data,seepage,184200,4979,45.37912746,-88.92538004
+106,Crystal Lake - Staff Gage,Forest,2015,2015,12,1,SWIMS,seepage,184200,4979,45.381737,-88.92151
+107,Dark Lake,Langlade,1978,1981,3,3,DNR Historical Data,seepage,184300,1797,45.16651865,-88.78814107
+108,Deep Hole Lake,Forest,1977,1978,8,2,USGS,seepage,184500,130849,45.45635329,-88.9042789
+109,Deep Hole Lake,Forest,1983,1990,3,3,DNR Historical Data,seepage,184500,130849,45.46013537,-88.90404404
+110,Duck Lake,Forest,1977,1978,13,2,USGS,seepage,185300,33290,45.46746428,-88.9028901
+111,Gilbert Lake,Waushara,1962,1995,18,15,DNR Historical Data,seepage,186400,3333,44.21267758,-89.16930289
+112,Gilbert Lake,Waushara,1962,2015,36,32,Waushara,seepage,186400,3333,44.21267758,-89.16930289
+113,Kating Lake,Waupaca,1973,1981,3,3,DNR Historical Data,seepage,189100,5074,44.50565099,-89.10843155
+114,Kusel Lake,Waushara,1963,2014,33,30,Waushara,seepage,189600,2516,44.17085723,-89.164774
+115,Lake Emily,Portage,1976,1979,99,4,USGS,seepage,189800,5195,44.46775129,-89.3278919
+116,Emily Lake,Portage,1940,1985,9,7,DNR Historical Data,seepage,189800,5195,44.47030119,-89.33781888
+117,Lime Lake,Portage,1940,1994,6,6,DNR Historical Data,seepage,190100,2192,44.4208064,-89.34511615
+118,Napowan Lake,Waushara,1975,1995,8,8,DNR Historical Data,seepage,190200,1495,44.14761258,-89.1524778
+119,Napowan Lake,Waushara,1985,2015,22,22,Waushara,seepage,190200,1495,44.14761258,-89.1524778
+120,Little Long Lake,Forest,1974,1981,3,3,DNR Historical Data,seepage,190500,3322,45.42502703,-88.77121879
+121,Long Lake,Waushara,2011,2015,108,5,USGS,seepage,191100,750,44.2157222,-89.1207222
+122,Long Lake,Waushara,1961,1995,21,18,DNR Historical Data,seepage,191100,750,44.21630946,-89.12494537
+123,Long Lake (Saxeville),Waushara,1947,2015,106,58,Waushara,seepage,191100,750,44.21630946,-89.12494537
+124,Loon Lake,Langlade,1978,1981,3,3,DNR Historical Data,seepage,191400,4497,45.38862943,-89.09475412
+125,Meyer Lake,Langlade,1974,1981,3,3,DNR Historical Data,seepage,192500,132938,45.05111105,-89.07465251
+126,Mud Lake,Marathon,1974,1981,2,2,DNR Historical Data,seepage,193800,40706,44.91917671,-89.29106901
+127,Mueller Lake,Langlade,1967,1981,4,4,DNR Historical Data,seepage,194000,5200,45.16313151,-88.98520107
+128,Oak Lake,Forest,1977,1978,10,2,USGS,seepage,194800,89618,45.473297,-88.9398353
+129,Old Taylor Lake,Waupaca,1973,1981,3,3,DNR Historical Data,seepage,195000,5179,44.34249237,-89.11280663
+130,Pearl Lake,Waushara,1975,2015,19,19,Waushara,seepage,195400,5463,44.08860619,-89.11802775
+131,Pickerel Lake,Portage,1976,1979,53,4,USGS,seepage,195900,1057,44.31608608,-89.3231721
+132,Pine Lake,Waushara,1961,1995,19,13,DNR Historical Data,seepage,196100,4261,44.23275643,-89.16245575
+133,Pine Lake (Springwater),Waushara,1961,2015,35,30,Waushara,seepage,196100,4261,44.23275643,-89.16245575
+134,Round Lake,Waushara,1900,1995,16,12,DNR Historical Data,seepage,197300,75921,44.16246304,-89.16177896
+135,Round Lake,Waushara,1998,2015,17,17,Waushara,seepage,197300,75921,44.16246304,-89.16177896
+136,Round Lake,Menominee,1990,1992,59,3,USGS,seepage,197600,715,44.8910962,-88.5639929
+137,Sand Lake,Menominee,1992,1992,2,1,USGS,seepage,197900,73816,44.8891527,-88.5420484
+138,Sawyer Lake,Langlade,1970,1981,4,4,DNR Historical Data,seepage,198100,4708,45.24754815,-88.75906139
+139,Silver Lake,Waupaca,1939,1981,4,3,DNR Historical Data,seepage,198800,4283,44.4647946,-89.14072066
+140,Stenson Lake,Marathon,1977,1981,3,3,DNR Historical Data,seepage,199300,60393,44.71184716,-89.27334007
+141,Sunset Lake,Portage,1940,1981,2,2,DNR Historical Data,seepage,199700,5522,44.54471137,-89.27715966
+142,Thomas Lake,Portage,1974,1981,2,2,DNR Historical Data,seepage,200300,4334,44.47358131,-89.39027712
+143,Little Twin Lake,Waushara,1985,2015,19,19,Waushara,seepage,200900,25024,44.22808726,-89.32045653
+144,White Lake,Shawano,1974,1981,3,3,DNR Historical Data,seepage,240800,4544,44.67335191,-88.45060452
+145,Wilson Lake,Shawano,1970,1981,2,2,DNR Historical Data,seepage,240900,4730,44.81726142,-89.21966638
+146,Wolf Lake,Portage,1977,1981,2,2,DNR Historical Data,seepage,241100,4747,44.32445208,-89.35097097
+150,Norwegian Lake,Waushara,1975,2014,19,18,Waushara,seepage,247200,4372,44.14268002,-89.2169887
+152,Wilson Lake,Waushara,1963,1995,19,16,DNR Historical Data,seepage,250000,4983,44.17482414,-89.17396074
+153,Wilson Lake,Waushara,1975,2015,21,21,Waushara,seepage,250000,4983,44.17482414,-89.17396074
+159,Stratton Lake,Waupaca,1973,1983,5,5,DNR Historical Data,seepage,259600,4386,44.29169282,-89.18181053
+160,McCrossen Lake,Waupaca,1937,1981,5,5,DNR Historical Data,seepage,265100,5237,44.33349566,-89.16027695
+161,Rainbow Lake,Waupaca,1939,1981,5,4,DNR Historical Data,seepage,265300,4896,44.34206003,-89.14991651
+162,Taylor Lake,Waupaca,1970,1984,5,5,DNR Historical Data,seepage,265600,128788,44.341987,-89.14033714
+164,Collins Lake,Portage,1940,1996,3,3,DNR Historical Data,seepage,270200,5424,44.60052909,-89.34207875
+168,Campbell Lake,Waupaca,1941,1981,3,3,DNR Historical Data,seepage,284300,4741,44.5570981,-89.00387487
+171,Mayflower Lake,Marathon,1967,1981,4,4,DNR Historical Data,seepage,310500,5485,44.91194985,-89.25495091
+177,La Motte Lake,Menominee,1990,1992,46,3,USGS,seepage,339600,2791,44.8847057,-88.60343739
+188,Saint Johns Lake,Forest,1974,1981,3,3,DNR Historical Data,seepage,388700,140146,45.43978431,-88.87741317
+189,Little Sand Lake,Forest,1977,2003,1522,10,USGS,seepage,389700,128789,45.4632974,-88.919557
+190,Little Sand Lake,Forest,1976,1990,6,6,DNR Historical Data,seepage,389700,128789,45.46998052,-88.91916868
+191,Mole Lake,Forest,1973,1990,7,7,DNR Historical Data,seepage,390600,56287,45.4792017,-88.97688846
+195,Devils Lake,Forest,1983,1983,1,1,USGS,seepage,396700,1405,45.549964,-88.8334458
+196,Whiteye Lake,Forest,1970,1981,2,2,DNR Historical Data,seepage,406600,140148,45.58360868,-88.99766347
+198,Ada Lake,Langlade,1967,1981,5,5,DNR Historical Data,seepage,417300,4932,45.37177528,-88.73651189
+199,Archibald Lake,Oconto,1973,1981,6,5,DNR Historical Data,seepage,417400,5104,45.28299922,-88.5866449
+200,Archibald Lake - Staff Gage,Oconto,2015,2015,14,1,SWIMS,seepage,417400,5104,45.28162,-88.59973
+201,Bass Lake,Oconto,1973,1981,6,5,DNR Historical Data,seepage,417900,4421,45.27634967,-88.62091917
+202,Bear Paw Lake,Oconto,1976,1983,4,4,DNR Historical Data,seepage,418000,823,45.18138252,-88.39409948
+203,Berry Lake,Oconto,2013,2015,836,3,USGS,seepage,418300,4785,44.8875,-88.4722222
+204,Berry Lake,Oconto,1973,1983,6,5,DNR Historical Data,seepage,418300,4785,44.88920668,-88.47905223
+205,Boot Lake,Oconto,1936,1981,1269,38,USGS,seepage,418700,5318,45.27163496,-88.6331618
+206,Grindle Lake - Staff Gage,Oconto,2015,2015,11,1,SWIMS,seepage,421600,3236,45.23316,-88.370834
+207,Halfmoon Lake,Oconto,1973,1983,5,5,DNR Historical Data,seepage,421800,5221,45.18588363,-88.20228521
+208,Paya Lake,Oconto,1975,1981,3,3,DNR Historical Data,seepage,425600,4706,45.27601723,-88.48478687
+209,Paya Lake - Staff Gage,Oconto,2015,2015,11,1,SWIMS,seepage,425600,4706,45.27279,-88.48794
+210,Shay Lake,Oconto,1976,1981,3,3,DNR Historical Data,seepage,427300,3746,45.25946764,-88.64622124
+212,Star Lake,Oconto,1979,1981,3,2,DNR Historical Data,seepage,427900,1485,45.22658411,-88.58509273
+213,Surprise Lake,Oconto,1979,1981,2,2,DNR Historical Data,seepage,428100,3134,45.35216649,-88.60762664
+214,Waubee Lake,Oconto,1975,1981,3,3,DNR Historical Data,seepage,439500,4368,45.3453033,-88.44221501
+215,Wheeler Lake,Oconto,1936,1991,2723,52,USGS,seepage,439800,5351,45.31857896,-88.4828845
+216,Wheeler Lake,Oconto,1970,1981,8,6,DNR Historical Data,seepage,439800,5351,45.31883275,-88.47614941
+217,Wheeler Lake - Staff Gage,Oconto,2015,2015,2,1,SWIMS,seepage,439800,5351,45.30947,-88.47362
+227,Newton Lake,Marathon,1973,1981,4,4,DNR Historical Data,seepage,498800,4902,45.36863543,-88.11620006
+229,Hilbert Lake,Marinette,1973,1981,5,5,DNR Historical Data,seepage,501200,5154,45.70884915,-88.41582845
+230,King Lake,Forest,1983,1983,1,1,USGS,seepage,501700,57306,45.42107657,-88.427888
+231,LaFaye Lake,Marinette,1974,1981,4,4,DNR Historical Data,seepage,502000,105993,45.71333118,-88.39333756
+232,Little Newton Lake,Marathon,1973,1981,4,4,DNR Historical Data,seepage,502300,5431,45.36582294,-88.12427682
+233,Oneonta Lake,Marinette,1975,1981,3,3,DNR Historical Data,seepage,503300,2181,45.71838693,-88.4190854
+234,Rost Lake,Oconto,1970,1983,8,7,DNR Historical Data,seepage,504300,4849,45.05613391,-88.13995938
+236,Underwood Lake - Staff Gage,Oconto,2015,2015,2,1,SWIMS,seepage,519700,5533,45.045612,-88.24212
+237,Gilas Lake,Marinette,1969,1983,6,5,DNR Historical Data,seepage,523300,5521,45.16195348,-88.17300833
+245,Bug Lake,Forest,1983,1983,1,1,USGS,seepage,574100,57328,45.57829696,-88.8265018
+246,Cosgrove Lake,Florence,1970,1981,5,5,DNR Historical Data,seepage,585100,4914,45.89388237,-88.1652623
+247,Morgan Lake,Florence,1987,1998,3746,12,USGS,seepage,589400,2132,45.7724593,-88.5462324
+248,Morgan Lake,Florence,1970,1979,37,6,USGS,seepage,589400,2132,45.7724593,-88.5462324
+249,Mud Lake,Florence,1973,1981,5,5,DNR Historical Data,seepage,589800,83296,45.93693733,-88.24583921
+258,Ellwood Lake,Florence,1968,1981,5,5,DNR Historical Data,seepage,650500,4442,45.85831516,-88.14237781
+268,Three Johns Lake,Forest,1972,1984,4,3,DNR Historical Data,seepage,692600,4639,45.92319464,-88.98029623
+271,Railroad Lake,Florence,1967,1979,5,5,DNR Historical Data,seepage,702800,4683,45.88430957,-88.13719638
+277,Spectacle Lake,Vilas,1972,1984,5,4,DNR Historical Data,seepage,717400,4343,46.00522899,-89.02099272
+279,Booth Lake,Walworth,1992,2003,24,6,USGS,seepage,740400,4792,42.80001387,-88.4300969
+280,Wandawega Lake,Walworth,1967,1984,6,6,DNR Historical Data,seepage,740700,4864,42.74338896,-88.56699482
+281,Lily Lake,Kenosha,1967,1982,5,4,DNR Historical Data,seepage,740900,5181,42.56325826,-88.21252821
+282,North Lake,Walworth,1937,2015,3837,50,USGS,seepage,741200,1396,42.74390169,-88.6292696
+283,Pleasant Lake,Walworth,1985,1990,161,6,USGS,seepage,741500,4881,42.79084599,-88.55648959
+284,Pleasant Lake,Walworth,1947,1984,7,7,DNR Historical Data,seepage,741500,4881,42.7878957,-88.5518617
+285,Rockland Lake,Racine,1967,1981,786,15,USGS,seepage,741600,4313,42.6761283,-88.2492572
+286,Rockland Lake,Racine,1967,1984,4,4,DNR Historical Data,seepage,741600,4313,42.67657972,-88.25270459
+287,Silver Lake,Walworth,1975,1984,5,5,DNR Historical Data,seepage,741700,5358,42.72640084,-88.57078458
+288,Swift Lake,Walworth,1967,1985,5,5,DNR Historical Data,seepage,741800,4574,42.8176978,-88.5129896
+295,Flanagan Lake,Kenosha,1967,1981,3,3,DNR Historical Data,seepage,748800,31817,42.61132559,-88.17927399
+314,Spring Lake,Waukesha,1967,1982,4,4,DNR Historical Data,seepage,770600,5520,42.91463275,-88.37221514
+315,Bean Lake,Jefferson,1970,1981,3,3,DNR Historical Data,seepage,774200,3936,43.05819473,-88.94465374
+316,Beaver Lake,Waukesha,1927,2015,3797,45,USGS,seepage,774400,5121,43.12361845,-88.3614848
+318,Goose Lake,Columbia,1976,1995,11,8,DNR Historical Data,seepage,776000,49534,43.31873151,-89.36594494
+320,Middle Genesee Lake,Waukesha,1996,2015,656,20,USGS,seepage,778300,5257,43.0475,-88.4797222
+321,Middle Genesee Lake,Waukesha,1970,1993,3,3,DNR Historical Data,seepage,778300,5257,43.05091368,-88.47921537
+322,Pine Lake,Waukesha,1931,2005,3334,50,USGS,seepage,779200,5092,43.125007,-88.3903744
+323,Pretty Lake,Waukesha,1963,1997,25,10,DNR Historical Data,seepage,779300,1641,42.95497772,-88.49890784
+324,Silver Lake,Waukesha,1992,1996,111,5,USGS,seepage,779800,1677,43.07667407,-88.492599
+325,"ESSER'S POND AT MIDDLETON, WI",Dane,1981,1982,30,2,USGS,seepage,783730,NA,43.09277,-89.5229
+326,Tiedemans Pond,Dane,1981,1982,350,2,USGS,seepage,783740,357,43.0902731,-89.5048432
+327,Strickers Pond,Dane,1981,1982,351,2,USGS,seepage,783750,355,43.0872176,-89.5098433
+328,Strickers Pond,Dane,1981,1993,2,2,DNR Historical Data,seepage,783750,355,43.08712604,-89.50954045
+338,Hope Lake,Jefferson,1976,1979,19,4,USGS,seepage,809800,2224,43.02111195,-88.9878876
+339,Hope Lake,Jefferson,1969,1985,12,7,DNR Historical Data,seepage,809800,2224,43.02486934,-88.98409053
+340,Red Cedar Lake,Jefferson,1970,1993,13,7,DNR Historical Data,seepage,813100,1726,42.9768446,-88.98356222
+364,Goose Lake,Dane,1970,1993,10,7,DNR Historical Data,seepage,872600,1957,43.00080925,-89.48871263
+365,Morse Pond,Dane,1975,1979,593,5,USGS,seepage,872800,10893,43.01749699,-89.5342883
+366,Graber Pond,Dane,1988,1989,442,2,USGS,seepage,873950,11879,43.1197168,-89.5070653
+368,Aldridge Lake,Oneida,1974,1981,3,3,DNR Historical Data,seepage,967400,3584,45.86595106,-89.30128337
+369,Alma Lake,Vilas,1984,1996,1184,12,USGS,seepage,967900,5465,45.9071749,-89.4298607
+370,Ament Lake,Lincoln,1974,1981,2,2,DNR Historical Data,seepage,968200,71167,45.41734585,-89.51181065
+371,Anvil Lake,Vilas,1936,2015,4014,72,USGS,seepage,968800,5150,45.95013889,-89.05425
+372,Anvil Lake,Vilas,1973,1987,7,7,DNR Historical Data,seepage,968800,5150,45.94340244,-89.0639014
+373,Bass Lake,Lincoln,1977,1978,44,2,USGS,seepage,969600,NA,45.4235707,-89.4901266
+374,Big Carr Lake,Oneida,1940,1984,6,4,DNR Historical Data,seepage,971600,3728,45.79092184,-89.62946191
+375,Bird Lake,Oneida,1970,1984,5,5,DNR Historical Data,seepage,972000,4528,45.79775099,-89.6664863
+376,Bobcat Lake,Oneida,1978,1981,3,3,DNR Historical Data,seepage,972500,57804,45.85026465,-89.75737623
+377,Bullhead Lake,Oneida,1978,1981,3,3,DNR Historical Data,seepage,974700,3687,45.8843055,-89.71408273
+378,Chickaree Lake,Vilas,1973,1984,4,4,DNR Historical Data,seepage,976800,3571,45.90628476,-89.35819389
+379,Clear Lake,Oneida,1940,1984,8,7,DNR Historical Data,seepage,977500,4570,45.87031738,-89.62480011
+380,Crescent Lake,Oneida,1973,1981,4,3,DNR Historical Data,seepage,978500,3918,45.89450149,-89.75555529
+381,Crystal Lake,Dane,1967,1997,16,11,DNR Historical Data,seepage,978900,3959,43.29040412,-89.62304764
+382,Crystal Lake,Columbia,1983,1985,3,3,DNR Historical Data,seepage,979000,1282,43.53104822,-89.25400573
+383,Crystal Lake,Lincoln,1939,1981,7,6,DNR Historical Data,seepage,979100,4296,45.54195299,-89.7066446
+384,Devils Lake,Sauk,1922,2015,13328,92,USGS,seepage,980900,4504,43.42638889,-89.7277778
+385,Devils Lake,Sauk,1975,1985,3,3,DNR Historical Data,seepage,980900,4504,43.41736213,-89.73163207
+386,Duck Lake,Langlade,1940,1981,7,5,DNR Historical Data,seepage,981500,1151,45.38072111,-89.24739846
+387,Duck Lake - Staff Gage,Langlade,2015,2015,11,1,SWIMS,seepage,981500,1151,45.384106,-89.24992
+388,Witches Lake,Vilas,1972,1981,2,2,DNR Historical Data,seepage,982500,3557,45.97856319,-89.59001876
+389,Elna Lake,Oneida,1970,1981,3,3,DNR Historical Data,seepage,983300,16949,45.69317805,-89.56853735
+391,Fetke Lake,Oneida,1973,1981,4,4,DNR Historical Data,seepage,984400,62937,45.68933519,-89.47017582
+392,Finley Lake,Vilas,1929,1984,4,4,DNR Historical Data,seepage,984800,772,45.91046069,-89.4182174
+393,Fish Lake (Hancock),Waushara,1971,2015,129,27,USGS,seepage,985000,1538,44.1188627,-89.477621
+394,Fish Lake,Dane,1966,2003,3220,35,USGS,seepage,985100,2746,43.28387815,-89.6542885
+395,Fish Lake,Dane,1975,1993,8,8,DNR Historical Data,seepage,985100,2746,43.28754854,-89.65221783
+396,Hemlock Lake,Oneida,1970,1981,3,3,DNR Historical Data,seepage,989200,91050,45.87658969,-89.65107952
+397,Hodstradt Lake,Oneida,1970,1981,3,3,DNR Historical Data,seepage,990700,4358,45.80732083,-89.56353808
+398,Honeysuckle Lake,Vilas,1987,1989,731,3,USGS,seepage,991000,3843,45.9618971,-89.3620816
+399,Hunter Lake,Vilas,1973,1984,4,4,DNR Historical Data,seepage,991700,5430,46.00354657,-89.32210604
+400,Indian Lake,Langlade,1974,1981,3,3,DNR Historical Data,seepage,991900,NA,45.32388699,-89.21293801
+401,Kimball Lake,Langlade,1974,1981,4,3,DNR Historical Data,seepage,993800,59875,45.28971339,-89.16168608
+402,Buteau Lake,Lincoln,1972,1981,3,3,DNR Historical Data,seepage,994400,5045,45.4394513,-89.47572802
+403,Lake Clara,Lincoln,1980,1986,2175,7,USGS,seepage,994700,70336911,45.51662728,-89.5751328
+404,Geroge Lake,Columbia,1970,1994,7,6,DNR Historical Data,seepage,994800,5253,43.52221917,-89.38100997
+405,Lake Huron,Waushara,1973,2015,1329,23,USGS,seepage,994900,4269,44.19563889,-89.4174722
+406,Huron Lake,Waushara,1973,2015,21,20,Waushara,seepage,994900,4269,44.19343292,-89.41796271
+407,Laura Lake,Vilas,1974,1984,4,4,DNR Historical Data,seepage,995200,3255,46.05704884,-89.43813932
+408,Lawrence Lake,Langlade,1967,1981,3,3,DNR Historical Data,seepage,997300,4488,45.25956099,-88.98283809
+409,Little Bass Lake,Marathon,1978,1981,2,2,DNR Historical Data,seepage,998100,54765,44.72466829,-89.44304927
+410,Little Frog Lake,Marathon,1981,1995,2,2,DNR Historical Data,seepage,999200,935,44.76218296,-89.36911359
+415,Long Lake,Langlade,1978,1981,3,3,DNR Historical Data,seepage,1000900,535,45.29851931,-89.20491337
+416,Long Lake,Lincoln,1974,1998,8,4,DNR Historical Data,seepage,1001000,3860,45.4298374,-89.47729304
+417,Lucy Lake,Vilas,1970,1981,2,2,DNR Historical Data,seepage,1002600,116740,45.90262437,-89.83980362
+418,McDonald Lake,Vilas,1929,1984,6,6,DNR Historical Data,seepage,1003700,1150,45.90561919,-89.39828044
+419,Mildred Lake,Oneida,1940,1981,3,3,DNR Historical Data,seepage,1004600,4177,45.67551707,-89.53088879
+420,Mission Lake,Marathon,1970,1981,5,5,DNR Historical Data,seepage,1005400,4832,44.77767329,-89.35238355
+421,Moccasin Lake,Langlade,1978,1981,3,3,DNR Historical Data,seepage,1005600,119907,45.44585828,-89.26998794
+422,Moon Lake,Vilas,1992,1996,23,5,USGS,seepage,1005800,4923,45.91773035,-89.434861
+423,North Neva Lake,Langlade,1977,1981,3,3,DNR Historical Data,seepage,1007200,1542,45.27226816,-89.10046181
+424,North Two Lakes,Oneida,1967,1973,3,3,DNR Historical Data,seepage,1007500,4452,45.78557694,-89.60653812
+425,Paradise Lake,Oneida,1973,1981,3,3,DNR Historical Data,seepage,1009400,1496,45.86146882,-89.43039738
+426,Patterson Lake,Vilas,1970,1981,2,2,DNR Historical Data,seepage,1009800,131480,45.89944863,-89.86346693
+427,Pence Lake,Langlade,1974,1981,3,3,DNR Historical Data,seepage,1010100,5132,45.30806392,-89.06180816
+428,Pine Lake (Hancock),Waushara,1973,2015,27,26,Waushara,seepage,1012000,4735,44.13008866,-89.50988124
+429,Pine Lake (Hancock),Lincoln,1967,1973,3,3,DNR Historical Data,seepage,1012100,4487,45.50068193,-89.43795782
+430,Plainfield Lake,Waushara,1978,1979,12,2,USGS,seepage,1012500,41200,44.20552876,-89.4717865
+431,Razorback Lake,Vilas,1967,1981,3,3,DNR Historical Data,seepage,1013800,4446,46.01932907,-89.51993905
+432,South Blue Lake,Oneida,1969,1984,4,4,DNR Historical Data,seepage,1015100,1585,45.75816627,-89.70271015
+433,South Neva Lake - Staff Gage,Langlade,2015,2015,13,1,SWIMS,seepage,1015200,1844,45.26814,-89.10267
+434,South Two Lakes,Oneida,1967,1973,3,3,DNR Historical Data,seepage,1015500,4856,45.7767029,-89.61366941
+435,Snipe Lake,Vilas,1969,1984,4,4,DNR Historical Data,seepage,1018500,5502,45.93961272,-89.36540027
+436,Soo Lake,Oneida,1974,1989,4,4,DNR Historical Data,seepage,1018900,1493,45.65354056,-89.54229
+437,Squash Lake,Oneida,1973,1981,2,2,DNR Historical Data,seepage,1019500,4978,45.59675451,-89.5489099
+438,Squash Lake,Oneida,1968,1981,4,4,DNR Historical Data,seepage,1019600,3129,45.86917574,-89.17571238
+439,Stormy Lake,Vilas,1940,1987,7,7,DNR Historical Data,seepage,1020300,5548,46.05528874,-89.32177306
+440,Sunday Lake,Oneida,1972,1981,4,4,DNR Historical Data,seepage,1020600,1199,45.88887204,-89.854244
+441,Towanda Lake,Vilas,1973,1982,5,5,DNR Historical Data,seepage,1022900,5282,45.93855367,-89.70771713
+442,Townline Lake,Oneida,1973,1989,7,5,DNR Historical Data,seepage,1023100,2480,45.64632587,-89.46348516
+443,Trilby Lake,Vilas,1970,1982,3,3,DNR Historical Data,seepage,1023300,4739,45.95676375,-89.69166814
+444,Vandercook Lake,Vilas,1980,1998,5698,19,USGS,seepage,1176400,3901,45.9857843,-89.6823713
+445,Virgin Lake,Oneida,1972,1981,4,3,DNR Historical Data,seepage,1176700,76369,45.57860476,-89.65081099
+446,Washburn Lake,Oneida,1940,1984,7,6,DNR Historical Data,seepage,1178000,2688,45.61656274,-89.55925798
+447,Wind Pudding Lake,Oneida,1973,1989,2,2,DNR Historical Data,seepage,1178900,2374,45.75895462,-89.65026468
+448,Windowpane Lake,Oneida,1972,1981,4,4,DNR Historical Data,seepage,1179000,5201,45.85059388,-89.79872376
+452,Big Bass Lake,Marathon,1967,1981,4,4,DNR Historical Data,seepage,1405200,4346,44.72293424,-89.43389976
+454,Lost Lake,Marathon,1977,1981,3,3,DNR Historical Data,seepage,1407000,104351,44.84997164,-89.34162997
+456,James Lake,Taylor,1967,1981,3,3,DNR Historical Data,seepage,1468900,5225,45.35505116,-90.22717576
+458,Pesobic Lake,Lincoln,1967,1981,4,4,DNR Historical Data,seepage,1481600,5207,45.21279181,-89.68030639
+459,Spring Lake,Lincoln,1978,1979,24,2,USGS,seepage,1483700,122022,45.2594096,-89.6140139
+460,Copper Lake,Lincoln,1977,1981,3,3,DNR Historical Data,seepage,1487800,4840,45.32507765,-89.61378986
+461,Echo Lake,Lincoln,1976,1981,3,3,DNR Historical Data,seepage,1488400,4087,45.35280843,-89.47263061
+475,Blue Lake,Oneida,1972,1981,3,3,DNR Historical Data,seepage,1538600,4865,45.8392523,-89.75804553
+478,Little Spider Lake,Vilas,1973,1982,5,5,DNR Historical Data,seepage,1540400,5141,45.97115597,-89.70842504
+485,Pickerel Lake,Lincoln,1977,1981,3,3,DNR Historical Data,seepage,1558400,1812,45.43170916,-89.50197639
+492,Spider Lake,Oneida,1967,1981,6,6,DNR Historical Data,seepage,1586600,4796,45.76074429,-89.44255567
+495,Hasbrook Lake,Oneida,1968,1984,6,6,DNR Historical Data,seepage,1589100,3834,45.83749998,-89.58248188
+515,Big Portage Lake,Vilas,1967,1981,3,3,DNR Historical Data,seepage,1629500,5394,46.12561039,-89.28493009
+516,Black Oak Lake,Vilas,1940,1982,5,5,DNR Historical Data,seepage,1630100,5558,46.16301405,-89.316129
+518,Sugar Maple Lake,Vilas,1967,1981,4,4,DNR Historical Data,seepage,1632200,66102,46.10272009,-89.07678972
+521,"WAZEE LAKE AT DEEP HOLE NEAR BLACK RIVER FALLS, WI",Jackson,2002,2003,7,2,USGS,seepage,1670030,230,44.2861111,-90.7144444
+524,Sackett Lake,Taylor,1967,1984,5,5,DNR Historical Data,seepage,1764500,5299,45.21432897,-90.44673064
+528,Bass Lake,Barron,1970,1981,4,4,DNR Historical Data,seepage,1832800,5202,45.29609663,-91.59958745
+529,Bass Lake,Barron,1976,1981,2,2,DNR Historical Data,seepage,1832900,1721,45.30228078,-92.1279256
+530,Bass Lake,Washburn,1970,1981,3,3,DNR Historical Data,seepage,1833300,5008,45.70707122,-91.64771093
+531,Beaver Lake,Chippewa,1970,1979,2,2,DNR Historical Data,seepage,1834400,3904,45.1670336,-91.3698361
+532,Beaver Lake,Ashland,1974,1981,3,3,DNR Historical Data,seepage,1834500,42268,46.15788745,-90.92294024
+533,Big Muskellunge Lake,Vilas,1981,2015,430,35,LTER,seepage,1835300,5248,46.008472,-89.629379
+534,Big Muskellunge Lake,Vilas,1972,1982,4,4,DNR Historical Data,seepage,1835300,5248,46.01738401,-89.61489839
+535,Blue Gill Lake,Sawyer,1974,1983,3,3,DNR Historical Data,seepage,1835600,5124,45.94261242,-90.96793727
+536,Blueberry Lake,Sawyer,1979,1991,3,2,DNR Historical Data,seepage,1835700,4830,45.88127432,-91.251158
+537,Caley Lake,Rusk,1979,1981,2,2,DNR Historical Data,seepage,1838500,5366,45.39892728,-91.26321585
+538,Clear Lake,Sawyer,1974,1989,5,5,DNR Historical Data,seepage,1841300,4302,46.02080815,-91.26441863
+539,Crystal Lake,Vilas,1981,2015,440,35,LTER,seepage,1842400,4722,45.999642,-89.610408
+540,Crystal Lake,Vilas,1973,1981,2,2,DNR Historical Data,seepage,1842400,4722,46.00174574,-89.61301969
+541,Crystal Lake,Iron,1974,1981,4,4,DNR Historical Data,seepage,1842500,4291,46.16511982,-90.11139409
+542,Dells Lake,Bayfield,1970,1979,4,3,DNR Historical Data,seepage,1844500,5576,46.17969513,-90.98620431
+543,Fenton Lake,Washburn,1968,1981,9,8,DNR Historical Data,seepage,1848400,3714,45.66622614,-91.73911282
+544,Fish Lake,Rusk,1969,1993,10,9,DNR Historical Data,seepage,1849100,4359,45.30583803,-91.50081658
+545,Frog Lake,Iron,1972,1981,4,4,DNR Historical Data,seepage,1849700,124100,46.11950135,-90.01131122
+546,Goose Lake,Sawyer,1974,1974,3,1,DNR Historical Data,seepage,1851200,1745,45.95219198,-91.11399549
+547,Green Lake,Sawyer,1969,1974,3,3,DNR Historical Data,seepage,1851900,106402,45.74504012,-91.51759801
+548,Ham Lake,Sawyer,1969,1970,2,2,DNR Historical Data,seepage,1852300,5559,45.83623594,-91.46253387
+549,Haugen Lake,Washburn,1969,1989,8,7,DNR Historical Data,seepage,1853200,29600,45.64080557,-91.76571387
+550,Howe Lake,Chippewa,1969,1978,84,4,USGS,seepage,1855100,5296,45.08524027,-91.3132082
+551,Howe Lake,Chippewa,1969,1979,3,3,DNR Historical Data,seepage,1855100,5296,45.08860286,-91.31466832
+552,Jerms Lake,Vilas,1970,1981,2,2,DNR Historical Data,seepage,1856500,4609,45.91334108,-89.87513221
+553,Johnson Lake,Sawyer,1974,1989,3,3,DNR Historical Data,seepage,1856700,4273,45.91155418,-91.4296989
+554,Kirby Lake,Barron,1995,1996,247,2,USGS,seepage,1858200,5078,45.59828546,-92.0726817
+555,Kirby Lake,Barron,1967,1981,3,3,DNR Historical Data,seepage,1858200,5078,45.60110652,-92.06611697
+556,Lake Five,Bayfield,1974,1981,3,3,DNR Historical Data,seepage,1858900,27542,46.16715119,-90.98593775
+557,Helane Lake,Sawyer,1974,1981,2,2,DNR Historical Data,seepage,1859100,4299,46.12238714,-91.24012834
+558,Ten Lake,Price,1969,1984,4,4,DNR Historical Data,seepage,1859400,101268,45.62219215,-90.48673484
+559,Lazy Island Lake,Washburn,1968,1981,6,6,DNR Historical Data,seepage,1859900,124111,45.68983141,-91.65241338
+560,Little Clam Lake,Ashland,1974,1981,4,4,DNR Historical Data,seepage,1861100,72157,46.14653191,-90.89738941
+561,Little Dummy Lake,Barron,1968,1979,3,3,DNR Historical Data,seepage,1861400,4850,45.57847319,-91.98819947
+562,Little Rock Lake,Vilas,1983,1996,4725,14,USGS,seepage,1862100,495,45.99606187,-89.6993166
+563,Little Sand Lake,Sawyer,1976,1983,4,3,DNR Historical Data,seepage,1862200,4727,45.84741074,-91.51933301
+564,Loon Lake,Chippewa,1981,1984,2,2,DNR Historical Data,seepage,1863000,16944,45.24740426,-91.46702096
+565,Loon Lake,Washburn,1972,1981,4,4,DNR Historical Data,seepage,1863200,75302,45.6862596,-91.61545963
+566,Lost Lake,Washburn,1968,1981,6,6,DNR Historical Data,seepage,1863400,140740,45.69847794,-91.58377262
+567,Lower Devils Lake,Barron,1970,1987,4,4,DNR Historical Data,seepage,1864000,4791,45.62627045,-91.76109671
+568,Loyhead Lake,Washburn,1970,1981,7,6,DNR Historical Data,seepage,1864200,5234,45.76942675,-91.56019295
+569,McLaren Lake,Ashland,1974,1981,4,4,DNR Historical Data,seepage,1865200,124102,46.14094131,-90.92124387
+570,Monday Lake,Washburn,1968,1981,6,6,DNR Historical Data,seepage,1867300,91033,45.64968806,-91.77864301
+571,Newman Lake,Price,1983,1984,2,2,DNR Historical Data,seepage,1870200,5513,45.96443366,-90.15745812
+572,Nice Lake,Washburn,1969,1981,8,7,DNR Historical Data,seepage,1870300,101259,45.69213377,-91.60031174
+573,Nick Lake,Washburn,1970,1981,4,3,DNR Historical Data,seepage,1870500,4400,45.72158961,-91.60086798
+574,Patterson Lake,Price,1974,1984,6,6,DNR Historical Data,seepage,1872500,4629,45.97273416,-90.17240911
+575,Payment Lake,Iron,1974,1981,3,3,DNR Historical Data,seepage,1872700,72173,46.18917356,-90.00895139
+576,Perch Lake,Sawyer,1968,1977,5,5,DNR Historical Data,seepage,1873600,4470,45.90108412,-90.95367378
+577,Peufald Lake,Washburn,1974,1981,3,3,DNR Historical Data,seepage,1873900,97186,45.73630708,-91.5820416
+578,Plummer Lake,Vilas,1970,1981,3,3,DNR Historical Data,seepage,1875100,1818,45.96932904,-89.77572483
+579,Pulaski Lake,Rusk,1979,1984,3,3,DNR Historical Data,seepage,1875900,5475,45.33672324,-91.28045407
+580,Rosalind Lake,Vilas,2012,2015,57,4,SWIMS,seepage,1877900,3165,46.18,-89.78
+581,Rusk Lake,Rusk,1974,1984,4,4,DNR Historical Data,seepage,1878800,5478,45.34174181,-91.47358569
+582,South Shattuck Lake,Chippewa,1981,1984,2,2,DNR Historical Data,seepage,1879300,2508,45.2175474,-91.41568387
+583,Silver Lake,Barron,1967,2015,107,17,DNR Historical Data,seepage,1881100,5367,45.58379766,-91.92121488
+584,Sparkling Lake,Vilas,1984,2015,409,32,LTER,seepage,1881900,906,46.006239,-89.695876
+585,Spider Lake,Washburn,1967,1981,9,8,DNR Historical Data,seepage,1882100,5003,45.72369516,-91.5768428
+586,Spring Lake,Washburn,1968,1981,9,8,DNR Historical Data,seepage,1882900,3549,45.82703692,-91.55815968
+587,Stone Lake,Washburn,1969,1989,11,10,DNR Historical Data,seepage,1884100,4960,45.84341969,-91.55627052
+588,Street Lake,Vilas,1970,1981,3,3,DNR Historical Data,seepage,1884200,4536,46.09599702,-89.70354479
+589,Sylvan Lake,Barron,1970,1984,4,4,DNR Historical Data,seepage,1884800,5272,45.60942735,-91.95194915
+590,Two Island Lake -- Access at East Side Of Lake Nr 146th And 145th St,Chippewa,2015,2015,15,1,SWIMS,seepage,1887500,874,45.235775,-91.392746
+591,Trout Bog,Vilas,1984,2015,448,32,LTER,seepage,2014700,120948,46.040778,-89.685547
+592,"MAX LAKE NEAR WOODRUFF, WI",Vilas,1988,1996,1245,9,USGS,seepage,2015500,2087,46.0243949,-89.7098732
+593,Crystal Bog,Vilas,1984,2015,434,32,LTER,seepage,2017500,NA,46.007941,-89.606314
+594,Upper Twin Lake,Chippewa,1977,1978,50,2,USGS,seepage,2043700,16933,45.0921848,-91.3087636
+595,Windfall Lake,Sawyer,1969,1991,6,6,DNR Historical Data,seepage,2046500,4943,45.66413757,-91.21098991
+596,Windigo Lake,Sawyer,1970,1984,5,5,DNR Historical Data,seepage,2046600,5473,45.93070594,-91.47164234
+597,Wyandock Lake,Vilas,1970,1981,2,2,DNR Historical Data,seepage,2047300,2328,45.91715665,-89.83921998
+598,Lake Camelia Lake,Polk,1981,1989,5,5,DNR Historical Data,seepage,2079400,67086,45.33442363,-92.17648949
+602,Bass Lake,Rusk,1979,1981,3,2,DNR Historical Data,seepage,2090900,5157,45.42584,-91.49356007
+603,Axhandle Lake,Chippewa,1978,1979,33,2,USGS,seepage,2092500,4353,45.2807953,-91.4854391
+604,Axehandle Lake,Chippewa,1964,1981,6,5,DNR Historical Data,seepage,2092500,4353,45.27786892,-91.48312827
+605,Axhandle Lake -- Access at E Side Of Lake Off 100th St,Chippewa,2015,2015,4,1,SWIMS,seepage,2092500,4353,45.27761,-91.479385
+606,Pine Lake,Chippewa,1936,1979,1639,32,USGS,seepage,2092900,3443,45.2872222,-91.4741667
+607,Pine Lake,Chippewa,1978,1981,3,3,DNR Historical Data,seepage,2092900,3443,45.29243361,-91.45897797
+617,Butternut Lake,Barron,1970,1984,4,4,DNR Historical Data,seepage,2105800,50514,45.63053609,-91.90452683
+629,Round Lake,Chippewa,1949,1984,6,6,DNR Historical Data,seepage,2169200,5400,45.25417447,-91.45089676
+631,Horseshoe Lake,Taylor,1979,1984,3,3,DNR Historical Data,seepage,2195400,11839,45.2476611,-90.37273969
+632,Kettle Lake,Taylor,1967,1979,3,3,DNR Historical Data,seepage,2201400,15912,45.33879067,-90.25571156
+633,South Harper Lake,Taylor,1967,1991,9,8,DNR Historical Data,seepage,2204100,49467,45.36260435,-90.19377117
+634,Timms Lake,Price,1969,1984,4,4,DNR Historical Data,seepage,2206300,4529,45.45394194,-90.19351715
+643,Twin Lake,Price,1981,1984,3,3,DNR Historical Data,seepage,2264200,5011,45.95620325,-90.07377203
+645,Muskie Lake,Iron,1974,1984,3,3,DNR Historical Data,seepage,2266800,122006,46.02141881,-90.10682483
+652,Bass Lake,Price,1974,1981,3,3,DNR Historical Data,seepage,2282200,4768,45.81644888,-90.6544248
+653,Butternut Lake,Price,2002,2004,713,3,USGS,seepage,2283300,5110,45.9816207,-90.5176676
+658,McDermott Lake,Iron,1972,1984,4,4,DNR Historical Data,seepage,2296500,4641,46.00300245,-90.16082404
+660,Boot Lake,Iron,1979,1984,3,3,DNR Historical Data,seepage,2297800,4575,46.03912322,-90.14093
+668,Little Pike Lake,Iron,1974,1981,4,4,DNR Historical Data,seepage,2313100,4877,46.15457957,-90.08947201
+673,Sandy Beach Lake,Iron,1973,1984,5,5,DNR Historical Data,seepage,2316100,5388,46.10615318,-89.97131819
+675,Middle Sugarbush Lake,Vilas,1968,1981,2,2,DNR Historical Data,seepage,2317900,3399,46.01806341,-89.91299196
+676,Little Trout Lake,Vilas,1969,1981,3,3,DNR Historical Data,seepage,2321600,4982,46.06515096,-89.85272076
+677,Ike Walton Lake,Vilas,1967,1981,5,5,DNR Historical Data,seepage,2321800,5389,46.03594392,-89.80624497
+694,Spruce Lake,Vilas,1976,1979,26,4,USGS,seepage,2340100,2442,46.0532839,-89.5662573
+697,Sand Lake,Rusk,1978,1979,51,2,USGS,seepage,2353600,5261,45.3038522,-91.3532106
+698,Four Lake,Rusk,1974,1981,3,3,DNR Historical Data,seepage,2356200,135618,45.31539319,-91.44951725
+702,Devils Lake,Sawyer,1974,1979,2,2,DNR Historical Data,seepage,2387600,126176,45.83476811,-91.33452228
+706,Mud Lake,Sawyer,1986,1988,2,2,DNR Historical Data,seepage,2393700,100236,45.7737759,-91.50149993
+707,Little Sissabagama Lake,Sawyer,1970,1988,10,6,DNR Historical Data,seepage,2394100,5323,45.76426455,-91.52109294
+710,Augustine Lake,Ashland,1969,1981,3,3,DNR Historical Data,seepage,2410400,5555,46.17932846,-90.46080824
+713,White Bass Lake,Bayfield,1974,1981,3,3,DNR Historical Data,seepage,2430800,47375,46.17382269,-90.93738961
+714,Reed Lake,Sawyer,1969,1981,4,4,DNR Historical Data,seepage,2433800,127293,45.97994631,-91.24606191
+716,Gurno Lake,Sawyer,1967,1974,4,4,DNR Historical Data,seepage,2448000,129379,45.91129905,-91.37075339
+717,Indian Lake,Sawyer,1969,1974,3,3,DNR Historical Data,seepage,2448700,5039,45.93086855,-91.33641719
+718,Antler Lake,Polk,1969,1981,3,3,DNR Historical Data,seepage,2449400,5507,45.53787493,-92.42411982
+719,Baker Lake,Washburn,1969,1979,4,4,DNR Historical Data,seepage,2449800,5437,45.79540203,-91.70535766
+720,Bass Lake,St. Croix,1974,1984,259,10,DNR Historical Data,seepage,2450500,490,45.06712288,-92.64892184
+721,Bass Lake,Burnett,1969,1981,7,7,DNR Historical Data,seepage,2450900,4963,45.7912874,-92.23429903
+722,Bass Lake,Burnett,1969,1989,6,6,DNR Historical Data,seepage,2451200,4801,45.85828135,-92.30785841
+723,Bass Lake,Washburn,1969,1989,7,7,DNR Historical Data,seepage,2451300,4554,45.91507216,-91.99779011
+724,Bass Lake,Douglas,1974,1989,5,5,DNR Historical Data,seepage,2451700,118787,46.21575421,-91.8541031
+725,Bass Lake,Washburn,1973,1979,4,4,DNR Historical Data,seepage,2451900,2708,45.94693825,-91.63152785
+726,Beartrack Lake,Washburn,1969,1982,9,8,DNR Historical Data,seepage,2452300,79509,46.12551181,-92.04277276
+727,Beauregard Lake,Douglas,1972,1988,5,5,DNR Historical Data,seepage,2452400,4391,46.34194718,-91.58978572
+728,Beaver Lake,Washburn,1968,1979,5,5,DNR Historical Data,seepage,2452600,5443,45.96375875,-91.57348526
+729,Big Bass Lake,Washburn,1970,1979,7,6,DNR Historical Data,seepage,2453300,5117,46.07672218,-91.9005771
+730,Birch Island Lake,Burnett,1940,1989,13,13,DNR Historical Data,seepage,2453500,4385,45.94994941,-92.14711305
+731,Blue Lake,Bayfield,1963,1986,9,9,DNR Historical Data,seepage,2454000,92006,46.40174618,-91.53353859
+732,Boner Lake,Burnett,1973,1989,8,8,DNR Historical Data,seepage,2454500,118790,45.94159182,-92.17451965
+733,Cable Lake,Washburn,1961,1989,15,12,DNR Historical Data,seepage,2456100,4814,45.86613313,-91.90983639
+734,Clear Lake,Burnett,1964,1989,15,14,DNR Historical Data,seepage,2457600,4447,45.76689589,-92.38460085
+735,Conners Lake,Burnett,1972,1985,7,7,DNR Historical Data,seepage,2458300,4752,45.91132243,-92.30304739
+736,Crooked Lake,Burnett,1967,1989,14,12,DNR Historical Data,seepage,2459100,5291,45.7982404,-92.37299541
+737,Crooked Lake,Burnett,1972,1988,11,11,DNR Historical Data,seepage,2459200,96128,45.96161929,-92.28472997
+738,Crystal Lake,Douglas,1973,1987,13,11,DNR Historical Data,seepage,2459700,5512,46.18789491,-91.95129836
+739,Cyclone Lake,Washburn,1972,1988,12,10,DNR Historical Data,seepage,2459800,4833,45.82924323,-91.94401103
+740,Deer Lake,Burnett,1974,1983,6,5,DNR Historical Data,seepage,2460700,5295,46.04287344,-92.17632248
+741,Decrosier Lake,Washburn,1968,1979,5,5,DNR Historical Data,seepage,2460900,96143,46.14608563,-91.70290825
+742,Devils Lake,Burnett,1978,1979,17,2,USGS,seepage,2461100,5048,45.897724,-92.3429714
+743,Devils Lake,Burnett,1966,1988,16,14,DNR Historical Data,seepage,2461100,5048,45.9092897,-92.33777782
+744,Dock Lake,Washburn,1972,1989,7,7,DNR Historical Data,seepage,2461400,56704,45.85699343,-91.97857009
+745,Dubois Lake,Burnett,1973,1983,6,6,DNR Historical Data,seepage,2461700,127307,45.91031609,-92.07994876
+746,East Eightmile Lake,Bayfield,1981,1986,1895,6,USGS,seepage,2462200,92020,46.41605547,-91.4624126
+747,East Twin Lake,Douglas,1970,1985,8,8,DNR Historical Data,seepage,2462400,47339,46.35216282,-91.73292528
+748,Elbow Lake,Burnett,1972,1981,7,6,DNR Historical Data,seepage,2463100,4949,45.73898387,-92.39984568
+749,Ellison Lake,Bayfield,1969,1990,10,10,DNR Historical Data,seepage,2463300,5169,46.3583038,-91.54879624
+750,Ellsworth Lake,Washburn,1966,1989,15,14,DNR Historical Data,seepage,2463500,19079,45.86770728,-92.0075389
+751,Fish Lake,Burnett,1973,1988,10,9,DNR Historical Data,seepage,2464500,4946,45.9725196,-92.11724448
+752,Fremstadt Lake,Burnett,1979,1981,2,2,DNR Historical Data,seepage,2465200,9841,45.94458465,-92.35641298
+753,Frog Lake,Burnett,1972,1984,8,7,DNR Historical Data,seepage,2465300,14871,46.02604905,-92.0860694
+754,Horseshoe Lake,Polk,1967,1987,6,6,DNR Historical Data,seepage,2465600,53682,45.32459987,-92.50989528
+755,Geroge Lake,Bayfield,1969,1986,5,5,DNR Historical Data,seepage,2465700,5531,46.37680118,-91.54019104
+756,Godfrey Lake,Burnett,1900,1981,7,6,DNR Historical Data,seepage,2466300,5279,45.72967718,-92.34366187
+757,Goose Lake,Washburn,1966,1988,12,10,DNR Historical Data,seepage,2466400,5577,45.86508532,-91.94289611
+758,Goose Lake,Burnett,1972,1981,5,5,DNR Historical Data,seepage,2466500,15868,45.97252131,-92.07143974
+759,Green Lake,Burnett,1968,1995,16,16,DNR Historical Data,seepage,2467200,4459,45.91362919,-92.19452547
+760,Hammil lake,Bayfield,1974,1981,4,4,DNR Historical Data,seepage,2467900,5028,46.26180669,-91.30337418
+761,Hayden Lake,Burnett,1979,1981,2,2,DNR Historical Data,seepage,2468700,3939,45.98183141,-92.35405736
+762,Henderson lake,Bayfield,1972,1981,3,3,DNR Historical Data,seepage,2468800,69093,46.3371603,-91.49841602
+763,Hoinville Lake,Washburn,1968,1989,46,10,DNR Historical Data,seepage,2469400,NA,46.02382175,-91.99977699
+764,Horseshoe Lake,Barron,1970,1989,4,4,DNR Historical Data,seepage,2469800,74224,45.62613007,-92.08711524
+765,Horseshoe Lake,Washburn,1969,1989,8,7,DNR Historical Data,seepage,2470000,121972,46.08655049,-91.91967091
+766,Island Lake,Washburn,1970,1989,11,10,DNR Historical Data,seepage,2470600,4371,45.95821795,-91.94302242
+767,Island lake,Bayfield,1969,1986,7,7,DNR Historical Data,seepage,2470800,5527,46.38684758,-91.53069597
+768,Island Lake,Douglas,1970,1985,5,5,DNR Historical Data,seepage,2470900,93094,46.35360293,-91.76792849
+769,Jerry Lake,Washburn,1969,1989,9,8,DNR Historical Data,seepage,2471100,16912,45.91312242,-91.95424221
+770,Johnson Lake,Burnett,1969,1988,6,5,DNR Historical Data,seepage,2471600,5265,45.94086076,-92.31275473
+771,Kelly Lake,Bayfield,1970,1981,4,4,DNR Historical Data,seepage,2472000,4409,46.35821273,-91.46054372
+772,Lake Tahkodah,Bayfield,1953,1990,11,10,DNR Historical Data,seepage,2473500,4518,46.24381377,-91.22322122
+773,Lake Wilipyro,Bayfield,1974,1988,4,4,DNR Historical Data,seepage,2473600,3154,46.25087079,-91.30978035
+774,Lakeside Lake,Washburn,1968,1981,6,6,DNR Historical Data,seepage,2473800,37953,46.06372807,-91.82222962
+775,Larson Lake,Burnett,1974,1981,3,3,DNR Historical Data,seepage,2474300,1960,45.79026743,-92.36982126
+776,Leach Lake,Washburn,1969,1988,4,4,DNR Historical Data,seepage,2474400,5034,45.67218085,-92.02150601
+777,Leesome Lake,Washburn,1970,1989,9,8,DNR Historical Data,seepage,2474800,112579,45.77653516,-91.73338343
+778,Little Bear Lake,Burnett,1976,1989,4,4,DNR Historical Data,seepage,2476000,32697,45.98944871,-92.16063479
+779,Little McGraw Lake,Burnett,1969,1984,7,6,DNR Historical Data,seepage,2477000,5419,46.11619845,-92.18024352
+780,Little Sand Lake,Washburn,1970,1979,6,5,DNR Historical Data,seepage,2477700,5460,46.15510276,-92.00130206
+781,Long Lake,Polk,1969,1989,9,9,DNR Historical Data,seepage,2478200,5158,45.45378195,-92.51327894
+782,Long Lake - Staff Gage,Polk,2015,2015,11,1,SWIMS,seepage,2478200,5158,45.456886,-92.52543
+783,Loon Lake,Barron,1967,1981,3,3,DNR Historical Data,seepage,2478600,4579,45.46947221,-92.12892863
+784,Loon Lake,Douglas,1969,1981,8,8,DNR Historical Data,seepage,2479000,11780,46.37842767,-91.56122219
+785,Mack Lake,Washburn,1967,1989,7,7,DNR Historical Data,seepage,2480600,36859,46.00050954,-91.89916837
+786,McLain Lake,Washburn,1967,1989,9,9,DNR Historical Data,seepage,2481600,5140,46.04806627,-91.94904525
+787,Minnow Lake,Burnett,1979,1981,2,2,DNR Historical Data,seepage,2482900,5544,45.97056179,-92.30920367
+788,Long Lake,Polk,1969,1986,4,4,DNR Historical Data,seepage,2483100,4344,45.58676593,-92.36902197
+789,Motyka Lake,Bayfield,1969,1984,5,5,DNR Historical Data,seepage,2483600,115166,46.24447022,-91.27912818
+790,Mud Lake,Washburn,1968,1976,7,5,DNR Historical Data,seepage,2484200,20106,45.94095062,-91.62167563
+791,Mystery Lake,Burnett,1967,1983,7,7,DNR Historical Data,seepage,2485400,80569,45.96038071,-92.05419279
+792,North Twin Lake,Washburn,1976,1989,5,4,DNR Historical Data,seepage,2485900,4895,46.06898591,-91.94859286
+793,Nicaboyne Lake,Burnett,1970,1988,10,9,DNR Historical Data,seepage,2486100,5471,45.98647654,-92.08022356
+794,No Mans Lake,Washburn,1969,1979,5,5,DNR Historical Data,seepage,2486300,108381,46.119637,-92.04997489
+795,Oak Lake,Burnett,1968,1988,11,11,DNR Historical Data,seepage,2486600,4782,45.93385025,-92.12827541
+796,Pavlas Lake,Washburn,1972,1989,10,9,DNR Historical Data,seepage,2488100,4651,45.70905132,-91.7829393
+797,Pear Lake,Washburn,1968,1981,6,6,DNR Historical Data,seepage,2488200,121969,46.04079365,-92.00423663
+798,Perch Lake,St. Croix,1979,2000,13,8,DNR Historical Data,seepage,2488300,4297,45.05322013,-92.69767953
+799,Person Lake,Douglas,1973,1985,9,9,DNR Historical Data,seepage,2488600,5454,46.19025492,-91.96765085
+800,Pickerel Lake,Bayfield,1975,1990,7,6,DNR Historical Data,seepage,2489200,4974,46.32739143,-91.51424205
+801,Picture Lake,Bayfield,1970,1984,4,4,DNR Historical Data,seepage,2489300,4984,46.25333895,-91.28783915
+802,Pigeon Lake,Bayfield,1986,1990,4,4,DNR Historical Data,seepage,2489400,4413,46.34228791,-91.34901472
+803,Pine Lake,Polk,1969,1986,7,6,DNR Historical Data,seepage,2489900,26502,45.58651752,-92.2933005
+804,Pine Lake,Polk,1969,1982,3,3,DNR Historical Data,seepage,2490400,4958,45.2523885,-92.55787786
+805,Poplar Lake,Polk,1969,1987,6,6,DNR Historical Data,seepage,2491000,5057,45.37972984,-92.59477782
+806,Poquettes Lake,Burnett,1972,1989,10,10,DNR Historical Data,seepage,2491100,4612,45.80965999,-92.07128704
+807,Price Lake,Bayfield,1970,1990,6,6,DNR Historical Data,seepage,2491300,5408,46.22350588,-91.2727345
+808,Red Lake,Douglas,1974,1989,10,10,DNR Historical Data,seepage,2492100,5031,46.17937141,-91.76448744
+809,Ripley Lake,Washburn,1969,1989,9,9,DNR Historical Data,seepage,2492600,5298,45.71097589,-91.85273242
+810,Rock Lake,Douglas,1974,1981,3,3,DNR Historical Data,seepage,2492900,4901,46.34313731,-91.6171267
+811,Rooney Lake,Burnett,1970,1988,12,11,DNR Historical Data,seepage,2493100,5428,45.96095886,-92.07448033
+812,Round Lake,Douglas,1981,1986,1897,6,USGS,seepage,2493900,124080,46.22827509,-91.936299
+813,South Twin Lake,Washburn,1967,1979,8,7,DNR Historical Data,seepage,2494500,4969,46.06210018,-91.96153653
+814,Sand Bar Lake,Bayfield,1972,1990,8,8,DNR Historical Data,seepage,2494900,4687,46.36854719,-91.52894304
+815,Sand Lake,Polk,1968,1987,10,10,DNR Historical Data,seepage,2495000,5474,45.37283759,-92.56043373
+816,Sauntrys Pocket Lake,Douglas,1974,1989,4,4,DNR Historical Data,seepage,2495600,4841,46.23187283,-91.6890195
+817,Scovils Lake,Washburn,1967,1979,5,5,DNR Historical Data,seepage,2495900,106353,46.127641,-92.02260211
+818,Seymour Lake,Washburn,1900,1981,7,5,DNR Historical Data,seepage,2496100,74235,45.78095721,-91.72166685
+819,Shell Lake,Washburn,1936,2014,2980,78,USGS,seepage,2496300,4444,45.74605938,-91.9168423
+820,Silver Lake,Burnett,1974,1981,3,3,DNR Historical Data,seepage,2496800,61843,45.76845581,-92.34145227
+821,Silver Lake,Washburn,1969,1984,10,8,DNR Historical Data,seepage,2496900,4466,45.99004995,-91.82157767
+822,Silverthorn Lake,Sawyer,1967,1984,7,7,DNR Historical Data,seepage,2497000,4288,46.13260717,-91.36134475
+823,Simms Lake,Douglas,1972,1987,6,6,DNR Historical Data,seepage,2497100,137654,46.26398843,-91.67469636
+824,Sleepy Eye Lake,Washburn,1968,1989,9,8,DNR Historical Data,seepage,2497400,4323,46.10305137,-91.92476333
+825,Spider Lake,Douglas,1974,1981,2,2,DNR Historical Data,seepage,2498300,17968,46.23095351,-91.8992903
+826,Spring Lake,Washburn,1969,1982,5,5,DNR Historical Data,seepage,2498600,4851,45.92253971,-91.68345866
+827,Little Pine Lake,Polk,1969,1986,4,4,DNR Historical Data,seepage,2498800,58767,45.53456805,-92.45361801
+828,Square Lake,Polk,1969,1986,4,4,DNR Historical Data,seepage,2498900,26492,45.45232155,-92.34628682
+829,Squaw Lake,St. Croix,1975,1984,5,4,DNR Historical Data,seepage,2499000,5002,45.18083865,-92.61542931
+830,Sunfish Lake,Washburn,1969,1989,8,8,DNR Historical Data,seepage,2500100,102246,45.93561118,-91.95370075
+831,Swede Lake,Polk,1969,1981,2,2,DNR Historical Data,seepage,2500500,5226,45.25517598,-92.54191187
+832,Thorn Lake,Douglas,1974,1981,3,3,DNR Historical Data,seepage,2501300,5082,46.22503849,-91.65570396
+833,Tomahawk Lake,Bayfield,1972,1990,7,7,DNR Historical Data,seepage,2501700,5281,46.36421546,-91.52059183
+834,Two Mile Lake,Douglas,1969,1989,10,10,DNR Historical Data,seepage,2503500,44309,46.21568986,-91.80408832
+835,Unnamed Lake,St. Croix,1975,1976,2,2,DNR Historical Data,seepage,2597700,66040,45.14590211,-92.51001029
+836,Chain Lake,Douglas,1974,1981,3,3,DNR Historical Data,seepage,2598300,101226,46.197113,-91.73720194
+837,Vincent Lake,Polk,1968,1986,4,4,DNR Historical Data,seepage,2598500,4657,45.54016312,-92.36312465
+838,Viola Lake,Burnett,1979,1989,5,5,DNR Historical Data,seepage,2598600,4825,45.81781882,-92.25134415
+839,West Twin Lake,Douglas,1970,1985,8,8,DNR Historical Data,seepage,2599000,42251,46.34586242,-91.73898596
+840,Ward Lake,Polk,1978,1979,33,2,USGS,seepage,2599400,5211,45.59967527,-92.3196372
+841,Ward Lake,Polk,1969,1986,4,4,DNR Historical Data,seepage,2599400,5211,45.60554327,-92.32043896
+842,Wilderness Lake,Bayfield,1970,1981,3,3,DNR Historical Data,seepage,2600500,12839,46.40807897,-91.40873665
+843,Wikerson Lake,Washburn,1969,1988,4,4,DNR Historical Data,seepage,2600600,59806,45.87678613,-92.02365466
+844,Yechout Lake,Washburn,1970,1981,5,5,DNR Historical Data,seepage,2601000,40086,45.69832253,-91.78989542
+849,Clear Lake,Polk,1967,1981,3,3,DNR Historical Data,seepage,2623500,72115,45.26139136,-92.27865957
+852,Pike Lake,Polk,1967,1989,9,9,DNR Historical Data,seepage,2624000,4857,45.3219935,-92.3706516
+853,Barbo Lake,Polk,1969,1981,2,2,DNR Historical Data,seepage,2624900,134635,45.31598158,-92.2166339
+858,Horseshoe Lake,Polk,1981,1984,2,2,DNR Historical Data,seepage,2630100,4548,45.44294511,-92.15881519
+859,Horseshoe Lake - Staff Gage,Polk,2015,2015,16,1,SWIMS,seepage,2630100,4548,45.43332,-92.17927
+860,Echo lake,Barron,1967,1989,4,4,DNR Historical Data,seepage,2630200,5456,45.44594407,-92.129702
+861,North Lake,Barron,1970,1984,3,3,DNR Historical Data,seepage,2630800,5409,45.52930752,-92.10356993
+863,Lake of the Woods,Barron,1979,1984,3,3,DNR Historical Data,seepage,2632100,5504,45.53142057,-92.15274774
+868,Coon Lake,Polk,1969,1984,3,3,DNR Historical Data,seepage,2642000,4744,45.65836004,-92.4600035
+871,Taylor Lake,Burnett,1969,1981,6,6,DNR Historical Data,seepage,2655900,58750,45.81187012,-92.28978998
+874,Pokegama Lake,Burnett,1967,1981,8,7,DNR Historical Data,seepage,2657200,5297,45.77935802,-92.20131381
+875,Spencer Lake,Burnett,1969,1981,6,6,DNR Historical Data,seepage,2658400,114566,45.73791055,-92.1849545
+878,Long Lake,Washburn,1972,1989,6,6,DNR Historical Data,seepage,2664500,4738,45.73605047,-91.95276437
+879,Sand Lake,Burnett,1973,1984,5,5,DNR Historical Data,seepage,2664900,27498,45.75984873,-92.34018205
+882,Lamont Lake,Polk,1969,1986,5,5,DNR Historical Data,seepage,2668500,4699,45.57906793,-92.28153538
+883,Grenquist Lake,Polk,1969,1981,5,5,DNR Historical Data,seepage,2669300,5413,45.5680297,-92.18429249
+885,Tabor Lake,Burnett,1972,1981,5,5,DNR Historical Data,seepage,2671700,5206,46.0283824,-92.2818966
+888,Shoal Lake,Burnett,1974,1983,4,4,DNR Historical Data,seepage,2673800,22238,45.957622,-92.18876675
+889,Hanscom Lake,Burnett,1969,1988,8,7,DNR Historical Data,seepage,2674000,5343,45.97595594,-92.14368988
+890,Des Moines Lake,Burnett,1940,1988,11,10,DNR Historical Data,seepage,2674200,4397,45.99661252,-92.13501391
+892,Bass Lake,Burnett,1972,1989,9,9,DNR Historical Data,seepage,2675000,5492,45.95158496,-92.4247974
+895,Big Sand Lake,Burnett,2001,2001,4,1,USGS,seepage,2676800,4565,45.81939075,-92.2279676
+896,Big Sand Lake,Burnett,1967,1989,13,12,DNR Historical Data,seepage,2676800,4565,45.82459631,-92.21951795
+897,Warner Lake,Burnett,1968,1989,9,9,DNR Historical Data,seepage,2677200,139722,45.79844073,-92.22202417
+901,Benoit Lake,Burnett,1965,1988,17,14,DNR Historical Data,seepage,2678300,22258,45.88894166,-92.08955224
+903,McGraw Lake,Burnett,1969,1984,8,7,DNR Historical Data,seepage,2688800,4811,46.15320224,-92.17269108
+905,Nancy Lake,Washburn,1918,1976,6,6,DNR Historical Data,seepage,2691500,NA,46.09320624,-91.98471919
+908,Bond Lake,Douglas,1969,1989,13,13,DNR Historical Data,seepage,2693700,4588,46.18341672,-91.87452518
+909,Whitefish Lake,Douglas,1998,2015,82,11,USGS,seepage,2694000,5574,46.20327536,-91.8757426
+910,Whitefish Lake,Douglas,1969,1989,14,14,DNR Historical Data,seepage,2694000,5574,46.21391195,-91.87220009
+911,Whitefish Lake - Water Level Gage (Reference Point 6),Douglas,2010,2010,21,1,SWIMS,seepage,2694000,5574,46.203804,-91.86767
+916,Big Bear Lake,Burnett,1973,1989,10,8,DNR Historical Data,seepage,2705700,5023,46.01700343,-92.15302778
+924,Loon Lake,Washburn,1969,1989,8,8,DNR Historical Data,seepage,2709400,4492,45.92823472,-91.96861456
+926,McKinley Lake,Washburn,1969,1989,9,9,DNR Historical Data,seepage,2710100,66059,45.9121329,-91.92401257
+928,Matthews Lake,Washburn,1956,1989,8,8,DNR Historical Data,seepage,2710800,4445,46.02350544,-91.95763682
+940,Perry Lake,Bayfield,1972,1990,8,7,DNR Historical Data,seepage,2730800,66041,46.21593773,-91.2678566
+941,North Twin Lake,Bayfield,1970,1981,4,4,DNR Historical Data,seepage,2731800,4743,46.20503837,-91.14236998
+943,Atkins Lake,Bayfield,1969,1981,6,6,DNR Historical Data,seepage,2734000,5050,46.27820305,-91.03640255
+944,Taylor Lake,Bayfield,1974,1981,4,4,DNR Historical Data,seepage,2734100,108392,46.26002452,-91.04729348
+947,Trapper Lake,Bayfield,1973,1984,4,4,DNR Historical Data,seepage,2734500,4959,46.26225833,-91.0914005
+948,Lake Knotting,Bayfield,1974,1984,87,8,DNR Historical Data,seepage,2734700,68649,46.27397611,-91.11554034
+956,Bass Lake,Douglas,1974,1981,3,3,DNR Historical Data,seepage,2744500,5334,46.33599853,-91.75920904
+959,Ahmeek Lake,Bayfield,1972,1981,3,3,DNR Historical Data,seepage,2753900,4917,46.52285079,-91.46626306
+960,Beaver Lake,Bayfield,1972,1981,3,3,DNR Historical Data,seepage,2755600,48992,46.41852359,-91.2702065
+961,Cranberry Lake,Iron,1968,1981,5,5,DNR Historical Data,seepage,2759100,118326,46.2937484,-89.97031479
+962,Deep Lake,Bayfield,1976,1981,3,3,DNR Historical Data,seepage,2760100,5526,46.5553306,-91.45981214
+963,East Twin Lake,Bayfield,1969,1970,2,2,DNR Historical Data,seepage,2761000,5570,46.68499869,-91.05755696
+965,Five Island Lake,Bayfield,1970,1981,3,3,DNR Historical Data,seepage,2761900,41772,46.51283095,-91.34856888
+966,Forest Lake,Vilas,1967,1984,7,6,DNR Historical Data,seepage,2762200,5370,46.14890904,-89.37624672
+967,Half Moon lake,Bayfield,1970,1981,3,2,DNR Historical Data,seepage,2762700,4298,46.55934416,-91.39742373
+968,Hewitt Lake,Iron,1970,1979,3,3,DNR Historical Data,seepage,2763300,4547,46.30057453,-89.97668329
+969,Lac du Lune,Vilas,1967,1984,5,5,DNR Historical Data,seepage,2766200,19662,46.12934198,-89.38514885
+970,Long Lake,Bayfield,1964,1981,668,18,USGS,seepage,2767100,4674,46.5816081,-91.3385232
+971,Loon Lake - Staff Gage,Ashland,2015,2015,6,1,SWIMS,seepage,2767300,4844,46.350147,-90.6463
+972,Lost Lake,Bayfield,1970,1981,2,2,DNR Historical Data,seepage,2767600,3558,46.5347631,-91.38080154
+973,Moon Lake,Bayfield,1973,1981,3,3,DNR Historical Data,seepage,2768900,19615,46.55464322,-91.40902526
+975,Perch Lake,Bayfield,1970,1976,2,2,DNR Historical Data,seepage,2770800,56242,46.54222838,-91.38671036
+976,Phantom Lake - Staff Gage,Bayfield,2015,2015,14,1,SWIMS,seepage,2771200,3377,46.493885,-91.29628
+977,Rush Lake,Douglas,1974,1981,3,3,DNR Historical Data,seepage,2772800,74808,46.48917525,-91.55495887
+978,Wanoka Lake,Bayfield,1969,1981,3,3,DNR Historical Data,seepage,2832400,32276,46.54520576,-91.28186253
+983,Steele Lake,Douglas,1974,1981,4,4,DNR Historical Data,seepage,2866000,52158,46.51329591,-91.76289671
+985,Gander Lake,Douglas,1971,1981,3,3,DNR Historical Data,seepage,2867300,4997,46.45432342,-91.72953547
+986,Crystal Lake,Bayfield,1972,1984,7,5,DNR Historical Data,seepage,2874700,59394,46.55178492,-91.47581866
+989,Bass Lake,Bayfield,1969,1970,2,2,DNR Historical Data,seepage,2901100,4410,46.44147762,-91.26341229
+990,Bass Lake - Staff Gage,Bayfield,2015,2015,16,1,SWIMS,seepage,2901100,4410,46.444244,-91.264336
+991,Hart Lake,Bayfield,1969,1981,4,4,DNR Historical Data,seepage,2903200,4551,46.5185413,-91.36190041
+993,Muskelllunge Lake,Bayfield,1972,1984,4,4,DNR Historical Data,seepage,2903600,4753,46.49792245,-91.37486909
+994,Pike Lake,Bayfield,1972,1981,3,3,DNR Historical Data,seepage,2904000,23959,46.53637203,-91.37115036
+996,Weber Lake,Iron,1974,1981,3,3,DNR Historical Data,seepage,2909000,4561,46.41081497,-90.40079551
+1026,"COYLE POND AT STAFF GAGE NEAR CROSS PLAINS, WI",Dane,1975,1979,596,5,USGS,seepage,5575273,98268,43.05694026,-89.6045664
+1030,Carlin Lake,Vilas,NA,NA,NA,NA,NLDC,seepage,2757900,3493,46.2,-89.77
+1032,Dewey Lake,Vilas,NA,NA,NA,NA,NLDC,seepage,585400,1197,45.99,-89.03
+1036,Imogene Lake,Vilas,NA,NA,NA,NA,NLDC,seepage,586800,NA,45.99,-89.03
+1038,Little Rock Lake,Vilas,NA,NA,NA,NA,NLDC,seepage,1862100,495,45.99606187,-89.6993166
+1044,Red Bass Lake,Vilas,NA,NA,NA,NA,NLDC,seepage,2954700,947,46.2,-89.66
+1045,Rosalind Lake,Vilas,NA,NA,NA,NA,NLDC,seepage,1877900,3165,46.18,-89.78
+1046,Smoky Lake,Vilas,NA,NA,NA,NA,NLDC,seepage,1018300,5587,46.09,-88.94
+1047,Statehouse Lake,Vilas,NA,NA,NA,NA,NLDC,seepage,1883700,2138,46.14,-89.89
