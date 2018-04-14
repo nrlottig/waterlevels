@@ -85,6 +85,7 @@ K = 2
 # Number of lakes
 J = length(unique(dat$BHMID))
 # Load data raw water level data
+dat = as.data.frame(dat)
 data = list(y = dat$deltaS_mmd, group = as.numeric(dat$BHMID), n = dim(dat)[1], J = J,
             precip = dat$PE_mmd, K = K)
 # Initial values
@@ -127,37 +128,31 @@ xyplot(out.mcmc)
 densityplot(out.mcmc)
 
 #### Just make plots for parameters of interest
-out.mcmc2 <- out.mcmc[,c("mu.alpha","sigma.alpha","sigma")]
+out.mcmc2 <- out.mcmc[,c("mu.alpha","mu.beta")]
 xyplot(out.mcmc2)
 densityplot(out.mcmc2)
 
 
 reg.coef = out$BUGSoutput$mean$BB
 lakes = unique(dat$WiscID)
-dat$Date = as.character(dat$Date)
-dat$Date = paste(dat$Date,"/01",sep="")
-dat$Date = as_date(x = dat$Date)
 
-pdf("myOut.pdf",width=8,height=10.5,onefile = TRUE)
+pdf("myOutGW.pdf",width=8,height=10.5,onefile = TRUE)
 par(mfrow=c(3,2))
 for (i in 1:length(lakes)){
   #pull out data for each lake and generate predicted water levels
-  dat.t = dat %>% filter(WiscID==i) %>%
-    mutate(predValue,reg.coef[i,1][[1]] + dat.t$precipCMDV*(reg.coef[i,2][[1]]))
+  dat.t = dat %>% filter(BHMID==i) 
   #plot relationship between precip and water level
-  plot(x = dat.t$precipCMDV, y = dat.t$Value,xlab="PrecipCMDV (mm)",
-       ylab="Water Level (mm)",pch=16,ylim=range(dat$Value),
-       xlim=range(dat$precipCMDV))
+  plot(x = dat.t$PE_mmd, y = dat.t$deltaS_mmd,xlab="Precip - Evap (mm/d)",
+       ylab="Delta Water Level (mm/d)",pch=16,ylim=range(dat$deltaS_mmd),
+       xlim=range(dat$PE_mmd))
   tryCatch({
-    abline(lm(dat.t$Value~dat.t$precipCMDV),col="lightblue",lwd=2)
+    abline(lm(dat.t$deltaS_mmd~dat.t$PE_mmd),col="lightblue",lwd=2)
   },error=function(e){})
   abline(a = reg.coef[i,1][[1]],b=reg.coef[i,2][[1]],col="red",lwd=2)
   abline(a = out$BUGSoutput$mean$mu.alpha,b=out$BUGSoutput$mean$mu.beta,col="green",lwd=2)
-  mtext(side=3,line=1,paste("WiscID: ",i))
-  #plot predicted and observed water levels
-  y.range = range(c(dat.t$Value,dat.t$predValue))
-  plot(dat.t$Date,dat.t$Value,type=b,pch=16,ylim=y.range,xlab="Date",ylab="Water Level (mm)")
-  points(dat.t$Date,dat.t$predValue,type="b",pch=16,col="blue")
+  mtext(side=1,adj=0.9,line=-2,round(reg.coef[i,1][[1]],3))
+  mtext(side=3,line=1,paste(dat.t$SiteName[1], " WiscID:",dat.t$WiscID[1],sep=""),cex=.8)
+  legend('topleft',legend=c("linear","bayesH","global"),lty=1,col=c("lightblue","red","green"))
   
 }
 dev.off()
