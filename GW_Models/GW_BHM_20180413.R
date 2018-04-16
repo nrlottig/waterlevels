@@ -9,16 +9,15 @@ library(R2jags)
 library(lattice)
 
 # Input data
-dt = read_csv("GW_Models/lake_climate_20180413.csv")
-dat = dt %>% select(WiscID,Date1,DeltaDate,Stage1,Stage2,DeltaWaterLevel_ft,
-                     Precip_ft,Evap_ft) %>% drop_na()
+dt = read_csv("GW_Models/lake_climate_20180414_openWaterSeason.csv")
+dat = dt %>% select(WiscID,Date1,DeltaDate,Stage1_mm,Stage2_mm,DeltaWaterLevel_mm,
+                     Precip_mm,Evap_mm) %>% drop_na() %>% arrange(WiscID,Date1) %>% 
+  mutate(PE_mmd = (Precip_mm+Evap_mm)/DeltaDate) %>% 
+  mutate(deltaS_mmd=DeltaWaterLevel_mm/DeltaDate)
 #Filter the data so that we have at least 5 obs for each lake
 num.rec = table(dat$WiscID)
-keep.rec = as.numeric(names((num.rec[which(num.rec>=5)])))
-
+keep.rec = as.numeric(names((num.rec[which(num.rec>=2)])))
 dat = dat[which(dat$WiscID %in% keep.rec),]
-dat = dat %>% arrange(WiscID,Date1) %>% mutate(PE_mmd = ((Precip_ft+Evap_ft)*304.8)/DeltaDate) %>% 
-  mutate(deltaS_mmd=(DeltaWaterLevel_ft*304.8)/DeltaDate)
 
 ####Look at the data
 str(dat)
