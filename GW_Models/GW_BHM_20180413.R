@@ -40,7 +40,7 @@ cat("
     # Likelihood: 
     # Level-1 of the model
     for (i in 1:n){ 
-    y[i] ~ dnorm(mu[i], tau)               
+    y[i] ~ dt(mu[i], tau, tdf)               
     mu[i] <- alpha[group[i]] + beta[group[i]] * precip[i]         
     } 
     # Level-2 of the model
@@ -54,6 +54,8 @@ cat("
     # Priors and derived quantities
     sigma ~ dunif(0, 100)
     tau <- pow(sigma,-2) # precision
+    udf ~ dunif(0,1)
+    tdf <- 1 - tdfGain *log(1-udf)
     sigma2 <- pow(sigma,2)
     mu.alpha ~ dnorm(0, 0.0001)
     mu.beta ~ dnorm(0, 0.0001)
@@ -84,13 +86,15 @@ K = 2
 # Number of lakes
 J = length(unique(dat$BHMID))
 # Load data raw water level data
+tdfGain = 1
 dat = as.data.frame(dat)
 data = list(y = dat$deltaS_mmd, group = as.numeric(dat$BHMID), n = dim(dat)[1], J = J,
-            precip = dat$PE_mmd, K = K)
+            precip = dat$PE_mmd, K = K,tdfGain = tdfGain)
 # Initial values
 inits = function (){
   list(mu.alpha = rnorm(1), mu.beta=rnorm(1), sigma=runif(1),
-       BB=matrix(rnorm(J*K),nrow=J,ncol=K), sigma.a=runif(1), sigma.b=runif(1), rho=runif(1) )
+       BB=matrix(rnorm(J*K),nrow=J,ncol=K), sigma.a=runif(1), sigma.b=runif(1), rho=runif(1),
+       udf = 0.95)
 }
 
 # Parameters monitored
@@ -155,3 +159,5 @@ for (i in 1:length(lakes)){
   
 }
 dev.off()
+
+write_csv(data.frame(WiscID=lakes,Gnet=reg.coef[,1],slope=reg.coef[,2]),"GW_Models/HLM_out.csv")
