@@ -27,7 +27,7 @@ dat = dat %>% drop_na(maxdepth) %>% filter(maxdepth>0) %>% select(-MaxDepth)
 
 
 
-global.slope = as.numeric(quantile(out$BUGSoutput$sims.list$mu.beta,c(0.025,0.975)))
+global.slope = as.numeric(quantile(out$BUGSoutput$sims.list$mu.alpha,c(0.025,0.975)))
 
 sapply(out$BUGSoutput$sims.list$BB[1:4500,1:466,2],function(x) quantile(x,c(0.025,0.975)))
 

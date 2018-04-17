@@ -8,8 +8,10 @@ EcoContext <- read_excel("RFModels/EcoContext.xlsx")
 
 dat = dt %>% left_join(select(EcoContext,WiscID,lat,long)) %>% drop_na()
 
-rbPal <- colorRampPalette(c('red','blue'))
-dat$Col <- rbPal(10)[as.numeric(cut(dat$Gnet,breaks = 10))]
+rbPal <- colorRampPalette(c('red','green','blue','orange'))
+dat$Col <- rbPal(11)[as.numeric(cut(dat$Gnet,breaks = as.numeric(quantile(dat$Gnet,probs=seq(0,1,.1)))))]
+legend.val <-rbPal(11)
+legend.lab = round(as.numeric(quantile(dat$Gnet,probs=seq(0,1,.1))),2)
 map.regions = c('wisconsin')
 options(device="quartz")
 dev.new(width=7,height=6)
@@ -17,10 +19,10 @@ par(mar=c(5.1,4.1,4.1,2.1))
 map('state',region=map.regions,col=grey(.98),fill=TRUE,resolution = 0,mar=c(0,0,0,0),border=grey(.5),lty=5, main="Water Level Clusters")
 points(dat$long,dat$lat,col=alpha(dat$Col,1),pch=16)
 # legend("topright",legend=c("Gnet -2.70 mm/d","Gnet 0.150 mm/d"),pch=16,col=c("#FF0000","#0000FF"),title = "Net Groundwater Discharge",bty="n")       
-legend.col(col = dat$Col[order(dat$Gnet)], lev = dat$Gnet)
+legend.col(col = legend.val, lev = 0:10,lab=legend.lab,at=0:10)
 
 
-legend.col <- function(col, lev){
+legend.col <- function(col, lev,lab=TRUE,at=NULL){
   
   opar <- par
   
@@ -51,7 +53,7 @@ legend.col <- function(col, lev){
        yaxt = "n", ylab = "",
        xaxt = "n", xlab = "",
        frame.plot = FALSE)
-  axis(side = 4, las = 2, tick = FALSE, line = .25)
+  axis(side = 4, las = 2, tick = FALSE, line = .25,labels=lab,at=at)
   par <- opar
 }
 
