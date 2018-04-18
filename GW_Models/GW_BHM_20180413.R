@@ -16,8 +16,9 @@ dat = dt %>% select(WiscID,Date1,DeltaDate,Stage1_mm,Stage2_mm,DeltaWaterLevel_m
   mutate(deltaS_mmd=DeltaWaterLevel_mm/DeltaDate)
 #Filter the data so that we have at least 5 obs for each lake
 num.rec = table(dat$WiscID)
-keep.rec = as.numeric(names((num.rec[which(num.rec>=2)])))
+keep.rec = as.numeric(names((num.rec[which(num.rec>=10)])))
 dat = dat[which(dat$WiscID %in% keep.rec),]
+length(unique(dat$WiscID))
 
 ####Look at the data
 str(dat)
@@ -108,15 +109,15 @@ inits = function (){
 # 
 parameters = c("mu.alpha","mu.beta","BB","sigma", "sigma.a", "sigma.b","rho")
 # MCMC settings
-ni <- 20000
+ni <- 40000
 nb <- 10000
 nc <- 3
-(nt <- ceiling((ni-nb)*nc/500))
+(nt <- ceiling((ni-nb)*nc/1500))
 
 # Run the model
 out = jags.parallel(data, inits, parameters, "model.txt", n.chains = 3, 
-           n.thin = 60, n.iter = 20000, n.burnin = 60)
-
+           n.thin = 60, n.iter = 40000, n.burnin = 10000)
+saveRDS(out,"GW_Models/HLM_reduced.rds")
 # Show some of the result
 print(out, dig = 3)
 which(out$BUGSoutput$summary[, c("Rhat")] > 1.1)
@@ -125,8 +126,9 @@ out.mcmc <- as.mcmc(out)
 str(out.mcmc)
 # look at summary
 summary(out.mcmc)
+par(mfrow=c(4,4))
 # Create traceplots
-xyplot(out.mcmc)
+xyplot(out.mcmc,layout =c(4,4))
 # Look at posterior density plots
 densityplot(out.mcmc)
 
