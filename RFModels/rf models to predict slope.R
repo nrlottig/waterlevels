@@ -5,9 +5,10 @@ library(e1071)
 require(VSURF)
 library(readxl)
 library(LAGOSNE)
+library(intervals)
 
 EcoContext <- read_excel("RFModels/EcoContext.xlsx")
-regressionstats <- read_csv("BayHModels/regressionstats.csv")
+regressionstats <- read_csv("GW_Models/HLM_out.csv")
 lagoscrosswalk <- read_csv("RFModels/lagoscrosswalk.csv")
 lagoscrosswalk = lagoscrosswalk %>% select(WiscID,lagoslakeid)
 dt <- lagosne_load(version = "1.087.1")
@@ -27,28 +28,28 @@ dat = dat %>% drop_na(maxdepth) %>% filter(maxdepth>0) %>% select(-MaxDepth)
 
 
 
-global.slope = as.numeric(quantile(out$BUGSoutput$sims.list$mu.beta,c(0.025,0.975)))
+global.slope = as.numeric(quantile(out$BUGSoutput$sims.list$mu.alpha,c(0.025,0.975)))
 
-sapply(out$BUGSoutput$sims.list$BB[1:4500,1:466,2],function(x) quantile(x,c(0.025,0.975)))
+sapply(out$BUGSoutput$sims.list$BB[1:1500,1:51,1],function(x) quantile(x,c(0.025,0.975)))
 
-sims.out = as.data.frame(out$BUGSoutput$sims.list$BB[1:4500,1:466,2])
+sims.out = as.data.frame(out$BUGSoutput$sims.list$BB[1:1500,1:51,1])
 lakeinterval = as.data.frame(t(sapply(sims.out,function(x) quantile(x,c(0.025,0.975)))))
 lake.interval = Intervals(t(sapply(sims.out,function(x) quantile(x,c(0.025,0.975)))))
 over.lap = interval_overlap(from = lake.interval,to = global.slope)
 over.lap = as.numeric(sapply(over.lap,'[',1))
 
 
-slope.class = rep(NA,466)
+slope.class = rep(NA,51)
 for(i in 1:nrow(lakeinterval)){
-  if (lakeinterval[i,2] < global.slope[1]) slope.class[i] = 0 else if(lakeinterval[i,1] > global.slope[2]) slope.class[i]=3 else slope.class[i] =1
+  if (lakeinterval[i,2] < global.slope[1]) slope.class[i] = 0 else if(lakeinterval[i,1] > global.slope[2]) slope.class[i]=2 else slope.class[i] =1
   
 }
 
-regressionstats$slope.class = slope.class
+regressionstats$gnet.class = slope.class
 
 
 
-libdat = EcoContext %>% left_join(regressionstats) %>% select(-ID,-OBJECTID,-WATERBODY_NAME,-HYDROID,-HYDROCODE,
+dat = EcoContext %>% left_join(regressionstats) %>% select(-ID,-OBJECTID,-WATERBODY_NAME,-HYDROID,-HYDROCODE,
                                                            -HYDROTYPE,-LANDLOCK_C,-WBIC,-SHAPE_AREA,-SHAPE_LEN,
                                                            -County,-MeanDepth,-problem,-hydro24k,-centroid_x,
                                                            -centroid_y,-NATURAL_COMMUNITY,-Lake_type,-HYDROLOGY,
@@ -77,19 +78,20 @@ for(i in 1:length(factor.cols)){
 ##########Random Forest Modeling
 
 #set response variable
-Y.col = 8
+Y.col = 39
 Y = model.data[[Y.col]]
 names(model.data)[Y.col]
 #check counts for balancing RF model
 table(Y)
 
 
-X = model.data[,c(10:48)]
+X = model.data[,c(2:37,41)]
 names(X)
-(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y))
-pred = predict(rf.data)
+#,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y
+(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001))
+quapred = predict(rf.data)
 plot(Y,pred)
 abline(a=0,b=1)
 (conf.out = confusionMatrix(pred,Y))
 
-med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7,ntree = 5001,nfor.thres = 5001,nfor.interp = 5001,nfor.pred = 5001,clusterType = "FORK",sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y)
+med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7,clusterType = "FORK")
