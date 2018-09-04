@@ -84,6 +84,10 @@ cat("
     
     # Uniform prior on correlation
     rho ~ dunif (-1, 1)
+    #predicted lake levels
+    for (i in 1:n){ 
+      yp[i] ~ dnorm(alpha[group[i]] + beta[group[i]] * precip[i], tau)               
+    } 
     } # end model
     ",fill = TRUE)
 sink()
@@ -113,7 +117,7 @@ inits = function (){
 # sigma.b: variances of beta
 # rho: covarainces of alpha and beta
 # 
-parameters = c("mu.alpha","mu.beta","BB","sigma", "sigma.a", "sigma.b","rho")
+parameters = c("mu.alpha","mu.beta","BB","sigma", "sigma.a", "sigma.b","rho","yp")
 # MCMC settings
 ni <- 50000
 nt <- 20
@@ -147,6 +151,32 @@ max(out$BUGSoutput$summary[, c("Rhat")])
 # xyplot(out.mcmc)
 # Look at posterior density plots
 # densityplot(out.mcmc)
+pred_sims = as.data.frame(t(out$BUGSoutput$sims.list$yp))
+pred_sims = cbind(dat$WiscID,dat$Date,dat$Value,pred_sims)
+names(pred_sims)[1:3] =c("WiscID","Date","obs")
+pred_sims$mean = apply(pred_sims[,c(4:4503)],1,FUN=mean)
+pred_sims$ll = apply(pred_sims[,c(4:4503)],1,FUN=function(x) quantile(x,probs=0.025))
+pred_sims$ul = apply(pred_sims[,c(4:4503)],1,FUN=function(x) quantile(x,probs=0.975))
+
+pred_sims = pred_sims %>% select(everything(),-contains("V"))
+pred_sims$Date = as.character(dat$Date)
+pred_sims$Date = paste(dat$Date,"/15",sep="")
+pred_sims$Date = as_date(x = pred_sims$Date)
+
+
+dt = pred_sims %>% filter(WiscID==1030) %>% arrange(Date)
+
+
+plot(dt$Date,dt$obs,ylim=range(dt$ll,dt$ul))
+polygon(c(dt$Date,rev(dt$Date)),c(dt$ll,rev(dt$ul)),col="grey",border="darkgrey")
+lines(dt$Date,dt$obs,pch=16,col="black",type="p")
+# lines(dt$Date,dt$mean,pch=16,type="b",col="blue")
+
+
+plot(dt$obs,dt$mean)
+abline(a=0,b=1)
+
+
 
 
 CV <- function(mean, sd){

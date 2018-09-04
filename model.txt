@@ -3,7 +3,7 @@
     # Likelihood: 
     # Level-1 of the model
     for (i in 1:n){ 
-    y[i] ~ dt(mu[i], tau, tdf)               
+    y[i] ~ dnorm(mu[i], tau)               
     mu[i] <- alpha[group[i]] + beta[group[i]] * precip[i]         
     } 
     # Level-2 of the model
@@ -17,8 +17,6 @@
     # Priors and derived quantities
     sigma ~ dunif(0, 100)
     tau <- pow(sigma,-2) # precision
-    udf ~ dunif(0,1)
-    tdf <- 1 - tdfGain *log(1-udf)
     sigma2 <- pow(sigma,2)
     mu.alpha ~ dnorm(0, 0.0001)
     mu.beta ~ dnorm(0, 0.0001)
@@ -39,5 +37,9 @@
     
     # Uniform prior on correlation
     rho ~ dunif (-1, 1)
+    #predicted lake levels
+    for (i in 1:n){ 
+      yp[i] ~ dnorm(alpha[group[i]] + beta[group[i]] * precip[i], tau)               
+    } 
     } # end model
     
