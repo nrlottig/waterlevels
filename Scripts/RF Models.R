@@ -9,46 +9,77 @@ library(readxl)
 EcoContext <- read_excel("RFModels/EcoContext.xlsx")
 regressionstats <- read_csv("BayHModels/regressionstats.csv")
 
-dat = EcoContext %>% left_join(regressionstats) %>% select(-ID,-OBJECTID,-WATERBODY_NAME,-HYDROID,-HYDROCODE,
-                                                           -HYDROTYPE,-LANDLOCK_C,-WBIC,-SHAPE_AREA,-SHAPE_LEN,
+dat = EcoContext %>% left_join(regressionstats) %>% 
+  select(-ID,-OBJECTID,-WATERBODY_NAME,-HYDROID,-HYDROCODE,
+                                                           -HYDROTYPE,-LANDLOCK_C,-SHAPE_AREA,-SHAPE_LEN,
                                                            -County,-MeanDepth,-problem,-hydro24k,-centroid_x,
                                                            -centroid_y,-NATURAL_COMMUNITY,-Lake_type,-HYDROLOGY,
-                                                           -`Katie classification`,-`Katie notes`) %>% drop_na()
-summary(dat)
-
+                                                           -`Katie classification`,-`Katie notes`,-W_LAT) %>% 
+  drop_na()
+#remove parameters that have significant number of zeros
 dat = dat %>% select(-W_BD_201,-W_BD_204,-W_BD_205,-W_BD_206,-W_BD_207,-W_BD_208,-W_BD_209,-W_BD_210,-W_BD_MISSI,
                      -W_BR_2,-W_BR_3,-W_BR_MISSI,-W_QG_3,-W_QG_4,-W_QG_6,-W_QG_7,-W_QG_8,-W_QG_9,-W_QG_10,
                      -W_QG_11,-W_QG_12,-W_QG_13,-W_QG_14,-W_QG_15,-W_QG_16,-W_QG_17,-W_QG_18,-W_QG_20,
-                     -W_QG_21,-W_QG_22,-W_QG_24,-W_QG_29,-W_QG_99,-W_QG_MISSI,-W_LU06_23,-W_LU06_24,-W_LU06_31)
-
+                     -W_QG_21,-W_QG_22,-W_QG_24,-W_QG_29,-W_QG_99,-W_QG_MISSI,-W_LU06_23,-W_LU06_24,-W_LU06_31,
+                     -W_LU06_MIS)
+#remove 2011 landcover (keeping 2006)
 dat = dat %>% select(everything(),-contains("LU11"))
-summary(dat)
 dat = dat %>% mutate(W_LA_Ratio = WatershedA/Area)
-model.data = dat #choose which dataset to use so code works without editing further down
+#remove data that is 50% zero values
+dat <- dat %>% select(-W_BD_202,-W_BR_1,-W_BR_41,-W_BR_42,-W_QG_2,-W_QG_5)
+summary(dat)
 
-factor.cols = c(38)
 
-#assigning factor to correct variables
-model.data = as.data.frame(model.data)
-for(i in 1:length(factor.cols)){
-  model.data[,factor.cols[i]] = as.factor(model.data[,factor.cols[i]]) 
-}
+#get Ca and Mg Data
+CaMg <- read_csv("data/CaMg.csv")
+dat_cations <- CaMg %>% select(WBIC,CaConcentration,MgConcentration) %>% 
+  mutate(cation_ratio = CaConcentration/MgConcentration)
+dat <- dat %>% left_join(dat_cations)
+#get Conductivity data
+Conductivity_final <- read_csv("data/Conductivity_final.csv")
+dat_cond <- Conductivity_final %>% select(WBIC,final_value) %>% rename(cond=final_value)
+dat <- dat %>% left_join(dat_cond)
+#get elevation data
+lake_elevation <- read_excel("data/seepage_lake_shed_elev.xlsx")
+dat_elevation <- lake_elevation %>% select(WBIC,lake_MEAN,watershed_MIN,watershed_MAX,watershed_MEAN,elevation_difference)
+dat <- dat %>% left_join(dat_elevation)
+#get process data
+HLM_out <- read_csv("GW_Models/HLM_out.csv") %>% rename(process_slope=slope)
+dat <- dat %>% left_join(HLM_out)
+
+dat <- dat %>% left_join(new.data)
+#gather data
+dat.long <- dat %>% gather(key = variable,value = value,-slope,-sd.slope,-mape,
+                           -n.points,-Gnet,-process_slope,-WBIC,-WiscID)
+
+p.out <- ggplot(dat.long,aes(x=value,y=slope)) + geom_point() +
+  geom_smooth(method=lm) + facet_wrap(~variable,scales="free")
+
+ggsave(filename = "graphics/cum_slope.png",plot = p.out,width = 14,height = 8,units="in",dpi = 300,device = "png")
+
+model.data = dat[,c(47,3:31,40:45,48)] %>% drop_na() %>% mutate(landscapeposition = as.factor(landscapeposition))#choose which dataset to use so code works without editing further down
+# new.data <- dat[,c(2,3:30,40:45)] %>% drop_na()
 
 
 ##########Random Forest Modeling
 
 #set response variable
-Y.col = 39
+Y.col = 1
 Y = model.data[[Y.col]]
 names(model.data)[Y.col]
 #check counts for balancing RF model
 # table(Y)
 
 
-X = model.data[,c(4:38,42)]
+X = model.data[,c(2:37)]
 names(X)
 (rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001))
-pred = predict(rf.data)
+
+new.data <- new.data %>% mutate(pred_ratio = pred) %>% select(WiscID,pred_ratio)
+pred = predict(rf.data,newdata = new.data[,c(2:35)])
+
+
+plot(Y,pred)
 # (conf.out = confusionMatrix(pred,Y))
 
 med.vsurf = VSURF(x = X,y = Y,parallel = TRUE,ncores = 7,ntree = 5001,nfor.thres = 5001,nfor.interp = 5001,nfor.pred = 5001,clusterType = "FORK")

@@ -8,11 +8,36 @@ library(LAGOSNE)
 library(intervals)
 
 EcoContext <- read_excel("RFModels/EcoContext.xlsx")
+sub_ecocontext = EcoContext %>% select(-ID,-OBJECTID,-WATERBODY_NAME,-HYDROID,-HYDROCODE,
+                                                           -HYDROTYPE,-LANDLOCK_C,WBIC,-WiscID,-SHAPE_AREA,-SHAPE_LEN,
+                                                           -County,-MeanDepth,-problem,-hydro24k,-centroid_x,
+                                                           -centroid_y,-NATURAL_COMMUNITY,-Lake_type,-HYDROLOGY,
+                                                           -`Katie classification`,-`Katie notes`) %>% drop_na()
+sub_ecocontext = sub_ecocontext %>% select(-W_BD_201,-W_BD_204,-W_BD_205,-W_BD_206,-W_BD_207,-W_BD_208,-W_BD_209,-W_BD_210,-W_BD_MISSI,
+                     -W_BR_2,-W_BR_3,-W_BR_MISSI,-W_QG_3,-W_QG_4,-W_QG_6,-W_QG_7,-W_QG_8,-W_QG_9,-W_QG_10,
+                     -W_QG_11,-W_QG_12,-W_QG_13,-W_QG_14,-W_QG_15,-W_QG_16,-W_QG_17,-W_QG_18,-W_QG_20,
+                     -W_QG_21,-W_QG_22,-W_QG_24,-W_QG_29,-W_QG_99,-W_QG_MISSI,-W_LU06_23,-W_LU06_24,-W_LU06_31)
 regressionstats <- read_csv("GW_Models/HLM_out.csv")
 lagoscrosswalk <- read_csv("RFModels/lagoscrosswalk.csv")
-lagoscrosswalk = lagoscrosswalk %>% select(WiscID,lagoslakeid)
-dt <- lagosne_load(version = "1.087.1")
-dt.lakes= dt$lakes_limno
+dt = read_csv("GW_Models/lake_climate_20180414_openWaterSeason.csv")
+dt <- dt %>% select(WiscID,WBIC) %>% filter(!duplicated(WiscID))
+# lagoscrosswalk = lagoscrosswalk %>% select(WiscID,lagoslakeid)
+# dt <- lagosne_load(version = "1.087.1")
+# dt.lakes= dt$lakes_limno
+cond <- read_csv("data/Conductivity_final.csv") %>% select(WBIC,final_value)
+CaMg <- read_csv("data/CaMg.csv") %>% 
+  select(WiscID,CaConcentration,MgConcentration) %>% 
+  mutate(camg_ratio = CaConcentration/MgConcentration)
+
+dat <- regressionstats %>% 
+  left_join(dt) %>% 
+  left_join(cond) %>% 
+  left_join(CaMg) %>% 
+  left_join(sub_ecocontext) %>% 
+  select(-CaConcentration,-MgConcentration,-camg_ratio) %>% 
+  drop_na()
+
+ggplot(data = dat, aes(x=final_value,y=Gnet)) + geom_point() + geom_smooth(method="lm")
 
 dat = regressionstats %>% left_join(lagoscrosswalk) %>% drop_na(lagoslakeid) %>% left_join(select(dt$lakes_limno,lagoslakeid,maxdepth)) %>% 
   left_join(dt$buffer500m.lulc) %>% select(everything(),-contains("nlcd2001"),-contains("nlcd1992"),-contains("nlcd2006")) %>% 
@@ -78,18 +103,18 @@ for(i in 1:length(factor.cols)){
 ##########Random Forest Modeling
 
 #set response variable
-Y.col = 39
+Y.col = 3
 Y = model.data[[Y.col]]
 names(model.data)[Y.col]
 #check counts for balancing RF model
 table(Y)
 
 
-X = model.data[,c(2:37,41)]
+X = model.data[,c(5:58)]
 names(X)
 #,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y
 (rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001))
-quapred = predict(rf.data)
+pred = predict(rf.data)
 plot(Y,pred)
 abline(a=0,b=1)
 (conf.out = confusionMatrix(pred,Y))
