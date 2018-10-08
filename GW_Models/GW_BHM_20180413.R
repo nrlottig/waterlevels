@@ -5,12 +5,14 @@
 ##################################################
 rm(list=ls())
 library(tidyverse)
-library(R2jags)
+library(jagsUI)
 library(lattice)
+library(MCMCpack)
+library(arm)
 
 # Input data
 dt = read_csv("GW_Models/lake_climate_20180414_openWaterSeason.csv")
-dat = dt %>% select(WiscID,Date1,DeltaDate,Stage1_mm,Stage2_mm,DeltaWaterLevel_mm,
+dat <- dt %>% dplyr::select(WiscID,Date1,DeltaDate,Stage1_mm,Stage2_mm,DeltaWaterLevel_mm,
                      Precip_mm,Evap_mm) %>% drop_na() %>% arrange(WiscID,Date1) %>% 
   mutate(PE_mmd = (Precip_mm+Evap_mm)/DeltaDate) %>% 
   mutate(deltaS_mmd=DeltaWaterLevel_mm/DeltaDate)
@@ -35,68 +37,71 @@ for (i in 1:length(allLakeList)) {
 
 
 # The Model
-sink("model.txt")
+sink("Model.txt")
 cat("
     model {
-    # Likelihood: 
-    # Level-1 of the model
-    for (i in 1:n){ 
-    y[i] ~ dt(mu[i], tau, tdf)               
-    mu[i] <- alpha[group[i]] + beta[group[i]] * precip[i]         
-    } 
+    for (i in 1:n){
+    y[i] ~ dnorm (y.hat[i], tau.y)
+    
+    y.hat[i] <- alpha[group[i]] + beta[group[i]] * x[i]  
+    
+    }
+    
+    tau.y <- pow(sigma.y, -2)
+    sigma.y ~ dunif (0, 10)
+    
     # Level-2 of the model
     for(j in 1:J){
     alpha[j] <- BB[j,1]
     beta[j] <- BB[j,2]
-    BB[j,1:K] ~ dmnorm(BB.hat[j,], Tau.B[,]) # bivriate normal
-    BB.hat[j,1] <- mu.alpha
-    BB.hat[j,2] <- mu.beta
+    
+    BB[j,1:K] ~ dmnorm (BB.hat[j,], Tau.B[,])
+    BB.hat[j,1] <- mu.a 
+    BB.hat[j,2] <- mu.b 
+    
     }
-    # Priors and derived quantities
-    sigma ~ dunif(0, 100)
-    tau <- pow(sigma,-2) # precision
-    udf ~ dunif(0,1)
-    tdf <- 1 - tdfGain *log(1-udf)
-    sigma2 <- pow(sigma,2)
-    mu.alpha ~ dnorm(0, 0.0001)
-    mu.beta ~ dnorm(0, 0.0001)
     
-    # Convert covariance matrix to precision for use in bivariate normal above
-    Tau.B[1:K,1:K] <- inverse(Sigma.B[,])
-    # variance among intercepts
-    Sigma.B[1,1] <- pow(sigma.a, 2)
-    sigma.a ~ dunif (0, 100)
     
-    # Variance among slopes
-    Sigma.B[2,2] <- pow(sigma.b, 2)
-    sigma.b ~ dunif (0, 100)
+    mu.a ~ dnorm(0,0.0001)
+    mu.b ~ dnorm(0,0.0001)
     
-    # Covariance between alpha's and beta's
-    Sigma.B[1,2] <- rho * sigma.a * sigma.b
-    Sigma.B[2,1] <- Sigma.B[1,2]
     
-    # Uniform prior on correlation
-    rho ~ dunif (-1, 1)
-    } # end model
-    ",fill = TRUE)
+    # Model variance-covariance
+    Tau.B[1:K,1:K] ~ dwish(W[,], df)
+    df <- K+1
+    Sigma.B[1:K,1:K] <- inverse(Tau.B[,])
+    for (k in 1:K){
+    for (k.prime in 1:K){
+    rho.B[k,k.prime] <- Sigma.B[k,k.prime]/
+    sqrt(Sigma.B[k,k]*Sigma.B[k.prime,k.prime])
+    }
+    sigma.B[k] <- sqrt(Sigma.B[k,k])
+    }
+    
+    }
+    ",fill=TRUE)
 sink()
 
 # Set up the parameters before run the model
 # Number of parameters
 K = 2
+W <- diag(K)
 # Number of lakes
 J = length(unique(dat$BHMID))
 # Load data raw water level data
-tdfGain = 1
 dat = as.data.frame(dat)
-data = list(y = dat$deltaS_mmd, group = as.numeric(dat$BHMID), n = dim(dat)[1], J = J,
-            precip = dat$PE_mmd, K = K,tdfGain = tdfGain)
+data = list(y =dat$deltaS_mmd, group = as.numeric(dat$BHMID), n = dim(dat)[1], J = J,
+            x = dat$PE_mmd, K = K, W = W)
 # Initial values
-inits = function (){
-  list(mu.alpha = rnorm(1), mu.beta=rnorm(1), sigma=runif(1),
-       BB=matrix(rnorm(J*K),nrow=J,ncol=K), sigma.a=runif(1), sigma.b=runif(1), rho=runif(1),
-       udf = 0.95)
+r <- cor(data$x,data$y)
+inits <- function (){
+  list (BB=array(c(rep(rnorm(1,0,1),J),rep(rnorm(1,0,1),J)), c(J,K)), 
+        mu.a=rnorm(1,0,1),mu.b=rnorm(1,0,1),
+        sigma.y=runif(1,0,10), 
+        Tau.B=rwish(K+1,diag(K))	 )
 }
+
+params1 <- c("BB","mu.a","mu.b", "sigma.y","sigma.B","rho.B")
 
 # Parameters monitored
 # mu.alpha: global alpha
@@ -107,7 +112,6 @@ inits = function (){
 # sigma.b: variances of beta
 # rho: covarainces of alpha and beta
 # 
-parameters = c("mu.alpha","mu.beta","BB","sigma", "sigma.a", "sigma.b","rho")
 # MCMC settings
 ni <- 40000
 nb <- 10000
@@ -115,30 +119,17 @@ nc <- 3
 (nt <- ceiling((ni-nb)*nc/1500))
 
 # Run the model
-out = jags.parallel(data, inits, parameters, "model.txt", n.chains = 3, 
-           n.thin = 60, n.iter = 40000, n.burnin = 10000)
+out <- jags(data, inits, params1, "Model.txt", n.chains = nc, 
+             n.thin = nt, n.iter = ni, n.burnin = nb, parallel = T)
+
 saveRDS(out,"GW_Models/HLM_reduced.rds")
-# Show some of the result
+# Summarize posteriors
 print(out, dig = 3)
-which(out$BUGSoutput$summary[, c("Rhat")] > 1.1)
-max(out$BUGSoutput$summary[, c("Rhat")])
-out.mcmc <- as.mcmc(out)
-str(out.mcmc)
-# look at summary
-summary(out.mcmc)
-par(mfrow=c(4,4))
-# Create traceplots
-xyplot(out.mcmc,layout =c(4,4))
-# Look at posterior density plots
-densityplot(out.mcmc)
 
-#### Just make plots for parameters of interest
-out.mcmc2 <- out.mcmc[,c("mu.alpha","mu.beta")]
-xyplot(out.mcmc2)
-densityplot(out.mcmc2)
+BugsOut <- out$summary
+write.csv(BugsOut, "GW_Models/BUGSutputSummary.csv", row.names = T)
 
-
-reg.coef = out$BUGSoutput$mean$BB
+reg.coef = out$mean$BB
 lakes = unique(dat$WiscID)
 
 pdf("myOutGW.pdf",width=8,height=10.5,onefile = TRUE)
@@ -154,7 +145,7 @@ for (i in 1:length(lakes)){
     abline(lm(dat.t$deltaS_mmd~dat.t$PE_mmd),col="lightblue",lwd=2)
   },error=function(e){})
   abline(a = reg.coef[i,1][[1]],b=reg.coef[i,2][[1]],col="red",lwd=2)
-  abline(a = out$BUGSoutput$mean$mu.alpha,b=out$BUGSoutput$mean$mu.beta,col="green",lwd=2)
+  abline(a = out$mean$mu.a,b=out$mean$mu.b,col="green",lwd=2)
   mtext(side=1,adj=0.9,line=-2,round(reg.coef[i,1][[1]],3))
   mtext(side=3,line=1,paste(dat.t$SiteName[1], " WiscID:",dat.t$WiscID[1],sep=""),cex=.8)
   legend('topleft',legend=c("linear","bayesH","global"),lty=1,col=c("lightblue","red","green"))
