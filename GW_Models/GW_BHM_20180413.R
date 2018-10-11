@@ -41,7 +41,7 @@ sink("Model.txt")
 cat("
     model {
     for (i in 1:n){
-    y[i] ~ dnorm (y.hat[i], tau.y)
+    y[i] ~ dt (y.hat[i], tau.y, nu)
     
     y.hat[i] <- alpha[group[i]] + beta[group[i]] * x[i]  
     
@@ -49,6 +49,8 @@ cat("
     
     tau.y <- pow(sigma.y, -2)
     sigma.y ~ dunif (0, 10)
+    nu <- nuMinusOne + 1
+    nuMinusOne ~ dexp( 1/29 )
     
     # Level-2 of the model
     for(j in 1:J){
@@ -123,11 +125,37 @@ out <- jags(data, inits, params1, "Model.txt", n.chains = nc,
              n.thin = nt, n.iter = ni, n.burnin = nb, parallel = T)
 
 saveRDS(out,"GW_Models/HLM_reduced.rds")
+out <- readRDS(file ="GW_Models/HLM_reduced.rds")
 # Summarize posteriors
 print(out, dig = 3)
 
 BugsOut <- out$summary
 write.csv(BugsOut, "GW_Models/BUGSutputSummary.csv", row.names = T)
+
+### Slope plots
+dat.slope <- as.data.frame(BugsOut[1:51,])
+dat.slope$WiscID <- allLakeList
+dat.slope$WiscID <- factor(dat.slope$WiscID,levels=dat.slope$WiscID[order(dat.slope$mean)])
+dat.slope <- dat.slope %>% arrange(mean)
+names(dat.slope)[c(3,7)] <- c("l2.5","l97.5")
+
+
+ggplot(data = dat.slope,aes(x=1:51,y=mean)) + 
+  geom_hline(yintercept = BugsOut[103,3],col="blue") + 
+  geom_hline(yintercept = BugsOut[103,7],col="blue")+
+  geom_point() +
+  geom_errorbar(aes(ymin=l2.5,ymax=l97.5)) +
+  labs(x="Lake",y="Gnet")
+
+dat.slope$color = "blue"
+dat.slope$color[c(1:4,6:9,47:51)] = "red"
+
+ggplot(data = dat.slope,aes(x=WiscID,y=mean,color=color)) + 
+  geom_hline(yintercept = BugsOut[103,3],col="blue") + 
+  geom_hline(yintercept = BugsOut[103,7],col="blue")+
+  geom_point() +
+  geom_errorbar(aes(ymin=l2.5,ymax=l97.5)) +
+  labs(x="Lake",y="Gnet")
 
 reg.coef = out$mean$BB
 lakes = unique(dat$WiscID)

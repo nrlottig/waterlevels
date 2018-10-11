@@ -10,13 +10,20 @@ regressionstats <- read_csv("BayHModels/regressionstats.csv")
 
 dat = EcoContext %>% left_join(regressionstats) %>% 
   select(-ID,-OBJECTID,-WATERBODY_NAME,-HYDROID,-HYDROCODE,
-         -HYDROTYPE,-LANDLOCK_C,-SHAPE_AREA,-SHAPE_LEN,
+         -HYDROTYPE,-LANDLOCK_C,-Area,-WatershedA,
          -County,-MeanDepth,-problem,-hydro24k,-centroid_x,
          -centroid_y,-NATURAL_COMMUNITY,-Lake_type,-HYDROLOGY,
-         -`Katie classification`,-`Katie notes`,-W_LAT) %>% 
+         -`Katie classification`,-`Katie notes`,-W_LAT,-lat,-long) %>% 
   drop_na()
 
 #remove parameters that have significant number of zeros
+dat <- dat %>% mutate(bedrock = W_BD_202+W_BD_203+W_BD_204+W_BD_205) %>% 
+  mutate(develop= W_LU06_21+W_LU06_22+W_LU06_23+W_LU06_24) %>% 
+  mutate(forest = W_LU06_41+W_LU06_42+W_LU06_43) %>% 
+  mutate(ag = W_LU06_81+W_LU06_82) %>% 
+  mutate(SDI = SHAPE_LEN/(2*sqrt(pi*SHAPE_AREA))) %>% 
+  mutate(forest = W_LU06_41+W_LU06_42+W_LU06_43) %>% 
+  mutate(wetland = W_LU06_90+W_LU06_95)
 dat = dat %>% select(-W_BD_201,-W_BD_204,-W_BD_205,-W_BD_206,-W_BD_207,-W_BD_208,-W_BD_209,-W_BD_210,-W_BD_MISSI,
                      -W_BR_2,-W_BR_3,-W_BR_MISSI,-W_QG_3,-W_QG_4,-W_QG_6,-W_QG_7,-W_QG_8,-W_QG_9,-W_QG_10,
                      -W_QG_11,-W_QG_12,-W_QG_13,-W_QG_14,-W_QG_15,-W_QG_16,-W_QG_17,-W_QG_18,-W_QG_20,
@@ -25,7 +32,7 @@ dat = dat %>% select(-W_BD_201,-W_BD_204,-W_BD_205,-W_BD_206,-W_BD_207,-W_BD_208
 
 #remove 2011 landcover (keeping 2006)
 dat = dat %>% select(everything(),-contains("LU11"))
-dat = dat %>% mutate(W_LA_Ratio = WatershedA/Area)
+dat = dat %>% mutate(W_LA_Ratio = W_AREA/SHAPE_AREA)
 #remove data that is 50% zero values
 dat <- dat %>% select(-W_BD_202,-W_BR_1,-W_BR_41,-W_BR_42,-W_QG_2,-W_QG_5)
 summary(dat)
@@ -77,10 +84,8 @@ respcols <- c("slope",
               "Gnet",
               "process_slope")
 dat <- dat[,c(refcols,respcols,setdiff(names(dat),c(refcols,respcols)))]
-dat <- dat %>% mutate(forest = W_LU06_41+W_LU06_42+W_LU06_43) %>% 
-  mutate(wetland = W_LU06_90+W_LU06_95)
 
-dat_transform <- dat %>% mutate(Area = log10(Area)) %>% 
+dat_transform <- dat %>% mutate(SHAPE_AREA = log10(SHAPE_AREA)) %>% 
   mutate(TRW_AREA = log10(TRW_AREA)) %>% 
   mutate(W_LA_Ratio = sqrt(W_LA_Ratio)) %>% 
   mutate(W_AREA = log10(W_AREA)) %>% 
@@ -88,22 +93,31 @@ dat_transform <- dat %>% mutate(Area = log10(Area)) %>%
 
 #gather data
 dat.long <- dat_transform %>% gather(key = variable,value = value,-refcols,-respcols)
+dat.gnet <- dat.long %>% filter(ECO_LANDSC!="Western Prairie") %>% 
+  filter(variable!="bedrock") %>% 
+  filter(variable!="landscapeposition") %>% 
+  filter(variable!="cation_ratio") %>% 
+  filter(variable!="MgConcentration") %>% 
+  filter(variable!="CaConcentration") %>% 
+  filter(variable!="TRW_AREA") %>% 
+  filter(variable!="watershed_MAX") %>% 
+  filter(variable!="watershed_MEAN")
+d.gnet.w <- dat.gnet %>% spread(key = variable,value = value)
+# ggplot(data = dat.long, aes(x=value)) + geom_histogram() + facet_wrap(vars(variable),scales="free")
 
-ggplot(data = dat.long, aes(x=value)) + geom_histogram() + facet_wrap(vars(variable),scales="free")
-
-p.out <- ggplot(dat.long %>% drop_na(Gnet),aes(x=value,y=Gnet)) + geom_point() +
-  geom_smooth(method=lm) + facet_wrap(vars(ECO_LANDSC,variable),scales="free")
+p.out <- ggplot(dat.gnet %>% drop_na(Gnet),aes(x=value,y=Gnet)) + geom_point() +
+  geom_smooth(method=lm, se=FALSE) + 
+  facet_wrap(vars(ECO_LANDSC,variable),scales="free")
 
 ggsave(filename = "graphics/ECO_Gnet.png",plot = p.out,width = 38,height = 38,units="in",dpi = 300,device = "png")
 
 ######Random Forest Data
 response.vars <- names(dat)[c(8,12,13,11)]
-driver.vars <- names(dat)[c(6,7,38,16,18:37,39,43:48)]
+driver.vars <- names(d.gnet.w)[c(6,7,14:44)]
 
-model_data <- dat %>% select(c(Gnet,driver.vars)) %>% 
+model_data <- d.gnet.w %>% select(c(Gnet,driver.vars)) %>% 
   mutate(US_L3NAME = as.factor(as.character(US_L3NAME))) %>% 
   mutate(ECO_LANDSC = as.factor(as.character(ECO_LANDSC))) %>% 
-  mutate(landscapeposition = as.factor(landscapeposition)) %>% 
   drop_na()
 
 str(model_data)
@@ -116,5 +130,6 @@ mse<-sum(residual^2)/length(model_data[[1]])
 
 vi <- varimp(forest.cf, conditional = TRUE)
 dotchart(vi[order(vi)])
+
 
 (rf.data = randomForest(Gnet ~ ., data = model_data,keep.inbag=TRUE,importance=TRUE,ntree=10001))

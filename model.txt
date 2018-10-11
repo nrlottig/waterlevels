@@ -1,7 +1,7 @@
 
     model {
     for (i in 1:n){
-    y[i] ~ dnorm (y.hat[i], tau.y)
+    y[i] ~ dt (y.hat[i], tau.y, nu)
     
     y.hat[i] <- alpha[group[i]] + beta[group[i]] * x[i]  
     
@@ -9,6 +9,8 @@
     
     tau.y <- pow(sigma.y, -2)
     sigma.y ~ dunif (0, 10)
+    nu <- nuMinusOne + 1
+    nuMinusOne ~ dexp( 1/29 )
     
     # Level-2 of the model
     for(j in 1:J){
