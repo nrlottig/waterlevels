@@ -42,9 +42,7 @@ cat("
     model {
     for (i in 1:n){
     y[i] ~ dt (y.hat[i], tau.y, nu)
-    
     y.hat[i] <- alpha[group[i]] + beta[group[i]] * x[i]  
-    
     }
     
     tau.y <- pow(sigma.y, -2)
@@ -74,8 +72,7 @@ cat("
     Sigma.B[1:K,1:K] <- inverse(Tau.B[,])
     for (k in 1:K){
     for (k.prime in 1:K){
-    rho.B[k,k.prime] <- Sigma.B[k,k.prime]/
-    sqrt(Sigma.B[k,k]*Sigma.B[k.prime,k.prime])
+    rho.B[k,k.prime] <- Sigma.B[k,k.prime]/sqrt(Sigma.B[k,k]*Sigma.B[k.prime,k.prime])
     }
     sigma.B[k] <- sqrt(Sigma.B[k,k])
     }
@@ -115,7 +112,7 @@ params1 <- c("BB","mu.a","mu.b", "sigma.y","sigma.B","rho.B")
 # rho: covarainces of alpha and beta
 # 
 # MCMC settings
-ni <- 40000
+ni <- 60000
 nb <- 10000
 nc <- 3
 (nt <- ceiling((ni-nb)*nc/1500))
@@ -132,31 +129,37 @@ print(out, dig = 3)
 BugsOut <- out$summary
 write.csv(BugsOut, "GW_Models/BUGSutputSummary.csv", row.names = T)
 
+
+#Identify lakes that have different gnets from regional pattern
+SlopeDiff <- matrix(NA, ncol=J, nrow=out$mcmc.info$n.samples)
+for(i in 1:J){
+  SlopeDiff[,i] <- out$sims.list$mu.a - out$sims.list$BB[,i,1]
+}
+sum.slopediff <- apply(SlopeDiff, 2, quantile, c(0.025,0.975))
+sum.slopediff <- as.data.frame(t(sum.slopediff))
+sum.slopediff$WiscID <- allLakeList
+names(sum.slopediff)[1:2] = c("ll","ul")
+value = 0
+sum.slopediff <- sum.slopediff %>% 
+  mutate(gnet.reg = value >= ll & value <= ul) %>% 
+  dplyr::select(WiscID,gnet.reg)
+
 ### Slope plots
 dat.slope <- as.data.frame(BugsOut[1:51,])
 dat.slope$WiscID <- allLakeList
+names(dat.slope)[c(3,7)] <- c("ll","ul")
+dat.slope <- dat.slope %>% left_join(sum.slopediff)
 dat.slope$WiscID <- factor(dat.slope$WiscID,levels=dat.slope$WiscID[order(dat.slope$mean)])
 dat.slope <- dat.slope %>% arrange(mean)
-names(dat.slope)[c(3,7)] <- c("l2.5","l97.5")
-
-
-ggplot(data = dat.slope,aes(x=1:51,y=mean)) + 
+dat.slope <- dat.slope %>% dplyr::select(WiscID,mean,ll,ul,gnet.reg) %>% rename(slope_group = gnet.reg)
+ggplot(data = dat.slope,aes(x=WiscID,y=mean,color=slope_group)) + 
   geom_hline(yintercept = BugsOut[103,3],col="blue") + 
   geom_hline(yintercept = BugsOut[103,7],col="blue")+
   geom_point() +
-  geom_errorbar(aes(ymin=l2.5,ymax=l97.5)) +
+  geom_errorbar(aes(ymin=ll,ymax=ul)) +
   labs(x="Lake",y="Gnet")
 
-dat.slope$color = "blue"
-dat.slope$color[c(1:4,6:9,47:51)] = "red"
-
-ggplot(data = dat.slope,aes(x=WiscID,y=mean,color=color)) + 
-  geom_hline(yintercept = BugsOut[103,3],col="blue") + 
-  geom_hline(yintercept = BugsOut[103,7],col="blue")+
-  geom_point() +
-  geom_errorbar(aes(ymin=l2.5,ymax=l97.5)) +
-  labs(x="Lake",y="Gnet")
-
+write_csv(dat.slope,"data/Gnet_slopes.csv")
 reg.coef = out$mean$BB
 lakes = unique(dat$WiscID)
 

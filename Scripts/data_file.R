@@ -9,12 +9,11 @@ EcoContext <- read_excel("RFModels/EcoContext.xlsx")
 regressionstats <- read_csv("BayHModels/regressionstats.csv")
 
 dat = EcoContext %>% left_join(regressionstats) %>% 
-  select(-ID,-OBJECTID,-WATERBODY_NAME,-HYDROID,-HYDROCODE,
+  dplyr::select(-ID,-OBJECTID,-WATERBODY_NAME,-HYDROID,-HYDROCODE,
          -HYDROTYPE,-LANDLOCK_C,-Area,-WatershedA,
          -County,-MeanDepth,-problem,-hydro24k,-centroid_x,
          -centroid_y,-NATURAL_COMMUNITY,-Lake_type,-HYDROLOGY,
-         -`Katie classification`,-`Katie notes`,-W_LAT,-lat,-long) %>% 
-  drop_na()
+         -`Katie classification`,-`Katie notes`,-W_LAT)
 
 #remove parameters that have significant number of zeros
 dat <- dat %>% mutate(bedrock = W_BD_202+W_BD_203+W_BD_204+W_BD_205) %>% 
@@ -24,7 +23,7 @@ dat <- dat %>% mutate(bedrock = W_BD_202+W_BD_203+W_BD_204+W_BD_205) %>%
   mutate(SDI = SHAPE_LEN/(2*sqrt(pi*SHAPE_AREA))) %>% 
   mutate(forest = W_LU06_41+W_LU06_42+W_LU06_43) %>% 
   mutate(wetland = W_LU06_90+W_LU06_95)
-dat = dat %>% select(-W_BD_201,-W_BD_204,-W_BD_205,-W_BD_206,-W_BD_207,-W_BD_208,-W_BD_209,-W_BD_210,-W_BD_MISSI,
+dat = dat %>% dplyr::select(-W_BD_201,-W_BD_204,-W_BD_205,-W_BD_206,-W_BD_207,-W_BD_208,-W_BD_209,-W_BD_210,-W_BD_MISSI,
                      -W_BR_2,-W_BR_3,-W_BR_MISSI,-W_QG_3,-W_QG_4,-W_QG_6,-W_QG_7,-W_QG_8,-W_QG_9,-W_QG_10,
                      -W_QG_11,-W_QG_12,-W_QG_13,-W_QG_14,-W_QG_15,-W_QG_16,-W_QG_17,-W_QG_18,-W_QG_20,
                      -W_QG_21,-W_QG_22,-W_QG_24,-W_QG_29,-W_QG_99,-W_QG_MISSI,-W_LU06_23,-W_LU06_24,-W_LU06_31,
@@ -84,6 +83,7 @@ respcols <- c("slope",
               "Gnet",
               "process_slope")
 dat <- dat[,c(refcols,respcols,setdiff(names(dat),c(refcols,respcols)))]
+write_csv(dat,"data/ecocontext.csv")
 
 dat_transform <- dat %>% mutate(SHAPE_AREA = log10(SHAPE_AREA)) %>% 
   mutate(TRW_AREA = log10(TRW_AREA)) %>% 

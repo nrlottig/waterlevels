@@ -1,50 +1,67 @@
 library(tidyverse)
 library(cowplot)
+library(ggmap)
+library(maps)
+library(mapdata)
+
 ####Original Data
-dt = read_csv("GW_Models/lake_climate_20180414_openWaterSeason.csv")
-dat <- dt %>% dplyr::select(WiscID,Date1,DeltaDate,Stage1_mm,Stage2_mm,DeltaWaterLevel_mm,
-                            Precip_mm,Evap_mm) %>% drop_na() %>% arrange(WiscID,Date1) %>% 
-  mutate(PE_mmd = (Precip_mm+Evap_mm)/DeltaDate) %>% 
-  mutate(deltaS_mmd=DeltaWaterLevel_mm/DeltaDate)
-#Filter the data so that we have at least 5 obs for each lake
-num.rec = table(dat$WiscID)
-keep.rec = as.numeric(names((num.rec[which(num.rec>=10)])))
-dat = dat[which(dat$WiscID %in% keep.rec),]
-length(unique(dat$WiscID))
-
-####Look at the data
-str(dat)
-summary(dat)
-
-# Reassign a WiscID to all lakes
-# This is not the WiscID used in the big dataset!!!
-# Because the jags methods requires a consecutive ID list starting from 1
-allLakeList = unique(dat$WiscID)
+dat.gnet <- read_csv("data/Gnet_slopes.csv")
+eco <- read_csv("data/ecocontext.csv")
+dat.gnet <- dat.gnet %>% left_join(eco)
+dat.gnet$WiscID <- factor(dat.gnet$WiscID,levels=dat.gnet$WiscID[order(dat.gnet$cond)]) #Code to order gnet variables for plotting
+dat.gnet <- dat.gnet %>% mutate(slope_group = as.numeric(slope_group)) %>% 
+  mutate(slope_group = replace(slope_group,which(mean < -1.626692 & slope_group==0),2))
 
 
-BugsOut <- read_csv("GW_Models/BUGSutputSummary.csv")
-
-### Slope plots
-dat.slope <- as.data.frame(BugsOut[1:51,])
-dat.slope$WiscID <- allLakeList
-dat.slope$WiscID <- factor(dat.slope$WiscID,levels=dat.slope$WiscID[order(dat.slope$mean)])
-dat.slope <- dat.slope %>% arrange(mean)
-names(dat.slope)[c(4,8)] <- c("l2.5","l97.5")
-
-
-ggplot(data = dat.slope,aes(x=1:51,y=mean)) + 
-  geom_hline(yintercept = BugsOut[[103,4]],col="blue") + 
-  geom_hline(yintercept = BugsOut[[103,8]],col="blue")+
+#Ordered plot of Gnet
+ggplot(data = dat.gnet,aes(x = WiscID,y=mean,color=as.factor(slope_group))) + 
+  geom_hline(yintercept = -1.626692,col="blue") + 
+  geom_hline(yintercept = -1.24984,col="blue")+
   geom_point() +
-  geom_errorbar(aes(ymin=l2.5,ymax=l97.5)) +
-  labs(x="Lake",y="Gnet")
+  geom_errorbar(aes(ymin=ll,ymax=ul)) +
+  labs(x="WiscID",y="Groundwater Recharge (mm/d)", color="Lake Group") +
+  theme(text=element_text(size=10,  family="sans"),
+        axis.text.x = element_text(angle = 90, hjust = 1,size=6)) +
+  scale_color_manual(name="Lake Group",
+                      labels=c("Low Recharge","Regional Average","High Recharge"),
+                      values=c(rgb(27,158,119,255,maxColorValue = 255),
+                               rgb(217,95,2,255,maxColorValue = 255),
+                               rgb(117,112,179,255,maxColorValue = 255)))
+ggsave(filename = "graphics/gnet_by_cond.png",units = "in",dpi = 300,width=8,height=5)
 
-dat.slope$color = "blue"
-dat.slope$color[c(1:4,6:9,47:51)] = "red"
+#########Tasks for WU################
+# 1) There are two lakes for which we don't have eco context variables (WiscID: 123 and 248)
+# 2) Create similar plots except order by
+#     a. lattitude
+#     b. wetland % in watershed
+#     c. conductivity
+#     d. any other eco context variables that seem to show some pattern
 
-ggplot(data = dat.slope,aes(x=WiscID,y=mean,color=color)) + 
-  geom_hline(yintercept = BugsOut[[103,4]],col="blue") + 
-  geom_hline(yintercept = BugsOut[[103,8]],col="blue")+
-  geom_point() +
-  geom_errorbar(aes(ymin=l2.5,ymax=l97.5)) +
-  labs(x="Lake",y="Gnet")
+WI <- map_data(map = "state",region = "wisconsin")
+WI.cty <- map_data(map = "county",region = "wisconsin")
+ggplot() + 
+  geom_polygon(data = WI, aes(x=long, y = lat, group = group), fill = NA, color = "black") + 
+  geom_polygon(data = WI.cty, aes(x=long, y = lat, group = group), fill = NA, color = "darkgrey") +
+  coord_fixed(1.3) + 
+  geom_point(data = dat.gnet,aes(x =long,y=lat,color=as.factor(slope_group)),size=3) +
+  scale_color_manual(name="Lake Group",
+                     labels=c("Low Recharge","Regional Average","High Recharge"),
+                     values=c(rgb(27,158,119,200,maxColorValue = 255),
+                              rgb(217,95,2,200,maxColorValue = 255),
+                              rgb(117,112,179,200,maxColorValue = 255)))
+ggsave(filename = "graphics/gnet_map.png",units="in",dpi=300)
+
+#BoxPlots
+dat.box <- dat.gnet[,c(5,18:58)] %>% mutate(SHAPE_AREA = log10(SHAPE_AREA)) %>% 
+  mutate(W_LA_Ratio = sqrt(W_LA_Ratio))
+dat.box.long <- dat.box %>% gather(key = "key",value = "value",-slope_group)
+ggplot(data = dat.box.long) + 
+  geom_boxplot(aes(x=as.factor(slope_group),y=value,color=as.factor(slope_group))) + 
+  facet_wrap(vars(key),scales = "free") +
+  theme(text=element_text(size=10,  family="sans")) +
+  scale_color_manual(name="Lake Group",
+                     labels=c("Low Recharge","Regional Average","High Recharge"),
+                     values=c(rgb(27,158,119,255,maxColorValue = 255),
+                              rgb(217,95,2,255,maxColorValue = 255),
+                              rgb(117,112,179,255,maxColorValue = 255)))
+ggsave(filename = "graphics/gnet_boxplots.png",units = "in",dpi = 300)

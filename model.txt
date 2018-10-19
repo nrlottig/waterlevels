@@ -2,9 +2,7 @@
     model {
     for (i in 1:n){
     y[i] ~ dt (y.hat[i], tau.y, nu)
-    
     y.hat[i] <- alpha[group[i]] + beta[group[i]] * x[i]  
-    
     }
     
     tau.y <- pow(sigma.y, -2)
@@ -34,8 +32,7 @@
     Sigma.B[1:K,1:K] <- inverse(Tau.B[,])
     for (k in 1:K){
     for (k.prime in 1:K){
-    rho.B[k,k.prime] <- Sigma.B[k,k.prime]/
-    sqrt(Sigma.B[k,k]*Sigma.B[k.prime,k.prime])
+    rho.B[k,k.prime] <- Sigma.B[k,k.prime]/sqrt(Sigma.B[k,k]*Sigma.B[k.prime,k.prime])
     }
     sigma.B[k] <- sqrt(Sigma.B[k,k])
     }
