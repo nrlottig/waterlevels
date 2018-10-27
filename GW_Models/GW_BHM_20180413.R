@@ -12,16 +12,23 @@ library(arm)
 
 # Input data
 dt = read_csv("GW_Models/lake_climate_20180414_openWaterSeason.csv")
-dat <- dt %>% dplyr::select(WiscID,Date1,DeltaDate,Stage1_mm,Stage2_mm,DeltaWaterLevel_mm,
+dat <- dt %>% dplyr::select(WiscID,WBIC,Date1,DeltaDate,Stage1_mm,Stage2_mm,DeltaWaterLevel_mm,
                      Precip_mm,Evap_mm) %>% drop_na() %>% arrange(WiscID,Date1) %>% 
   mutate(PE_mmd = (Precip_mm+Evap_mm)/DeltaDate) %>% 
   mutate(deltaS_mmd=DeltaWaterLevel_mm/DeltaDate)
 #Filter the data so that we have at least 5 obs for each lake
-num.rec = table(dat$WiscID)
+(num.rec = table(dat$WBIC))
 keep.rec = as.numeric(names((num.rec[which(num.rec>=10)])))
-dat = dat[which(dat$WiscID %in% keep.rec),]
-length(unique(dat$WiscID))
+dat = dat[which(dat$WBIC %in% keep.rec),] %>% arrange(WBIC,Date1)
+length(unique(dat$WBIC))
+#data cleanup for clear outlier leverage data points
+dat <- dat %>% filter(deltaS_mmd <= 17) %>% 
+  mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==197600 & deltaS_mmd< -5,NA)) %>% 
+  mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==589400 & deltaS_mmd< -10,NA)) %>% 
+  mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==968800 & deltaS_mmd< -15,NA)) %>% 
+  mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==2092500 & deltaS_mmd< -7,NA)) %>% drop_na(deltaS_mmd)
 
+ggplot(data = dat, aes(x=PE_mmd,y=deltaS_mmd)) + geom_point() + facet_wrap(vars(WBIC),scales = "free_y")
 ####Look at the data
 str(dat)
 summary(dat)
@@ -29,12 +36,12 @@ summary(dat)
 # Reassign a WiscID to all lakes
 # This is not the WiscID used in the big dataset!!!
 # Because the jags methods requires a consecutive ID list starting from 1
-allLakeList = unique(dat$WiscID)
+allLakeList = unique(dat$WBIC)
 dat$BHMID = NA
 for (i in 1:length(allLakeList)) {
-  dat$BHMID[dat$WiscID %in% allLakeList[i]] = i
+  dat$BHMID[dat$WBIC %in% allLakeList[i]] = i
 }
-
+dat
 
 # The Model
 sink("Model.txt")
@@ -112,14 +119,15 @@ params1 <- c("BB","mu.a","mu.b", "sigma.y","sigma.B","rho.B")
 # rho: covarainces of alpha and beta
 # 
 # MCMC settings
-ni <- 60000
-nb <- 10000
+ni <- 10000
+nb <- 1000
 nc <- 3
-(nt <- ceiling((ni-nb)*nc/1500))
+nt <- 1
+# (nt <- ceiling((ni-nb)*nc/1500))
 
 # Run the model
 out <- jags(data, inits, params1, "Model.txt", n.chains = nc, 
-             n.thin = nt, n.iter = ni, n.burnin = nb, parallel = T)
+             n.thin = nt, n.iter = ni, n.burnin = nb)
 
 saveRDS(out,"GW_Models/HLM_reduced.rds")
 out <- readRDS(file ="GW_Models/HLM_reduced.rds")
@@ -137,31 +145,31 @@ for(i in 1:J){
 }
 sum.slopediff <- apply(SlopeDiff, 2, quantile, c(0.025,0.975))
 sum.slopediff <- as.data.frame(t(sum.slopediff))
-sum.slopediff$WiscID <- allLakeList
+sum.slopediff$WBIC <- allLakeList
 names(sum.slopediff)[1:2] = c("ll","ul")
 value = 0
 sum.slopediff <- sum.slopediff %>% 
   mutate(gnet.reg = value >= ll & value <= ul) %>% 
-  dplyr::select(WiscID,gnet.reg)
+  dplyr::select(WBIC,gnet.reg)
 
 ### Slope plots
-dat.slope <- as.data.frame(BugsOut[1:51,])
-dat.slope$WiscID <- allLakeList
+dat.slope <- as.data.frame(BugsOut[1:50,])
+dat.slope$WBIC <- allLakeList
 names(dat.slope)[c(3,7)] <- c("ll","ul")
-dat.slope <- dat.slope %>% left_join(sum.slopediff)
-dat.slope$WiscID <- factor(dat.slope$WiscID,levels=dat.slope$WiscID[order(dat.slope$mean)])
+dat.slope <- dat.slope %>% left_join(sum.slopediff,by = "WBIC")
+dat.slope$WBIC <- factor(dat.slope$WBIC,levels=dat.slope$WBIC[order(dat.slope$mean)])
 dat.slope <- dat.slope %>% arrange(mean)
-dat.slope <- dat.slope %>% dplyr::select(WiscID,mean,ll,ul,gnet.reg) %>% rename(slope_group = gnet.reg)
-ggplot(data = dat.slope,aes(x=WiscID,y=mean,color=slope_group)) + 
-  geom_hline(yintercept = BugsOut[103,3],col="blue") + 
-  geom_hline(yintercept = BugsOut[103,7],col="blue")+
+dat.slope <- dat.slope %>% dplyr::select(WBIC,mean,ll,ul,gnet.reg) %>% rename(slope_group = gnet.reg)
+ggplot(data = dat.slope,aes(x=WBIC,y=mean,color=slope_group)) + 
+  geom_hline(yintercept = BugsOut[101,3],col="blue") + 
+  geom_hline(yintercept = BugsOut[101,7],col="blue")+
   geom_point() +
   geom_errorbar(aes(ymin=ll,ymax=ul)) +
   labs(x="Lake",y="Gnet")
 
 write_csv(dat.slope,"data/Gnet_slopes.csv")
 reg.coef = out$mean$BB
-lakes = unique(dat$WiscID)
+lakes = unique(dat$WBIC)
 
 pdf("myOutGW.pdf",width=8,height=10.5,onefile = TRUE)
 par(mfrow=c(3,2))
@@ -178,10 +186,10 @@ for (i in 1:length(lakes)){
   abline(a = reg.coef[i,1][[1]],b=reg.coef[i,2][[1]],col="red",lwd=2)
   abline(a = out$mean$mu.a,b=out$mean$mu.b,col="green",lwd=2)
   mtext(side=1,adj=0.9,line=-2,round(reg.coef[i,1][[1]],3))
-  mtext(side=3,line=1,paste(dat.t$SiteName[1], " WiscID:",dat.t$WiscID[1],sep=""),cex=.8)
+  mtext(side=3,line=1,paste("WIBIC:",dat.t$WBIC[1],sep=""),cex=.8)
   legend('topleft',legend=c("linear","bayesH","global"),lty=1,col=c("lightblue","red","green"))
   
 }
 dev.off()
 
-write_csv(data.frame(WiscID=lakes,Gnet=reg.coef[,1],slope=reg.coef[,2]),"GW_Models/HLM_out.csv")
+write_csv(data.frame(WBIC=lakes,Gnet=reg.coef[,1],slope=reg.coef[,2]),"GW_Models/HLM_out.csv")
