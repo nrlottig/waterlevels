@@ -6,10 +6,11 @@ library(ggmap)
 library(maps)
 library(mapdata)
 library(bestNormalize)
+library(randomForest)
 
 ####Original Data
 dat.gnet <- read_csv("data/Gnet_slopes.csv")
-eco <- read_csv("data/ecocontext_transformed.csv")
+eco <- read_csv("data/ecocontext_transformed_riparian.csv")
 dat.gnet <- dat.gnet %>% left_join(eco)
 dat.gnet$WBIC_name <- factor(dat.gnet$WBIC,levels=dat.gnet$WBIC[order(dat.gnet$mean)]) #Code to order gnet variables for plotting
 dat.gnet <- dat.gnet %>% mutate(slope_group = as.numeric(slope_group)) %>% 
@@ -56,7 +57,7 @@ ggplot() +
 ggsave(filename = "graphics/gnet_map.png",units="in",dpi=300)
 
 #BoxPlots
-dat.box <- dat.gnet[,c(5,11:54)]
+dat.box <- dat.gnet[,c(5,10:40)]
 dat.box.long <- dat.box %>% gather(key = "key",value = "value",-slope_group)
 ggplot(data = dat.box.long) + 
   geom_boxplot(aes(x=as.factor(slope_group),y=value,color=as.factor(slope_group))) + 
@@ -66,11 +67,11 @@ ggplot(data = dat.box.long) +
                      labels=c("Low Recharge","Regional Average","High Recharge"),
                      values=c(rgb(27,158,119,255,maxColorValue = 255),
                               rgb(217,95,2,255,maxColorValue = 255),
-                              rgb(117,112,179,255,maxColorValue = 255)))
+                              rgb(117,112,179,255,maxColorValue = 255))) +
+  labs(y="Driver Value",x="Lake Group")
 ggsave(filename = "graphics/gnet_boxplots.png",units = "in",dpi = 300)
 
 refcols <- c("WBIC",
-             "WiscID",
              "LakeName",
              "US_L3NAME",
              "ECO_LANDSC",
@@ -84,9 +85,36 @@ respcols <- c("mean",
 dat.long <- dat.gnet %>% gather(key = variable,value = value,-refcols,-respcols)
 
 
-p.out <- ggplot(dat.long,aes(x=value,y=mean)) + geom_point() +
+p.out <- ggplot(dat.long,aes(x=value,y=mean)) + geom_point(aes(color=as.factor(slope_group))) +
   geom_smooth(method=lm, se=FALSE) + 
-  facet_wrap(vars(variable),scales="free")
+  facet_wrap(vars(ECO_LANDSC,variable),scales="free") +
+  scale_color_manual(name="Lake Group",
+                     labels=c("Low Recharge","Regional Average","High Recharge"),
+                     values=c(rgb(27,158,119,255,maxColorValue = 255),
+                              rgb(217,95,2,255,maxColorValue = 255),
+                              rgb(117,112,179,255,maxColorValue = 255))) +
+  labs(y="Groundwater Recharge (mmd)",x="Driver Value")
 p.out
-ggsave(filename = "graphics/Eco_GNET.png",plot = p.out,width = 38,height = 38,units="in",dpi = 300,device = "png")
+ggsave(filename = "graphics/Eco_GNET.png",plot = p.out,width = 24,height = 24,units="in",dpi = 300,device = "png")
+
+##########Random Forest Modeling
+
+#set response variable
+model.data <- dat.gnet
+Y.col = 5
+Y = as.factor(model.data[[Y.col]])
+names(model.data)[Y.col]
+#check counts for balancing RF model
+table(Y)
+
+
+X = model.data[,c(8,10:37)]
+names(X)
+X$ECO_LANDSC = as.factor(X$ECO_LANDSC)
+#,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y
+(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize = c(6,6,6),strata=Y))
+pred = predict(rf.data)
+plot(Y,pred)
+abline(a=0,b=1)
+(conf.out = confusionMatrix(pred,Y))
                                 
