@@ -1,0 +1,1044 @@
+WBIC,WiscID,Name.x,County,lat,long,Type,mg_average,ca_average,unit
+1884200,588,Street Lake,Vilas ,46.09599702,-89.70354479,seepage,0.375,0.65,mg
+991000,398,Honeysuckle Lake,Vilas,45.9618971,-89.3620816,seepage,0.32,0.7,mg
+2340100,694,Spruce Lake,Vilas,46.0532839,-89.5662573,seepage,0.23,0.73,mg
+989200,396,Hemlock Lake,Oneida ,45.87658969,-89.65107952,seepage,0.25,0.8,mg
+1003700,418,McDonald Lake,Vilas ,45.90561919,-89.39828044,seepage,0.263,0.808,mg
+1863000,564,Loon Lake,Chippewa ,45.24740426,-91.46702096,seepage,0.44,0.82,mg
+2761000,963,East Twin Lake,Bayfield ,46.68499869,-91.05755696,seepage,0.39,0.825,mg
+2015500,592,"MAX LAKE NEAR WOODRUFF, WI",Vilas,46.0243949,-89.7098732,seepage,0.38,0.86,mg
+976800,378,Chickaree Lake,Vilas ,45.90628476,-89.35819389,seepage,0.41,0.875,mg
+2598300,836,Chain Lake,Douglas ,46.197113,-91.73720194,seepage,0.36,0.9,mg
+1179000,448,Windowpane Lake,Oneida ,45.85059388,-89.79872376,seepage,0.28,0.933,mg
+2017500,593,Crystal Bog,Vilas,46.007941,-89.606314,drainage,0.229,0.938,mg
+1862100,562,Little Rock Lake,Vilas,45.99606187,-89.6993166,seepage,0.272100841,0.946777311,mg
+1862100,1038,Little Rock Lake,Vilas,45.99606187,-89.6993166,seepage,0.272100841,0.946777311,mg
+1842400,539,Crystal Lake,Vilas,45.999642,-89.610408,seepage,0.256,0.974,mg
+1842400,540,Crystal Lake,Vilas ,46.00174574,-89.61301969,seepage,0.256,0.974,mg
+2317900,675,Middle Sugarbush Lake,Vilas ,46.01806341,-89.91299196,seepage,0.33,0.98,mg
+1023300,443,Trilby Lake,Vilas ,45.95676375,-89.69166814,seepage,0.25,1.002,mg
+2734700,948,Lake Knotting,Bayfield ,46.27397611,-91.11554034,seepage,0.25,1.067,mg
+2492900,810,Rock Lake,Douglas ,46.34313731,-91.6171267,seepage,0.5,1.09,mg
+1522400,466,Swamp Lake,Oneida ,45.63741834,-89.78760856,drainage,0.5,1.1,mg
+2501300,832,Thorn Lake,Douglas ,46.22503849,-91.65570396,seepage,0.375,1.145,mg
+983300,389,Elna Lake,Oneida ,45.69317805,-89.56853735,seepage,0.349,1.182,mg
+2452400,727,Beauregard Lake,Douglas ,46.34194718,-91.58978572,seepage,0.645,1.185,mg
+1018900,436,Soo Lake,Oneida ,45.65354056,-89.54229,seepage,0.4265,1.186,mg
+1007500,424,North Two Lakes,Oneida ,45.78557694,-89.60653812,seepage,0.274,1.189,mg
+974700,377,Bullhead Lake,Oneida ,45.8843055,-89.71408273,seepage,0.3,1.19,mg
+972000,375,Bird Lake,Oneida ,45.79775099,-89.6664863,seepage,0.288,1.226,mg
+589400,248,Morgan Lake,Florence,45.7724593,-88.5462324,seepage,0.533,1.257,mg
+589400,247,Morgan Lake,Florence,45.7724593,-88.5462324,seepage,0.533,1.257,mg
+2757900,1030,Carlin Lake,Vilas,46.2,-89.77,seepage,0.33,1.26,mg
+994400,402,Buteau Lake,Lincoln ,45.4394513,-89.47572802,seepage,0.35,1.273,mg
+1176400,444,Vandercook Lake,Vilas,45.9857843,-89.6823713,seepage,0.325460785,1.27427451,mg
+1176400,444,Vandercook Lake,Vilas,45.9857843,-89.6823713,seepage,0.316960785,1.27627451,mg
+1176400,444,Vandercook Lake,Vilas,45.9857843,-89.6823713,seepage,0.316960785,1.27777451,mg
+1176400,444,Vandercook Lake,Vilas,45.9857843,-89.6823713,seepage,0.352960785,1.31027451,mg
+971600,374,Big Carr Lake,Oneida ,45.79092184,-89.62946191,seepage,0.282,1.338,mg
+982500,388,Witches Lake,Vilas ,45.97856319,-89.59001876,seepage,0.375,1.375,mg
+1009400,425,Paradise Lake,Oneida ,45.86146882,-89.43039738,seepage,0.5,1.4,mg
+990700,397,Hodstradt Lake,Oneida ,45.80732083,-89.56353808,seepage,0.312,1.413,mg
+981500,386,Duck Lake,Langlade ,45.38072111,-89.24739846,seepage,0.492,1.426,mg
+981500,387,Duck Lake - Staff Gage,Langlade ,45.384106,-89.24992,seepage,0.492,1.426,mg
+1023100,442,Townline Lake,Oneida ,45.64632587,-89.46348516,seepage,0.292,1.458,mg
+2771200,976,Phantom Lake - Staff Gage,Bayfield ,46.493885,-91.29628,seepage,0.49,1.46,mg
+2451700,724,Bass Lake,Douglas ,46.21575421,-91.8541031,seepage,0.54,1.485,mg
+396700,195,Devils Lake,Forest,45.549964,-88.8334458,drainage,0.48,1.5,mg
+389700,190,Little Sand Lake,Forest ,45.46998052,-88.91916868,drainage,0.66,1.515,mg
+389700,189,Little Sand Lake,Forest,45.4632974,-88.919557,drainage,0.66,1.515,mg
+2321800,677,Ike Walton Lake,Vilas ,46.03594392,-89.80624497,drainage,0.256,1.524,mg
+1863200,565,Loon Lake,Washburn ,45.6862596,-91.61545963,seepage,0.68,1.54,mg
+984800,392,Finley Lake,Vilas ,45.91046069,-89.4182174,seepage,0.573,1.569,mg
+1015500,434,South Two Lakes,Oneida ,45.7767029,-89.61366941,seepage,0.262,1.57,mg
+1004600,419,Mildred Lake,Oneida ,45.67551707,-89.53088879,seepage,0.312,1.575,mg
+1001000,416,Long Lake,Lincoln ,45.4298374,-89.47729304,seepage,0.25,1.6,mg
+2503500,834,Two Mile Lake,Douglas ,46.21568986,-91.80408832,seepage,0.6,1.61,mg
+2766200,969,Lac du Lune,Vilas ,46.12934198,-89.38514885,seepage,0.257,1.647,mg
+969600,373,Bass Lake,Lincoln,45.4235707,-89.4901266,seepage,0.375,1.65,mg
+1010100,427,Pence Lake,Langlade ,45.30806392,-89.06180816,seepage,0.333,1.667,mg
+2462400,747,East Twin Lake,Douglas ,46.35216282,-91.73292528,seepage,0.93,1.68,mg
+585400,1032,Dewey Lake,Vilas,45.99,-89.03,seepage,0.5,1.7,mg
+1000900,415,Long Lake,Langlade ,45.29851931,-89.20491337,seepage,0.6,1.725,mg
+2470900,768,Island Lake,Douglas ,46.35360293,-91.76792849,seepage,0.62,1.73,mg
+1020600,440,Sunday Lake,Oneida ,45.88887204,-89.854244,seepage,0.615,1.78,mg
+2769700,974,Murphy Lake,Vilas ,46.26439405,-89.7738186,drainage,0.5,1.8,mg
+574100,245,Bug Lake,Forest,45.57829696,-88.8265018,drainage,0.63,1.8,mg
+967900,369,Alma Lake,Vilas,45.9071749,-89.4298607,seepage,0.726,1.8005,mg
+2954700,1044,Red Bass Lake,Vilas,46.2,-89.66,seepage,0.676,1.81,mg
+994700,403,Lake Clara,Lincoln,45.51662728,-89.5751328,seepage,0.602592593,1.897428571,mg
+2954500,1009,Lynx Lake,Vilas ,46.19929618,-89.67222389,drainage,0.66,1.909,mg
+994700,403,Lake Clara,Lincoln,45.51662728,-89.5751328,seepage,0.602925926,1.911761905,mg
+994700,403,Lake Clara,Lincoln,45.51662728,-89.5751328,seepage,0.618888889,1.912142857,mg
+994700,403,Lake Clara,Lincoln,45.51662728,-89.5751328,seepage,0.612592593,1.928428571,mg
+2474800,777,Leesome Lake,Washburn ,45.77653516,-91.73338343,seepage,0.773,1.98,mg
+1005800,422,Moon Lake,Vilas,45.91773035,-89.434861,seepage,0.799,1.9895,mg
+2478600,783,Loon Lake,Barron ,45.46947221,-92.12892863,seepage,0.89,1.99,mg
+406600,196,Whiteye Lake,Forest ,45.58360868,-88.99766347,drainage,0.78,2.04,mg
+991900,400,Indian Lake,Langlade ,45.32388699,-89.21293801,seepage,0.8,2.05,mg
+2493900,812,Round Lake,Douglas,46.22827509,-91.936299,seepage,0.567830508,2.126190476,mg
+994700,403,Lake Clara,Lincoln,45.51662728,-89.5751328,seepage,0.645925926,2.158095238,mg
+717400,277,Spectacle Lake,Vilas ,46.00522899,-89.02099272,seepage,0.574,2.22,mg
+2599000,839,West Twin Lake,Douglas ,46.34586242,-91.73898596,seepage,0.9,2.26,mg
+977500,379,Clear Lake,Oneida ,45.87031738,-89.62480011,seepage,0.669,2.361,mg
+991700,399,Hunter Lake,Vilas ,46.00354657,-89.32210604,seepage,0.6,2.425,mg
+2953800,1008,Annabelle Lake,Vilas ,46.21591009,-89.68317288,drainage,0.8,2.45,mg
+2953800,1027,Annabelle Lake,Vilas,46.21591009,-89.68317288,drainage,0.8,2.45,mg
+1022900,441,Towanda Lake,Vilas ,45.93855367,-89.70771713,seepage,1.095,2.5325,mg
+1831700,527,Adelade Lake,Vilas ,46.24742526,-89.89967948,drainage,0.832,2.677,mg
+968800,371,Anvil Lake,Vilas,45.95013889,-89.05425,seepage,1.42,2.78,mg
+968800,372,Anvil Lake,Vilas ,45.94340244,-89.0639014,seepage,1.42,2.78,mg
+2598600,838,Viola Lake,Burnett ,45.81781882,-92.25134415,seepage,0.98,2.79,mg
+1018500,435,Snipe Lake,Vilas ,45.93961272,-89.36540027,seepage,0.924,2.893,mg
+1018300,1046,Smoky Lake,Vilas,46.09,-88.94,seepage,1.082,2.976,mg
+993800,401,Kimball Lake,Langlade ,45.28971339,-89.16168608,seepage,1.4,3,mg
+1012100,429,Pine Lake (Hancock),Lincoln ,45.50068193,-89.43795782,seepage,0.775,3.15,mg
+1586600,492,Spider Lake,Oneida ,45.76074429,-89.44255567,drainage,1,3.375,mg
+967400,368,Aldridge Lake,Oneida ,45.86595106,-89.30128337,drainage,1.7,4.5,mg
+2700200,914,Mulligan Lake,Douglas ,46.20829956,-91.69405718,drainage,1.75,4.66,mg
+1610800,510,Fourmile Lake,Oneida ,45.84695464,-89.08133346,drainage,2,4.687,mg
+1467100,455,Wood Lake,Taylor ,45.33578034,-90.07884525,drainage,1.5,4.9,mg
+2832400,978,Wanoka Lake,Bayfield ,46.54520576,-91.28186253,seepage,1.99,4.91,mg
+1019500,437,Squash Lake,Oneida ,45.59675451,-89.5489099,seepage,1.745,5.2,mg
+1595800,501,North Nokomis Lake,Oneida ,45.85198486,-89.45147016,drainage,1.5,5.2,mg
+1875100,578,Plummer Lake,Vilas ,45.96932904,-89.77572483,seepage,1.5,5.2,mg
+1013800,431,Razorback Lake,Vilas ,46.01932907,-89.51993905,seepage,1.7,5.3,mg
+2338800,690,Big Crooked Lake,Vilas,46.13050525,-89.6815409,drainage,1.21,5.413333333,mg
+1574300,489,Jennie Webber Lake,Oneida ,45.73990101,-89.331067,drainage,2.15,5.45,mg
+1598000,504,Chain Lake,Oneida ,45.84292338,-89.36733546,drainage,2.07,5.465,mg
+1586800,493,Tom Doyle Lake,Oneida ,45.76406972,-89.49330015,drainage,2,5.6,mg
+1612900,511,Dog Lake,Oneida ,45.77782549,-89.10975111,drainage,2.6,5.7,mg
+1573800,488,Moen Lake,Oneida ,45.66358616,-89.31334341,drainage,2.1,5.833,mg
+983600,390,Erickson Lake,Vilas ,45.94739461,-89.62254798,drainage,1.9,5.9,mg
+1835300,534,Big Muskellunge Lake,Vilas ,46.01738401,-89.61489839,drainage,1.015,6.11,mg
+1835300,533,Big Muskellunge Lake,Vilas,46.008472,-89.629379,drainage,1.015,6.11,mg
+2462200,746,East Eightmile Lake,Bayfield,46.41605547,-91.4624126,seepage,1.672580645,6.113978495,mg
+2312500,667,Grant Lake,Iron ,46.1125212,-90.07718756,drainage,1.68,6.26,mg
+2328400,1034,Hiawatha Lake,Vilas,46.1889,-89.83001,drained,1.785,6.305,mg
+2328400,1033,Hiawatha Lake,Vilas,46.1889,-89.83001,drained,1.785,6.305,mg
+2321600,676,Little Trout Lake,Vilas ,46.06515096,-89.85272076,drainage,1.53,6.370714286,mg
+2867300,985,Gander Lake,Douglas ,46.45432342,-91.72953547,drainage,1.66,6.51,mg
+1600200,506,Eagle Lake,Vilas ,45.93223028,-89.20819772,drainage,2.8,6.5425,mg
+1538600,475,Blue Lake,Oneida ,45.8392523,-89.75804553,seepage,2.6,6.8,mg
+1595600,500,Muskellunge Lake,Oneida ,45.79986859,-89.47954923,drainage,2.2,6.9,mg
+1595600,499,Muskellunge Lake,Oneida,45.80245325,-89.4784717,drainage,2.2,6.9,mg
+1599900,505,Duck Lake,Vilas ,45.94547753,-89.23667114,drainage,2.76,6.9,mg
+1526600,471,McCormick Lake,Oneida ,45.73459819,-89.77246353,drainage,2.1,7,mg
+995200,407,Laura Lake,Vilas ,46.05704884,-89.43813932,seepage,2.3,7.175,mg
+2109800,623,Hemlock Lake,Barron,45.5724584,-91.5604423,drainage,2.833333333,7.366666667,mg
+1517200,464,Manson Lake,Oneida ,45.56250825,-89.63293138,drainage,2.9,7.5,mg
+1575700,490,Stella Lake,Oneida ,45.71382366,-89.19420922,drainage,2.7,7.5,mg
+2734200,945,Jackson Lake,Bayfield,46.2485639,-91.1151876,drainage,2.4,7.65,mg
+1596300,1021,Little Saint Germain Lake,Vilas,45.9077301,-89.4734734,drainage,2.69,7.92,mg
+2762200,966,Forest Lake,Vilas ,46.14890904,-89.37624672,seepage,2.3,8,mg
+2898400,988,Star Lake,Bayfield ,46.38973998,-91.22509567,drainage,2.61,8.06,mg
+396500,194,Lucerne Lake,Forest ,45.52688467,-88.84646486,drainage,4,8.08,mg
+396500,193,Lake Lucerne,Forest,45.5313529,-88.8562236,drainage,4,8.08,mg
+2949200,1003,Pine Lake,Iron ,46.26099744,-90.13938129,drainage,2.27,8.21,mg
+1596600,502,Muskellunge Lake,Vilas,45.9516192,-89.3901379,drainage,3.03,8.23,mg
+1587600,494,McNaughton Lake,Oneida ,45.74701099,-89.58574679,drainage,2.9025,8.274,mg
+2322800,678,Crawling Stone Lake,Vilas ,45.9382081,-89.88381562,drainage,2,8.4,mg
+1564400,486,Squaw Lake,Lincoln ,45.53380247,-89.48284712,drainage,2.8,8.5,mg
+2393500,705,Sissabagama Lake,Sawyer,45.78995417,-91.5101656,drainage,2.665384615,8.665384615,mg
+1517900,465,Hancock Lake - Staff Gauge on Dam,Oneida ,45.608288,-89.639404,drainage,3.3,8.7,mg
+1619100,513,Boot Lake,Vilas ,45.96863059,-89.32587265,drainage,2.7,8.9,mg
+2143900,626,Mead Lake,Clark,44.78885126,-90.7473651,drainage,4.033333333,9.088888889,mg
+2953100,1006,Horsehead Lake,Vilas ,46.23329645,-89.71537482,drainage,2.66,9.205,mg
+2953100,1007,Horsehead Lake,Vilas,46.23329645,-89.71537482,drainage,2.66,9.205,mg
+692400,267,Butternut Lake,Forest ,45.91193,-88.99052,drainage,3.525,9.225,mg
+2323000,679,Fence Lake,Vilas ,45.95086531,-89.83940914,drainage,2.3,9.5,mg
+1593100,498,Star Lake,Vilas,46.01800688,-89.4731976,drainage,2.9,9.7,mg
+1631900,517,Lac Vieux Desert,Vilas,46.1216185,-89.1520804,drainage,3,9.8,mg
+2339100,691,White Sand Lake,Vilas,46.09272789,-89.6112598,drainage,2.5375,9.843333334,mg
+2339100,692,White Sand Lake,Vilas ,46.08872611,-89.59413378,drainage,2.5375,9.843333334,mg
+2311100,1029,Birch Lake,Vilas,46.21112,-89.83675,drainage,2.5,9.9,mg
+181800,96,Bass Lake,Menominee,44.8708212,-88.5009369,seepage,4.466666667,10,mg
+1591100,496,Big Saint Germain Lake,Vilas,45.9193965,-89.5320868,drainage,2.825,10.025,mg
+2688800,903,McGraw Lake,Burnett ,46.15320224,-92.17269108,drainage,3.691,10.04,mg
+2334300,687,Little Star Lake,Vilas ,46.11529777,-89.86147408,drainage,2.4,10.17,mg
+1564600,487,Hitts Lake,Lincoln ,45.5262668,-89.47026018,drainage,3.3,10.65,mg
+2958500,1012,Harris Lake,Vilas ,46.2607033,-89.83411975,drainage,2.45,10.75,mg
+1881900,584,Sparkling Lake,Vilas,46.006239,-89.695876,seepage,2.85,10.87,mg
+2732600,942,Namekagon Lake,Bayfield,46.20773095,-91.078797,drainage,3.4,11,mg
+2960600,1016,Beaver Lake,Vilas ,46.20619661,-89.58922355,drainage,2.933,11.158,mg
+1295800,451,Blass Lake,Sauk,43.5958133,-89.8067914,drainage,6,11.25,mg
+2332400,686,Allequash Lake,Vilas,46.033973,-89.630228,drainage,2.95,11.265,mg
+1523600,469,Bearskin Lake,Oneida ,45.73209757,-89.68252766,drainage,3.67,11.29,mg
+2331600,685,Trout Lake,Vilas ,46.04136799,-89.67127305,drainage,2.8,11.3,mg
+2331600,684,Trout Lake,Vilas,46.012891,-89.671613,drainage,2.8,11.3,mg
+1539600,477,Shishebogama Lake,Oneida ,45.89761334,-89.82030337,drainage,2.9,11.35,mg
+1542700,481,Tomahawk Lake,Oneida ,45.82344452,-89.65560572,drainage,3.49,11.45,mg
+2735500,949,Garden Lake,Bayfield,46.2066198,-91.0590749,drainage,3.5,11.5,mg
+2865000,981,Lake Nebagamon,Douglas,46.51466326,-91.6849116,drainage,3.875,11.6,mg
+377900,184,Jungle Lake,Forest ,45.45489343,-88.8333267,drainage,5.64,11.72,mg
+1540400,478,Little Spider Lake,Vilas ,45.97115597,-89.70842504,drainage,3.604444444,11.81888889,mg
+1542400,480,Minocqua Lake,Oneida,45.87050856,-89.6912578,drainage,3.2,11.9,mg
+2676800,895,Big Sand Lake,Burnett,45.81939075,-92.2279676,drainage,3.4,12,mg
+2962900,1017,Palmer Lake,Vilas,46.2093934,-89.5054252,drainage,3.1,12.1,mg
+2962900,1018,Palmer Lake,Vilas ,46.19967703,-89.49964749,drainage,3.1,12.1,mg
+1538900,476,Mercer Lake,Oneida ,45.86861755,-89.81136606,drainage,3.3,12.2,mg
+1523800,470,Birch Lake,Oneida ,45.72890992,-89.66040881,drainage,3.7,12.3,mg
+2945500,1002,Island Lake,Iron ,46.26428987,-90.30286025,drainage,3.061666667,12.50166667,mg
+1542300,479,Kawaguesaga Lake,Oneida,45.868842,-89.73292579,drainage,3.6,13,mg
+1538000,474,Haskell Lake,Vilas ,45.90784712,-89.91724778,drainage,3.6,13.1,mg
+2722800,937,Chippanazie Lake,Washburn ,46.03951984,-91.55969022,drainage,4.5,13.9,mg
+1545300,482,Little Arbor Vitae Lake,Vilas,45.91272998,-89.6176451,drainage,3.929166667,14.75833334,mg
+1537800,473,Booth Lake,Oneida ,45.88934119,-89.91477193,drainage,4,15.3,mg
+2960000,1013,Dunn Lake,Vilas ,46.2118068,-89.56886809,drainage,3.5,15.4,mg
+2956500,1042,Presque Isle Lake,Vilas,46.22252696,-89.78006788,drainage,4.055,16.16,mg
+2956500,1011,Presque Isle Lake,Vilas ,46.22252696,-89.78006788,drainage,4.055,16.16,mg
+2313100,668,Little Pike Lake,Iron ,46.15457957,-90.08947201,seepage,3.88,16.2,mg
+2105100,616,Bear Lake,Barron,45.6316194,-91.819339,drainage,5.725,16.75,mg
+2956800,1035,Van Vliet Lake,Vilas,46.19226,-89.75479,drainage,4.3,17.2,mg
+5575273,1026,"COYLE POND AT STAFF GAGE NEAR CROSS PLAINS, WI",Dane,43.05694026,-89.6045664,seepage,8.84,17.6,mg
+2963800,1019,Big Lake,Vilas,46.21022679,-89.4337564,drainage,4.3,17.76,mg
+2109600,622,Red Cedar Lake,Barron,45.58856857,-91.5904432,drainage,5.7,18,mg
+197600,136,Round Lake,Menominee,44.8910962,-88.5639929,seepage,8.1375,18.875,mg
+2706300,917,Lower McKenzie Lake,Washburn,45.98383278,-92.0221278,drainage,5.35,19,mg
+2112800,624,Balsam Lake,Washburn,45.6519004,-91.5829431,drainage,6.6,20,mg
+501700,230,King Lake,Forest,45.42107657,-88.427888,seepage,8.1,21,mg
+2620600,847,Balsam Lake,Polk,45.4649577,-92.3954736,drainage,7.625,21.25,mg
+182100,99,Hills Lake,Waushara,44.15081177,-89.1578946,seepage,12.63636364,22.54545455,mg
+652200,259,Bass Lake,Florence ,45.77842727,-88.33493294,drainage,10.59,23.2,mg
+2685200,902,Spooner Lake,Washburn,45.82911498,-91.8110077,drainage,6.2,23.6,mg
+454200,219,Moshawquit Lake,Menominee,44.8977655,-88.4995483,drainage,11.5,23.625,mg
+2627400,854,Big Round Lake,Polk,45.51051125,-92.3018585,drainage,8.63,23.73,mg
+8900,3,Forest Lake,Fond Du Lac,43.6088845,-88.1673186,seepage,14.6875,25.7125,mg
+341000,181,Pywaosit Lake,Menominee,44.8949867,-88.5242706,drainage,14.16666667,26,mg
+2336800,689,Wildcat Lake,Vilas ,46.17292317,-89.61695315,drainage,6.05,26.28,mg
+2336800,1045,Wildcat Lake,Vilas,46.17292317,-89.61695315,drainage,6.05,26.28,mg
+1670030,521,"WAZEE LAKE AT DEEP HOLE NEAR BLACK RIVER FALLS, WI",Jackson,44.2861111,-90.7144444,seepage,9.4,27.7,mg
+340900,180,Sapokesick Lake,Menominee,44.8999863,-88.5337151,drainage,13.5,29,mg
+339900,178,Skice Lake,Menominee,44.8916501,-88.603993,drainage,18,31.5,mg
+740400,279,Booth Lake,Walworth,42.80001387,-88.4300969,seepage,18.33333333,31.5,mg
+340500,179,Blacksmith Lake,Menominee,44.90026287,-88.5626041,drainage,16.125,31.625,mg
+525900,238,Lake Noquebay,Marinette,45.25303089,-87.9192741,drainage,13.75,32.16666667,mg
+117000,69,Twin Lakes,Marquette,43.9105303,-89.5898459,seepage,19.1,33.7,mg
+758300,302,Geneva Lake,Walworth,42.5580723,-88.5426,drainage,33,33.83333333,mg
+753800,297,Potter Lake,Walworth,42.8180699,-88.3445386,drainage,21.705,34.78,mg
+25100,5,Little Cedar Lake,Washington,43.3802787,-88.2292614,drainage,32.09285714,36.10714286,mg
+744200,293,Powers Lake,Kenosha,42.5461291,-88.2995367,drainage,31.58378378,36.46756757,mg
+779800,324,Silver Lake,Waukesha,43.07667407,-88.492599,seepage,33.4,36.7,mg
+164300,88,Lake Montello,Marquette,43.79664548,-89.3328972,drainage,19,37,mg
+339600,177,La Motte Lake,Menominee,44.8847057,-88.60343739,drainage,17.375,37,mg
+743000,290,Lake Mary,Kenosha,42.5244628,-88.253424,drainage,38.33333333,38,mg
+742800,289,Elizabeth Lake,Kenosha,42.51418508,-88.2648133,drainage,35.16666667,38.5,mg
+246500,148,Lake Morris,Waushara,44.11497815,-89.2015066,drainage,20.58333333,38.83333333,mg
+755800,300,Green Lake,Walworth,42.78112379,-88.5709345,drainage,33.33333333,39.83333333,mg
+761300,306,Lake Denoon,Waukesha,42.84557107,-88.1675892,drainage,26.69230769,41.15384615,mg
+760900,304,Waubeesee Lake,Racine,42.81584936,-88.1709223,drainage,26.5625,44.625,mg
+743900,292,Benedict Lake,Kenosha,42.5336292,-88.3023145,drainage,36.66666667,45.66666667,mg
+36200,9,Silver Lake (Paradise Valley),Washington,43.38944519,-88.2139834,drainage,35.92,46,mg
+848800,352,Lac La Belle,Waukesha,43.1186172,-88.50398819,drainage,32.02222222,46.37777778,mg
+849400,353,Fowler Lake,Waukesha,43.11472857,-88.4962102,drainage,33.72727273,47.54545455,mg
+761100,305,Long Lake,Racine,42.8269602,-88.1762003,drainage,26.5625,48.1875,mg
+849600,354,Oconomowoc Lake,Waukesha,43.09750715,-88.4598204,drainage,33.30930233,48.43023256,mg
+768600,312,Eagle Spring Lake,Waukesha,42.85084617,-88.4375972,drainage,26.78947368,48.73684211,mg
+755700,299,Middle Lake,Walworth,42.7725129,-88.5653788,drainage,34.64615385,49.36153846,mg
+763200,310,Bass Bay Lake,Waukesha,42.89557064,-88.11703279,drainage,29.4875,50.075,mg
+60800,19,Wolf Lake,Fond Du Lac,43.86443659,-88.2087116,drainage,36.125,50.8125,mg
+738400,278,Hooker Lake,Kenosha,42.559741,-88.1009184,drainage,30.25,51,mg
+762700,309,Little Muskego Lake,Waukesha,42.90695908,-88.1431447,drainage,32.83703704,51.61851852,mg
+180300,93,Park Lake,Columbia,43.5405385,-89.2987285,drainage,29.6,52,mg
+850300,356,Okauchee Lake,Waukesha,43.11167377,-88.4234307,drainage,33.2625,53.16,mg
+859900,363,Sinissippi Lake (Hustisford),Dodge,43.35360866,-88.6031572,drainage,30.66666667,56.33333333,mg
+827100,344,Upper Nemahbin Lake,Waukesha,43.05945289,-88.4317641,drainage,36.7,56.8,mg
+743800,291,Tombeau Lake,Walworth,42.5311292,-88.3084259,drainage,34.66666667,57.33333333,mg
+763600,311,Tichigan Lake,Racine,42.8150157,-88.2092567,drainage,35.16666667,57.5,mg
+1630100,516,Black Oak Lake,Vilas ,46.16301405,-89.316129,seepage,NA,NA,mg
+1000700,411,"LONG LAKE NEAR PORTAGE, WI",Columbia,43.49526065,-89.439564,drainage,NA,NA,mg
+1000800,412,Long Lake (Oasis),Waushara ,44.2069057,-89.45531352,drainage,NA,NA,mg
+1000800,413,Long Lake,Waushara,44.20441806,-89.4490085,drainage,NA,NA,mg
+1002600,417,Lucy Lake,Vilas ,45.90262437,-89.83980362,seepage,NA,NA,mg
+1005400,420,Mission Lake,Marathon ,44.77767329,-89.35238355,seepage,NA,NA,mg
+1005600,421,Moccasin Lake,Langlade ,45.44585828,-89.26998794,seepage,NA,NA,mg
+1007200,423,North Neva Lake,Langlade ,45.27226816,-89.10046181,seepage,NA,NA,mg
+1009800,426,Patterson Lake,Vilas ,45.89944863,-89.86346693,seepage,NA,NA,mg
+1012000,428,Pine Lake (Hancock),Waushara ,44.13008866,-89.50988124,seepage,NA,NA,mg
+1012500,430,Plainfield Lake,Waushara,44.20552876,-89.4717865,seepage,NA,NA,mg
+101300,38,Bean's Lake,Waushara ,44.13763197,-89.2906228,seepage,NA,NA,mg
+1015100,432,South Blue Lake,Oneida ,45.75816627,-89.70271015,seepage,NA,NA,mg
+1015200,433,South Neva Lake - Staff Gage,Langlade ,45.26814,-89.10267,seepage,NA,NA,mg
+101600,39,Bing Lake,Waushara,44.0569186,-89.4881776,seepage,NA,NA,mg
+1019600,438,Squash Lake,Oneida ,45.86917574,-89.17571238,seepage,NA,NA,mg
+1020300,439,Stormy Lake,Vilas ,46.05528874,-89.32177306,seepage,NA,NA,mg
+102100,40,Bughs Lake,Waushara ,44.06916056,-89.26226249,seepage,NA,NA,mg
+102600,42,Crooked Lake,Adams ,43.77049424,-89.60758008,seepage,NA,NA,mg
+102700,43,Cuff Lake,Columbia ,43.60850066,-89.3032439,seepage,NA,NA,mg
+102900,44,Deer Lake,Waushara ,44.04305832,-89.21679462,seepage,NA,NA,mg
+103100,45,Twin Lakes,Marquette,43.90830818,-89.5854014,seepage,NA,NA,mg
+103400,46,Fenners Lake,Adams ,43.86386597,-89.59829648,seepage,NA,NA,mg
+103600,47,Goose Lake,Adams ,43.79776995,-89.63667192,seepage,NA,NA,mg
+103900,49,Irogami Lake,Waushara ,44.06590828,-89.23238535,seepage,NA,NA,mg
+103900,48,Irogami Lake,Waushara,44.0605336,-89.2367853,seepage,NA,NA,mg
+104000,50,Jordon Lake,Adams ,43.74315826,-89.64718218,seepage,NA,NA,mg
+104200,52,Kilby Lake,Marquette ,43.80372058,-89.35406181,seepage,NA,NA,mg
+104600,53,Lucerne Lake,Waushara ,44.02402792,-89.20872596,seepage,NA,NA,mg
+104700,54,Sharon Lake,Marquette ,43.97726295,-89.38345197,seepage,NA,NA,mg
+104700,55,Sharon Lake,Marquette ,43.97726295,-89.38345197,seepage,NA,NA,mg
+105200,56,Little Hills Lake,Waushara ,44.04569543,-89.21047952,seepage,NA,NA,mg
+105800,57,Marl Lake,Waushara ,44.10928491,-89.38854788,seepage,NA,NA,mg
+105800,58,Marl Lake,Waushara ,44.10928491,-89.38854788,seepage,NA,NA,mg
+106500,59,Parker Lake,Adams ,43.77535183,-89.63501796,seepage,NA,NA,mg
+106600,60,Patrick Lake,Adams,43.88691889,-89.6556799,seepage,NA,NA,mg
+106600,61,Patrick Lake,Adams ,43.88618932,-89.65884741,seepage,NA,NA,mg
+106900,62,Pleasant Lake,Waushara ,43.98497303,-89.55201905,seepage,NA,NA,mg
+107500,64,School Section Lake,Marquette ,43.95254128,-89.54801194,seepage,NA,NA,mg
+107600,65,Scott Lake,Columbia ,43.56553947,-89.3217281,seepage,NA,NA,mg
+107700,66,Silver Lake,Columbia,43.55277778,-89.4730278,drainage,NA,NA,mg
+107900,67,Big Silver Lake,Waushara ,44.05476309,-89.23386028,seepage,NA,NA,mg
+108200,68,Tuttle Lake,Marquette ,43.92930473,-89.29149706,seepage,NA,NA,mg
+117400,70,Witters Lake,Waushara ,44.03343979,-89.3041395,seepage,NA,NA,mg
+117500,72,Wolf Lake,Adams ,43.79553175,-89.62234606,seepage,NA,NA,mg
+117600,73,Wood Lake,Marquette ,43.97845238,-89.51199123,seepage,NA,NA,mg
+1176700,445,Virgin Lake,Oneida ,45.57860476,-89.65081099,seepage,NA,NA,mg
+117800,74,Bay Beach Lagoons,Brown ,44.52640945,-87.97587918,drainage,NA,NA,mg
+1178000,446,Washburn Lake,Oneida ,45.61656274,-89.55925798,seepage,NA,NA,mg
+1178900,447,Wind Pudding Lake,Oneida ,45.75895462,-89.65026468,seepage,NA,NA,mg
+1252300,449,Stewart Lake,Dane,43.02138537,-89.7409562,drainage,NA,NA,mg
+1280400,450,Lake Redstone,Sauk,43.6016444,-90.1001266,drainage,NA,NA,mg
+131100,75,Lake Winnebago,Winnebago,44.00970626,-88.5273365,drainage,NA,NA,mg
+139300,76,DeNeveu Lake,Fond Du Lac,43.73637949,-88.3962152,drainage,NA,NA,mg
+1405200,452,Big Bass Lake,Marathon ,44.72293424,-89.43389976,seepage,NA,NA,mg
+1406100,453,Pike Lake,Washington,44.80888889,-89.3519444,drainage,NA,NA,mg
+1407000,454,Lost Lake,Marathon ,44.84997164,-89.34162997,seepage,NA,NA,mg
+146100,77,Green Lake,Green Lake,43.79888889,-89.0347222,drainage,NA,NA,mg
+1468900,456,James Lake,Taylor ,45.35505116,-90.22717576,drainage,NA,NA,mg
+1469100,457,Rib Lake,Taylor,45.31663289,-90.2001449,drainage,NA,NA,mg
+1481600,458,Pesobic Lake,Lincoln ,45.21279181,-89.68030639,seepage,NA,NA,mg
+1483700,459,Spring Lake,Lincoln,45.2594096,-89.6140139,drainage,NA,NA,mg
+1487800,460,Copper Lake,Lincoln ,45.32507765,-89.61378986,seepage,NA,NA,mg
+1488400,461,Echo Lake,Lincoln ,45.35280843,-89.47263061,drainage,NA,NA,mg
+149000,78,Spring Lake,Waushara ,44.01115491,-89.16072991,drainage,NA,NA,mg
+1513800,462,Stone Lake,Price ,45.40620026,-90.16356805,drainage,NA,NA,mg
+1516800,463,Bridge Lake,Lincoln ,45.55302819,-89.68356882,drainage,NA,NA,mg
+1522900,467,West Horsehead Lake,Oneida ,45.69746689,-89.62335171,drainage,NA,NA,mg
+1523500,468,Little Bearskin Lake,Oneida ,45.71114622,-89.69920822,drainage,NA,NA,mg
+1527800,472,Bear Lake,Oneida,45.76495546,-89.7929246,drainage,NA,NA,mg
+1547700,483,Somo Lake,Lincoln ,45.51929447,-89.87122166,drainage,NA,NA,mg
+1555500,484,Muskellunge Lake,Lincoln ,45.53098654,-89.68638085,drainage,NA,NA,mg
+155570,79,Comstock Lake,Marquette ,43.88530723,-89.27335732,drainage,NA,NA,mg
+1558400,485,Pickerel Lake,Lincoln ,45.43170916,-89.50197639,seepage,NA,NA,mg
+156300,80,Curtis Lake,Waushara ,44.00374604,-89.4289594,drainage,NA,NA,mg
+157300,81,Crystal Lake,Marquette ,43.97056397,-89.35874877,drainage,NA,NA,mg
+1579700,491,Enterprise Lake,Langlade ,45.45477305,-89.23885375,drainage,NA,NA,mg
+158600,82,Mecan Springs,Waushara,44.0510857,-89.4640107,drainage,NA,NA,mg
+158700,83,Puckaway Lake,Green Lake,43.74998047,-89.1395599,drainage,NA,NA,mg
+1589100,495,Hasbrook Lake,Oneida ,45.83749998,-89.58248188,seepage,NA,NA,mg
+1592400,497,Plum Lake,Vilas,45.99217349,-89.5579224,drainage,NA,NA,mg
+1597800,503,Echo Lake,Oneida ,45.82682178,-89.38138207,drainage,NA,NA,mg
+1603600,507,Tambling Lake,Vilas ,45.93047498,-89.16386129,drainage,NA,NA,mg
+160600,84,Spring Lake,Green Lake ,43.68741757,-89.16198896,drainage,NA,NA,mg
+1608300,508,Upper Ninemile Lake,Vilas,45.9082902,-89.053461,drainage,NA,NA,mg
+1610700,509,Big Fork Lake,Oneida ,45.829537,-89.09755935,drainage,NA,NA,mg
+1615900,512,Margaret Lake,Oneida ,45.71636904,-89.10954279,drainage,NA,NA,mg
+161900,85,Maria Lake,Green Lake ,43.64747634,-89.00156472,drainage,NA,NA,mg
+1619700,514,Pickerel Lake,Vilas ,45.97446096,-89.3949565,drainage,NA,NA,mg
+162500,86,Little Green Lake,Green Lake,43.7397042,-88.9748345,drainage,NA,NA,mg
+1629500,515,Big Portage Lake,Vilas ,46.12561039,-89.28493009,seepage,NA,NA,mg
+1632200,518,Sugar Maple Lake,Vilas ,46.10272009,-89.07678972,drainage,NA,NA,mg
+163970,87,White Lake,Marquette ,43.81200134,-89.25400669,drainage,NA,NA,mg
+1641400,519,Sidie Hollow Lake,Vernon,43.53747305,-90.9612407,drainage,NA,NA,mg
+1653500,520,Neshonoc Lake,La Crosse,43.9130208,-91.0740244,drainage,NA,NA,mg
+168000,89,Buffalo Lake,Marquette,43.73720085,-89.4734551,drainage,NA,NA,mg
+171000,91,Ennis Lake,Marquette ,43.68848881,-89.39139163,drainage,NA,NA,mg
+171000,90,Ennis Lake,Marquette,43.6883132,-89.3945644,drainage,NA,NA,mg
+1736200,522,Sherwood Lake*,Clark,44.42635125,-90.3693002,drainage,NA,NA,mg
+1757200,523,Diamond Lake,Taylor ,45.10826022,-90.68012494,drainage,NA,NA,mg
+1764500,524,Sackett Lake,Taylor ,45.21432897,-90.44673064,drainage,NA,NA,mg
+1782700,525,Bugle Lake,Trempealeau,44.35801829,-91.4198791,drainage,NA,NA,mg
+179800,92,Swan Lake,Columbia ,43.54496869,-89.36488306,drainage,NA,NA,mg
+181400,94,Arbutus Lake,Forest ,45.40135912,-88.86134588,seepage,NA,NA,mg
+181700,95,Bass Lake,Marathon ,44.85700353,-89.31682718,seepage,NA,NA,mg
+181900,97,Bear Lake,Portage,44.4338612,-89.394838,seepage,NA,NA,mg
+181900,98,Bear Lake,Portage ,44.43532986,-89.39419886,seepage,NA,NA,mg
+182100,100,Hills Lake,Waushara ,44.1516018,-89.16386665,seepage,NA,NA,mg
+182200,102,Big Twin Lake,Langlade ,45.35493058,-88.91487374,seepage,NA,NA,mg
+182300,103,Big Twin Lake,Waushara ,44.23591107,-89.14031928,seepage,NA,NA,mg
+1825100,526,Strum Lake (Crystal),Trempealeau,44.5530191,-91.386269,drainage,NA,NA,mg
+1832800,528,Bass Lake,Barron ,45.29609663,-91.59958745,seepage,NA,NA,mg
+1832900,529,Bass Lake,Barron ,45.30228078,-92.1279256,seepage,NA,NA,mg
+1833300,530,Bass Lake,Washburn ,45.70707122,-91.64771093,seepage,NA,NA,mg
+1834400,531,Beaver Lake,Chippewa ,45.1670336,-91.3698361,seepage,NA,NA,mg
+1834500,532,Beaver Lake,Ashland ,46.15788745,-90.92294024,seepage,NA,NA,mg
+1835600,535,Blue Gill Lake,Sawyer ,45.94261242,-90.96793727,seepage,NA,NA,mg
+1835700,536,Blueberry Lake,Sawyer ,45.88127432,-91.251158,seepage,NA,NA,mg
+1838500,537,Caley Lake,Rusk ,45.39892728,-91.26321585,seepage,NA,NA,mg
+1841300,538,Clear Lake,Sawyer ,46.02080815,-91.26441863,seepage,NA,NA,mg
+184200,105,Crystal Lake,Langlade ,45.37912746,-88.92538004,seepage,NA,NA,mg
+184200,106,Crystal Lake - Staff Gage,Forest ,45.381737,-88.92151,seepage,NA,NA,mg
+1842500,541,Crystal Lake,Iron ,46.16511982,-90.11139409,seepage,NA,NA,mg
+184300,107,Dark Lake,Langlade ,45.16651865,-88.78814107,seepage,NA,NA,mg
+1844500,542,Dells Lake,Bayfield ,46.17969513,-90.98620431,seepage,NA,NA,mg
+184500,108,Deep Hole Lake,Forest,45.45635329,-88.9042789,seepage,NA,NA,mg
+184500,109,Deep Hole Lake,Forest ,45.46013537,-88.90404404,seepage,NA,NA,mg
+1848400,543,Fenton Lake,Washburn ,45.66622614,-91.73911282,seepage,NA,NA,mg
+1849100,544,Fish Lake,Rusk ,45.30583803,-91.50081658,seepage,NA,NA,mg
+1849700,545,Frog Lake,Iron ,46.11950135,-90.01131122,seepage,NA,NA,mg
+1851200,546,Goose Lake,Sawyer ,45.95219198,-91.11399549,seepage,NA,NA,mg
+1851900,547,Green Lake,Sawyer ,45.74504012,-91.51759801,seepage,NA,NA,mg
+1852300,548,Ham Lake,Sawyer ,45.83623594,-91.46253387,seepage,NA,NA,mg
+185300,110,Duck Lake,Forest,45.46746428,-88.9028901,seepage,NA,NA,mg
+1853200,549,Haugen Lake,Washburn ,45.64080557,-91.76571387,seepage,NA,NA,mg
+1855100,550,Howe Lake,Chippewa,45.08524027,-91.3132082,seepage,NA,NA,mg
+1855100,551,Howe Lake,Chippewa ,45.08860286,-91.31466832,seepage,NA,NA,mg
+1856500,552,Jerms Lake,Vilas ,45.91334108,-89.87513221,seepage,NA,NA,mg
+1856700,553,Johnson Lake,Sawyer ,45.91155418,-91.4296989,seepage,NA,NA,mg
+1858200,554,Kirby Lake,Barron,45.59828546,-92.0726817,seepage,NA,NA,mg
+1858200,555,Kirby Lake,Barron ,45.60110652,-92.06611697,seepage,NA,NA,mg
+1858900,556,Lake Five,Bayfield ,46.16715119,-90.98593775,seepage,NA,NA,mg
+1859100,557,Helane Lake,Sawyer ,46.12238714,-91.24012834,seepage,NA,NA,mg
+1859400,558,Ten Lake,Price ,45.62219215,-90.48673484,seepage,NA,NA,mg
+1859900,559,Lazy Island Lake,Washburn ,45.68983141,-91.65241338,seepage,NA,NA,mg
+1861100,560,Little Clam Lake,Ashland ,46.14653191,-90.89738941,seepage,NA,NA,mg
+1861400,561,Little Dummy Lake,Barron ,45.57847319,-91.98819947,seepage,NA,NA,mg
+1862200,563,Little Sand Lake,Sawyer ,45.84741074,-91.51933301,seepage,NA,NA,mg
+1863400,566,Lost Lake,Washburn ,45.69847794,-91.58377262,seepage,NA,NA,mg
+186400,111,Gilbert Lake,Waushara ,44.21267758,-89.16930289,seepage,NA,NA,mg
+1864000,567,Lower Devils Lake,Barron ,45.62627045,-91.76109671,seepage,NA,NA,mg
+1864200,568,Loyhead Lake,Washburn ,45.76942675,-91.56019295,seepage,NA,NA,mg
+1865200,569,McLaren Lake,Ashland ,46.14094131,-90.92124387,seepage,NA,NA,mg
+1867300,570,Monday Lake,Washburn ,45.64968806,-91.77864301,seepage,NA,NA,mg
+1870200,571,Newman Lake,Price ,45.96443366,-90.15745812,seepage,NA,NA,mg
+1870300,572,Nice Lake,Washburn ,45.69213377,-91.60031174,seepage,NA,NA,mg
+1870500,573,Nick Lake,Washburn ,45.72158961,-91.60086798,seepage,NA,NA,mg
+1872500,574,Patterson Lake,Price ,45.97273416,-90.17240911,seepage,NA,NA,mg
+1872700,575,Payment Lake,Iron ,46.18917356,-90.00895139,seepage,NA,NA,mg
+1873600,576,Perch Lake,Sawyer ,45.90108412,-90.95367378,seepage,NA,NA,mg
+1873900,577,Peufald Lake,Washburn ,45.73630708,-91.5820416,seepage,NA,NA,mg
+1875900,579,Pulaski Lake,Rusk ,45.33672324,-91.28045407,seepage,NA,NA,mg
+1877900,580,Rosalind Lake,Vilas,46.18,-89.78,seepage,NA,NA,mg
+1878800,581,Rusk Lake,Rusk ,45.34174181,-91.47358569,seepage,NA,NA,mg
+1879300,582,South Shattuck Lake,Chippewa ,45.2175474,-91.41568387,seepage,NA,NA,mg
+1881100,583,Silver Lake,Barron ,45.58379766,-91.92121488,seepage,NA,NA,mg
+1882100,585,Spider Lake,Washburn ,45.72369516,-91.5768428,seepage,NA,NA,mg
+1882900,586,Spring Lake,Washburn ,45.82703692,-91.55815968,seepage,NA,NA,mg
+1883700,1047,Statehouse Lake,Vilas,46.14694,-89.89584,seepage,NA,NA,mg
+1884100,587,Stone Lake,Washburn ,45.84341969,-91.55627052,seepage,NA,NA,mg
+1884800,589,Sylvan Lake,Barron ,45.60942735,-91.95194915,drainage,NA,NA,mg
+1887500,590,Two Island Lake -- Access at East Side Of Lake Nr 146th And 145th St,Chippewa ,45.235775,-91.392746,seepage,NA,NA,mg
+189100,113,Kating Lake,Waupaca ,44.50565099,-89.10843155,seepage,NA,NA,mg
+189600,114,Kusel Lake,Waushara ,44.17085723,-89.164774,seepage,NA,NA,mg
+189800,115,Lake Emily,Portage,44.46775129,-89.3278919,seepage,NA,NA,mg
+189800,116,Emily Lake,Portage ,44.47030119,-89.33781888,seepage,NA,NA,mg
+190100,117,Lime Lake,Portage ,44.4208064,-89.34511615,seepage,NA,NA,mg
+190200,118,Napowan Lake,Waushara ,44.14761258,-89.1524778,seepage,NA,NA,mg
+190500,120,Little Long Lake,Forest ,45.42502703,-88.77121879,seepage,NA,NA,mg
+191100,122,Long Lake,Waushara ,44.21630946,-89.12494537,seepage,NA,NA,mg
+191100,121,Long Lake,Waushara,44.2157222,-89.1207222,seepage,NA,NA,mg
+191100,123,Long Lake (Saxeville),Waushara ,44.21630946,-89.12494537,seepage,NA,NA,mg
+191400,124,Loon Lake,Langlade ,45.38862943,-89.09475412,seepage,NA,NA,mg
+192500,125,Meyer Lake,Langlade ,45.05111105,-89.07465251,seepage,NA,NA,mg
+193800,126,Mud Lake,Marathon ,44.91917671,-89.29106901,seepage,NA,NA,mg
+194000,127,Mueller Lake,Langlade ,45.16313151,-88.98520107,seepage,NA,NA,mg
+194800,128,Oak Lake,Forest,45.473297,-88.9398353,seepage,NA,NA,mg
+195000,129,Old Taylor Lake,Waupaca ,44.34249237,-89.11280663,seepage,NA,NA,mg
+195400,130,Pearl Lake,Waushara ,44.08860619,-89.11802775,seepage,NA,NA,mg
+195900,131,Pickerel Lake,Portage,44.31608608,-89.3231721,seepage,NA,NA,mg
+196100,132,Pine Lake (Springwater),Waushara ,44.23275643,-89.16245575,seepage,NA,NA,mg
+197300,134,Round Lake,Waushara ,44.16246304,-89.16177896,seepage,NA,NA,mg
+197300,135,Round Lake,Waushara ,44.16246304,-89.16177896,seepage,NA,NA,mg
+197900,137,Sand Lake,Menominee,44.8891527,-88.5420484,seepage,NA,NA,mg
+198100,138,Sawyer Lake,Langlade ,45.24754815,-88.75906139,seepage,NA,NA,mg
+198800,139,Silver Lake,Waupaca ,44.4647946,-89.14072066,seepage,NA,NA,mg
+199300,140,Stenson Lake,Marathon ,44.71184716,-89.27334007,seepage,NA,NA,mg
+199700,141,Sunset Lake,Portage ,44.54471137,-89.27715966,seepage,NA,NA,mg
+20,1,Lake Michigan,Brown ,44.58610379,-87.9817702,drainage,NA,NA,mg
+200300,142,Thomas Lake,Portage ,44.47358131,-89.39027712,seepage,NA,NA,mg
+200900,143,Little Twin Lake,Waushara ,44.22808726,-89.32045653,seepage,NA,NA,mg
+2014700,591,Trout Bog,Vilas,46.040778,-89.685547,drainage,NA,NA,mg
+2043700,594,Upper Twin Lake,Chippewa,45.0921848,-91.3087636,seepage,NA,NA,mg
+2046500,595,Windfall Lake,Sawyer ,45.66413757,-91.21098991,seepage,NA,NA,mg
+2046600,596,Windigo Lake,Sawyer ,45.93070594,-91.47164234,seepage,NA,NA,mg
+2047300,597,Wyandock Lake,Vilas ,45.91715665,-89.83921998,seepage,NA,NA,mg
+2079400,598,Lake Camelia Lake,Polk ,45.33442363,-92.17648949,seepage,NA,NA,mg
+2079700,599,Lower Turtle Lake,Barron ,45.38869748,-92.07629707,drainage,NA,NA,mg
+2079800,600,Upper Turtle Lake,Barron ,45.42263067,-92.09854302,drainage,NA,NA,mg
+2081200,601,Beaver Dam Lake,Barron,45.5246766,-92.0162903,drainage,NA,NA,mg
+2090900,602,Bass Lake,Rusk ,45.42584,-91.49356007,seepage,NA,NA,mg
+2092500,604,Axehandle Lake,Chippewa ,45.27786892,-91.48312827,seepage,NA,NA,mg
+2092500,603,Axhandle Lake,Chippewa,45.2807953,-91.4854391,seepage,NA,NA,mg
+2092500,605,Axhandle Lake -- Access at E Side Of Lake Off 100th St,Chippewa ,45.27761,-91.479385,seepage,NA,NA,mg
+2092900,606,Pine Lake,Chippewa,45.2872222,-91.4741667,drainage,NA,NA,mg
+2092900,607,Pine Lake,Chippewa ,45.29243361,-91.45897797,drainage,NA,NA,mg
+2098200,608,Lower Vermillion Lake,Barron ,45.51277754,-91.96125752,drainage,NA,NA,mg
+2100100,609,Buck Lake,Barron ,45.56172841,-91.97055162,drainage,NA,NA,mg
+2100300,610,Duck Lake,Barron ,45.55849424,-91.99253156,drainage,NA,NA,mg
+2100800,611,Granite Lake,Barron ,45.57995809,-92.00685981,drainage,NA,NA,mg
+2103200,612,Montanis Lake,Barron ,45.47705628,-91.7054305,drainage,NA,NA,mg
+2104100,613,Stump Lake,Barron ,45.53832278,-91.73698497,drainage,NA,NA,mg
+2104300,614,Tuscobia Lake,Barron ,45.55512028,-91.74456158,drainage,NA,NA,mg
+2104500,615,Lake Desair,Barron ,45.5444836,-91.77849962,drainage,NA,NA,mg
+2105800,617,Butternut Lake,Barron ,45.63053609,-91.90452683,drainage,NA,NA,mg
+2107100,618,Little Mud Lake,Washburn ,45.71366219,-91.66673003,drainage,NA,NA,mg
+2107500,619,Big Devils Lake,Washburn ,45.72964567,-91.73753255,drainage,NA,NA,mg
+2107600,620,Little Devils Lake,Washburn ,45.74014451,-91.74940491,drainage,NA,NA,mg
+2109300,621,Slim Lake,Washburn ,45.79773447,-91.55882944,drainage,NA,NA,mg
+2113300,625,Chetac Lake,Sawyer ,45.71069503,-91.49758782,drainage,NA,NA,mg
+2157900,627,Pike Lake,Chippewa ,45.07886813,-91.07874687,drainage,NA,NA,mg
+2166100,628,Kathryn Lake,Taylor ,45.20332057,-90.62078886,drainage,NA,NA,mg
+2169200,629,Round Lake,Chippewa ,45.25417447,-91.45089676,seepage,NA,NA,mg
+2178400,630,Bob Lake,Chippewa ,45.16403368,-91.3207786,drainage,NA,NA,mg
+2195400,631,Horseshoe Lake,Taylor ,45.2476611,-90.37273969,drainage,NA,NA,mg
+2201400,632,Kettle Lake,Taylor ,45.33879067,-90.25571156,seepage,NA,NA,mg
+2204100,633,South Harper Lake,Taylor ,45.36260435,-90.19377117,drainage,NA,NA,mg
+2206300,634,Timms Lake,Price ,45.45394194,-90.19351715,seepage,NA,NA,mg
+2210900,635,Worcester Lake,Price ,45.5879122,-90.31122079,drainage,NA,NA,mg
+2234600,636,Price Lake,Price ,45.76450734,-90.66046888,drainage,NA,NA,mg
+2235300,637,Upper Price Lake,Price ,45.80215874,-90.62986932,drainage,NA,NA,mg
+2237500,638,Crane and Chase Lake,Price ,45.74068105,-90.50592336,drainage,NA,NA,mg
+2238100,639,Grassy Lake,Price ,45.70041679,-90.50383781,drainage,NA,NA,mg
+2239100,640,Deer Lake,Price ,45.72234288,-90.4105643,drainage,NA,NA,mg
+2239400,641,Wilson Lake,Price ,45.66979111,-90.45651879,drainage,NA,NA,mg
+2244200,642,Big Dardis Lake,Price ,45.7362711,-90.33418256,drainage,NA,NA,mg
+2264200,643,Twin Lake,Price ,45.95620325,-90.07377203,seepage,NA,NA,mg
+2265100,644,Bearskull Lake,Iron ,46.00506857,-90.06778794,drainage,NA,NA,mg
+2266800,645,Muskie Lake,Iron ,46.02141881,-90.10682483,drainage,NA,NA,mg
+2267100,646,Springstead Lake,Iron ,46.01738651,-90.13032271,drainage,NA,NA,mg
+2269600,647,Emily Lake,Vilas ,45.96695411,-90.01047201,drainage,NA,NA,mg
+2272700,648,Stone Lake,Oneida ,45.830128,-89.97311512,drainage,NA,NA,mg
+2275100,649,Connors Lake,Sawyer,45.7577392,-90.7307104,drainage,NA,NA,mg
+2277200,650,Mason Lake,Sawyer ,45.81611466,-90.70084027,drainage,NA,NA,mg
+2282000,651,Long Lake,Price ,45.81594884,-90.66465727,drainage,NA,NA,mg
+2282200,652,Bass Lake,Price ,45.81644888,-90.6544248,seepage,NA,NA,mg
+2283300,653,Butternut Lake,Price,45.9816207,-90.5176676,drainage,NA,NA,mg
+2283800,654,Mud Lake,Price ,45.9438605,-90.52078967,drainage,NA,NA,mg
+2284000,655,Schnur Lake,Price ,45.97188664,-90.50829983,drainage,NA,NA,mg
+2286900,656,Le Toumeau Lake,Price ,45.82020209,-90.62730821,drainage,NA,NA,mg
+2295200,657,Trude Lake,Iron ,46.11432719,-90.15477155,drainage,NA,NA,mg
+2296500,658,McDermott Lake,Iron ,46.00300245,-90.16082404,seepage,NA,NA,mg
+2297000,659,Wilson Lake,Iron ,46.11727635,-90.11538763,drainage,NA,NA,mg
+2297800,660,Boot Lake,Iron ,46.03912322,-90.14093,seepage,NA,NA,mg
+2299300,661,Moose Lake,Iron ,46.23184802,-90.22204883,drainage,NA,NA,mg
+2299900,662,Pike Lake,Iron ,46.17473829,-90.11962734,drainage,NA,NA,mg
+2301800,663,Echo Lake,Iron ,46.18205942,-90.06077085,drainage,NA,NA,mg
+2303500,664,Long Lake,Iron ,46.25986008,-90.02602833,drainage,NA,NA,mg
+2306300,665,Spider Lake,Iron ,46.21295507,-90.02771418,drainage,NA,NA,mg
+2307600,666,Owl Lake,Iron ,46.2832547,-89.97215408,drainage,NA,NA,mg
+2308000,1041,Pardee Lake,Vilas,46.27888,-89.93194,drainage,NA,NA,mg
+2310800,1043,Rainbow Lake,Vilas,46.24679,-89.84692,drainage,NA,NA,mg
+2313600,669,Mercer Lake,Iron,46.1583333,-90.0663889,drainage,NA,NA,mg
+2313600,670,Mercer Lake,Iron ,46.16080833,-90.06604582,drainage,NA,NA,mg
+2314100,671,Grand Portage Lake,Iron ,46.1731251,-90.04942552,drainage,NA,NA,mg
+2314300,672,Martha Lake,Iron ,46.17253029,-90.03210417,drainage,NA,NA,mg
+2316100,673,Sandy Beach Lake,Iron ,46.10615318,-89.97131819,drainage,NA,NA,mg
+2316600,674,Dead Pike Lake,Vilas ,46.10290364,-89.89891557,drainage,NA,NA,mg
+2327100,680,Benson Lake,Vilas ,46.13114499,-89.91754901,drainage,NA,NA,mg
+2327500,681,Rest Lake,Vilas,46.1386111,-89.8847222,drainage,NA,NA,mg
+2328700,682,Papoose Lake,Vilas ,46.1847647,-89.80266783,drainage,NA,NA,mg
+2328700,1040,Papoose Lake,Vilas,46.1847647,-89.80266783,drained,NA,NA,mg
+2330800,683,Upper Gresham Lake,Vilas ,46.06783554,-89.73706656,drainage,NA,NA,mg
+2335500,688,Little Crooked Lake,Vilas,46.1455051,-89.7012642,drainage,NA,NA,mg
+2340000,693,Mystery Lake,Vilas,46.05717278,-89.5673685,drainage,NA,NA,mg
+2344000,695,High Lake,Vilas ,46.15591136,-89.54866007,drainage,NA,NA,mg
+2349600,696,Fireside Lake,Rusk ,45.32048511,-91.32856298,drainage,NA,NA,mg
+2353600,697,Sand Lake,Rusk,45.3038522,-91.3532106,drainage,NA,NA,mg
+2356200,698,Four Lake,Rusk ,45.31539319,-91.44951725,drainage,NA,NA,mg
+2368500,699,Perch Lake,Rusk ,45.55381052,-91.42316312,drainage,NA,NA,mg
+2368700,700,Audie Lake,Rusk ,45.55084822,-91.43412677,drainage,NA,NA,mg
+2381900,701,Black Dan Lake,Sawyer ,45.89779857,-90.93238763,drainage,NA,NA,mg
+2387600,702,Devils Lake,Sawyer ,45.83476811,-91.33452228,drainage,NA,NA,mg
+2390800,703,Lac Courte Oreilles Lake,Sawyer ,45.89517362,-91.43457171,drainage,NA,NA,mg
+2391200,704,Grindstone Lake,Sawyer ,45.9352979,-91.41536144,drainage,NA,NA,mg
+2393700,706,Mud Lake,Sawyer ,45.7737759,-91.50149993,seepage,NA,NA,mg
+2394100,707,Little Sissabagama Lake,Sawyer ,45.76426455,-91.52109294,seepage,NA,NA,mg
+2403200,708,Bear Lake,Ashland ,45.99013624,-90.80518494,drainage,NA,NA,mg
+2406500,709,Gordon Lake,Ashland ,46.16796121,-90.61821477,drainage,NA,NA,mg
+240800,144,White Lake,Shawano ,44.67335191,-88.45060452,seepage,NA,NA,mg
+240900,145,Wilson Lake,Shawano ,44.81726142,-89.21966638,seepage,NA,NA,mg
+2410400,710,Augustine Lake,Ashland ,46.17932846,-90.46080824,drainage,NA,NA,mg
+241100,146,Wolf Lake,Portage ,44.32445208,-89.35097097,seepage,NA,NA,mg
+2417000,711,Teal Lake,Sawyer ,46.08567651,-91.10430038,drainage,NA,NA,mg
+2418600,712,Lost Land Lake,Sawyer ,46.10106854,-91.14616092,drainage,NA,NA,mg
+2430800,713,White Bass Lake,Bayfield ,46.17382269,-90.93738961,drainage,NA,NA,mg
+2433800,714,Reed Lake,Sawyer ,45.97994631,-91.24606191,seepage,NA,NA,mg
+2435800,715,Clear Lake - Staff Gage,Sawyer ,46.0961,-91.245094,drainage,NA,NA,mg
+2448000,716,Gurno Lake,Sawyer ,45.91129905,-91.37075339,seepage,NA,NA,mg
+2448700,717,Indian Lake,Sawyer ,45.93086855,-91.33641719,seepage,NA,NA,mg
+2449400,718,Antler Lake,Polk ,45.53787493,-92.42411982,seepage,NA,NA,mg
+2449800,719,Baker Lake,Washburn ,45.79540203,-91.70535766,seepage,NA,NA,mg
+2450500,720,Bass Lake,St. Croix ,45.06712288,-92.64892184,seepage,NA,NA,mg
+2450900,721,Bass Lake,Burnett ,45.7912874,-92.23429903,seepage,NA,NA,mg
+2451200,722,Bass Lake,Burnett ,45.85828135,-92.30785841,seepage,NA,NA,mg
+2451300,723,Bass Lake,Washburn ,45.91507216,-91.99779011,seepage,NA,NA,mg
+2451900,725,Bass Lake,Washburn ,45.94693825,-91.63152785,seepage,NA,NA,mg
+2452300,726,Beartrack Lake,Washburn ,46.12551181,-92.04277276,seepage,NA,NA,mg
+2452600,728,Beaver Lake,Washburn ,45.96375875,-91.57348526,seepage,NA,NA,mg
+2453300,729,Big Bass Lake,Washburn ,46.07672218,-91.9005771,seepage,NA,NA,mg
+2453500,730,Birch Island Lake,Burnett ,45.94994941,-92.14711305,seepage,NA,NA,mg
+2454000,731,Blue Lake,Bayfield ,46.40174618,-91.53353859,seepage,NA,NA,mg
+2454500,732,Boner Lake,Burnett ,45.94159182,-92.17451965,seepage,NA,NA,mg
+2456100,733,Cable Lake,Washburn ,45.86613313,-91.90983639,seepage,NA,NA,mg
+2457600,734,Clear Lake,Burnett ,45.76689589,-92.38460085,seepage,NA,NA,mg
+245800,147,John's Lake,Waushara ,44.08033239,-89.21079644,drainage,NA,NA,mg
+2458300,735,Conners Lake,Burnett ,45.91132243,-92.30304739,seepage,NA,NA,mg
+2459100,736,Crooked Lake,Burnett ,45.7982404,-92.37299541,seepage,NA,NA,mg
+2459200,737,Crooked Lake,Burnett ,45.96161929,-92.28472997,seepage,NA,NA,mg
+2459700,738,Crystal Lake,Douglas ,46.18789491,-91.95129836,seepage,NA,NA,mg
+2459800,739,Cyclone Lake,Washburn ,45.82924323,-91.94401103,seepage,NA,NA,mg
+2460700,740,Deer Lake,Burnett ,46.04287344,-92.17632248,seepage,NA,NA,mg
+2460900,741,Decrosier Lake,Washburn ,46.14608563,-91.70290825,seepage,NA,NA,mg
+2461100,742,Devils Lake,Burnett,45.897724,-92.3429714,seepage,NA,NA,mg
+2461100,743,Devils Lake,Burnett ,45.9092897,-92.33777782,seepage,NA,NA,mg
+2461400,744,Dock Lake,Washburn ,45.85699343,-91.97857009,seepage,NA,NA,mg
+2461700,745,Dubois Lake,Burnett ,45.91031609,-92.07994876,seepage,NA,NA,mg
+2463100,748,Elbow Lake,Burnett ,45.73898387,-92.39984568,seepage,NA,NA,mg
+2463300,749,Ellison Lake,Bayfield ,46.3583038,-91.54879624,seepage,NA,NA,mg
+2463500,750,Ellsworth Lake,Washburn ,45.86770728,-92.0075389,seepage,NA,NA,mg
+2464500,751,Fish Lake ,Burnett ,45.9725196,-92.11724448,seepage,NA,NA,mg
+2465200,752,Fremstadt Lake,Burnett ,45.94458465,-92.35641298,seepage,NA,NA,mg
+2465300,753,Frog Lake,Burnett ,46.02604905,-92.0860694,seepage,NA,NA,mg
+2465600,754,Horseshoe Lake,Polk ,45.32459987,-92.50989528,seepage,NA,NA,mg
+2465700,755,Geroge Lake,Bayfield ,46.37680118,-91.54019104,seepage,NA,NA,mg
+2466300,756,Godfrey Lake,Burnett ,45.72967718,-92.34366187,seepage,NA,NA,mg
+2466400,757,Goose Lake,Washburn ,45.86508532,-91.94289611,seepage,NA,NA,mg
+2466500,758,Goose Lake,Burnett ,45.97252131,-92.07143974,seepage,NA,NA,mg
+2467200,759,Green Lake,Burnett ,45.91362919,-92.19452547,seepage,NA,NA,mg
+2467900,760,Hammil lake,Bayfield ,46.26180669,-91.30337418,seepage,NA,NA,mg
+2468700,761,Hayden Lake,Burnett ,45.98183141,-92.35405736,seepage,NA,NA,mg
+2468800,762,Henderson lake,Bayfield ,46.3371603,-91.49841602,seepage,NA,NA,mg
+246900,149,Porter's Lake,Waushara ,44.09625569,-89.22236325,drainage,NA,NA,mg
+2469400,763,Hoinville Lake,Washburn ,46.02382175,-91.99977699,seepage,NA,NA,mg
+2469800,764,Horseshoe Lake,Barron ,45.62613007,-92.08711524,seepage,NA,NA,mg
+2470000,765,Horseshoe Lake,Washburn ,46.08655049,-91.91967091,seepage,NA,NA,mg
+2470600,766,Island Lake,Washburn ,45.95821795,-91.94302242,seepage,NA,NA,mg
+2470800,767,Island lake,Bayfield ,46.38684758,-91.53069597,seepage,NA,NA,mg
+2471100,769,Jerry Lake,Washburn ,45.91312242,-91.95424221,seepage,NA,NA,mg
+2471600,770,Johnson Lake,Burnett ,45.94086076,-92.31275473,seepage,NA,NA,mg
+247200,150,Norwegian Lake,Waushara ,44.14268002,-89.2169887,drainage,NA,NA,mg
+2472000,771,Kelly Lake,Bayfield ,46.35821273,-91.46054372,seepage,NA,NA,mg
+2473500,772,Lake Tahkodah,Bayfield ,46.24381377,-91.22322122,seepage,NA,NA,mg
+2473600,773,Lake Wilipyro,Bayfield ,46.25087079,-91.30978035,seepage,NA,NA,mg
+2473800,774,Lakeside Lake,Washburn ,46.06372807,-91.82222962,seepage,NA,NA,mg
+2474300,775,Larson Lake,Burnett ,45.79026743,-92.36982126,seepage,NA,NA,mg
+2474400,776,Leach Lake,Washburn ,45.67218085,-92.02150601,seepage,NA,NA,mg
+2476000,778,Little Bear Lake,Burnett ,45.98944871,-92.16063479,seepage,NA,NA,mg
+247700,151,Little Silver Lake,Waushara ,44.16952978,-89.21019065,drainage,NA,NA,mg
+2477000,779,Little McGraw Lake,Burnett ,46.11619845,-92.18024352,seepage,NA,NA,mg
+2477700,780,Little Sand Lake,Washburn ,46.15510276,-92.00130206,seepage,NA,NA,mg
+2478200,781,Long Lake,Polk ,45.45378195,-92.51327894,seepage,NA,NA,mg
+2478200,782,Long Lake - Staff Gage,Polk ,45.456886,-92.52543,seepage,NA,NA,mg
+2479000,784,Loon Lake,Douglas ,46.37842767,-91.56122219,seepage,NA,NA,mg
+2480600,785,Mack Lake,Washburn ,46.00050954,-91.89916837,seepage,NA,NA,mg
+2481600,786,McLain Lake,Washburn ,46.04806627,-91.94904525,seepage,NA,NA,mg
+2482900,787,Minnow Lake,Burnett ,45.97056179,-92.30920367,seepage,NA,NA,mg
+2483100,788,Long Lake,Polk ,45.58676593,-92.36902197,seepage,NA,NA,mg
+2483600,789,Motyka Lake,Bayfield ,46.24447022,-91.27912818,seepage,NA,NA,mg
+2484200,790,Mud Lake,Washburn ,45.94095062,-91.62167563,seepage,NA,NA,mg
+2485400,791,Mystery Lake,Burnett ,45.96038071,-92.05419279,seepage,NA,NA,mg
+2485900,792,North Twin Lake,Washburn ,46.06898591,-91.94859286,seepage,NA,NA,mg
+2486100,793,Nicaboyne Lake,Burnett ,45.98647654,-92.08022356,seepage,NA,NA,mg
+2486300,794,No Mans Lake,Washburn ,46.119637,-92.04997489,seepage,NA,NA,mg
+2486600,795,Oak Lake,Burnett ,45.93385025,-92.12827541,seepage,NA,NA,mg
+2488100,796,Pavlas Lake,Washburn ,45.70905132,-91.7829393,seepage,NA,NA,mg
+2488200,797,Pear Lake,Washburn ,46.04079365,-92.00423663,seepage,NA,NA,mg
+2488300,798,Perch Lake,St. Croix ,45.05322013,-92.69767953,seepage,NA,NA,mg
+2488600,799,Person Lake,Douglas ,46.19025492,-91.96765085,seepage,NA,NA,mg
+2489200,800,Pickerel Lake,Bayfield ,46.32739143,-91.51424205,seepage,NA,NA,mg
+2489300,801,Picture Lake,Bayfield ,46.25333895,-91.28783915,seepage,NA,NA,mg
+2489400,802,Pigeon Lake,Bayfield ,46.34228791,-91.34901472,seepage,NA,NA,mg
+2489900,803,Pine Lake,Polk ,45.58651752,-92.2933005,seepage,NA,NA,mg
+2490400,804,Pine Lake,Polk ,45.2523885,-92.55787786,seepage,NA,NA,mg
+2491000,805,Poplar Lake,Polk ,45.37972984,-92.59477782,seepage,NA,NA,mg
+2491100,806,Poquettes Lake,Burnett ,45.80965999,-92.07128704,seepage,NA,NA,mg
+2491300,807,Price Lake,Bayfield ,46.22350588,-91.2727345,seepage,NA,NA,mg
+2492100,808,Red Lake,Douglas ,46.17937141,-91.76448744,seepage,NA,NA,mg
+2492600,809,Ripley Lake,Washburn ,45.71097589,-91.85273242,seepage,NA,NA,mg
+2493100,811,Rooney Lake,Burnett ,45.96095886,-92.07448033,seepage,NA,NA,mg
+2494500,813,South Twin Lake,Washburn ,46.06210018,-91.96153653,seepage,NA,NA,mg
+2494900,814,Sand Bar Lake,Bayfield ,46.36854719,-91.52894304,seepage,NA,NA,mg
+2495000,815,Sand Lake,Polk ,45.37283759,-92.56043373,seepage,NA,NA,mg
+2495600,816,Sauntrys Pocket Lake,Douglas ,46.23187283,-91.6890195,seepage,NA,NA,mg
+2495900,817,Scovils Lake,Washburn ,46.127641,-92.02260211,seepage,NA,NA,mg
+2496100,818,Seymour Lake,Washburn ,45.78095721,-91.72166685,seepage,NA,NA,mg
+2496300,819,Shell Lake,Washburn,45.74605938,-91.9168423,seepage,NA,NA,mg
+2496800,820,Silver Lake,Burnett ,45.76845581,-92.34145227,seepage,NA,NA,mg
+2496900,821,Silver Lake,Washburn ,45.99004995,-91.82157767,seepage,NA,NA,mg
+2497000,822,Silverthorn Lake,Sawyer ,46.13260717,-91.36134475,seepage,NA,NA,mg
+2497100,823,Simms Lake,Douglas ,46.26398843,-91.67469636,seepage,NA,NA,mg
+2497400,824,Sleepy Eye Lake,Washburn ,46.10305137,-91.92476333,seepage,NA,NA,mg
+2498300,825,Spider Lake,Douglas ,46.23095351,-91.8992903,seepage,NA,NA,mg
+2498600,826,Spring Lake,Washburn ,45.92253971,-91.68345866,seepage,NA,NA,mg
+2498800,827,Little Pine Lake,Polk ,45.53456805,-92.45361801,seepage,NA,NA,mg
+2498900,828,Square Lake,Polk ,45.45232155,-92.34628682,seepage,NA,NA,mg
+2499000,829,Squaw Lake,St. Croix ,45.18083865,-92.61542931,drainage,NA,NA,mg
+250000,152,Wilson Lake,Waushara ,44.17482414,-89.17396074,drainage,NA,NA,mg
+2500100,830,Sunfish Lake,Washburn ,45.93561118,-91.95370075,seepage,NA,NA,mg
+2500500,831,Swede Lake,Polk ,45.25517598,-92.54191187,seepage,NA,NA,mg
+2501700,833,Tomahawk Lake,Bayfield ,46.36421546,-91.52059183,seepage,NA,NA,mg
+25300,6,Cedar Lake,Washington,43.3733342,-88.2637064,drainage,NA,NA,mg
+253800,154,Patridge Lake,Waupaca ,44.27616938,-88.89014646,drainage,NA,NA,mg
+254900,155,Bailey Lake,Waupaca ,44.28172871,-89.09811257,drainage,NA,NA,mg
+255300,156,Bass Lake,Waupaca ,44.28547646,-89.10599704,drainage,NA,NA,mg
+258600,157,Shadow Lake,Waupaca ,44.34580377,-89.08722935,drainage,NA,NA,mg
+258700,158,Mirror Lake,Waupaca ,44.35018901,-89.08308131,drainage,NA,NA,mg
+259600,159,Stratton Lake,Waupaca ,44.29169282,-89.18181053,drainage,NA,NA,mg
+2597700,835,Unnamed Lake,St. Croix ,45.14590211,-92.51001029,seepage,NA,NA,mg
+2598500,837,Vincent Lake,Polk ,45.54016312,-92.36312465,seepage,NA,NA,mg
+2599400,840,Ward Lake,Polk,45.59967527,-92.3196372,seepage,NA,NA,mg
+2599400,841,Ward Lake,Polk ,45.60554327,-92.32043896,seepage,NA,NA,mg
+2600500,842,Wilderness Lake,Bayfield ,46.40807897,-91.40873665,seepage,NA,NA,mg
+2600600,843,Wikerson Lake,Washburn ,45.87678613,-92.02365466,seepage,NA,NA,mg
+2601000,844,Yechout Lake,Washburn ,45.69832253,-91.78989542,seepage,NA,NA,mg
+2616200,845,Horse Lake,Polk ,45.32055151,-92.57134689,drainage,NA,NA,mg
+2616400,846,Round Lake,Polk ,45.31541425,-92.56396861,drainage,NA,NA,mg
+2621600,848,Rice Lake,Polk ,45.50158981,-92.49052117,drainage,NA,NA,mg
+2623500,849,Clear Lake,Polk ,45.26139136,-92.27865957,seepage,NA,NA,mg
+2623800,850,South Twin Lake,Polk ,45.30786395,-92.37083022,drainage,NA,NA,mg
+2623900,851,North Twin Lake,Polk ,45.31479083,-92.36901772,drainage,NA,NA,mg
+2624000,852,Pike Lake,Polk ,45.3219935,-92.3706516,seepage,NA,NA,mg
+2624900,853,Barbo Lake,Polk ,45.31598158,-92.2166339,drainage,NA,NA,mg
+2628100,855,Bone Lake,Polk,45.55578835,-92.3879736,drainage,NA,NA,mg
+2628100,856,Bone Lake,Polk ,45.53491621,-92.38919207,drainage,NA,NA,mg
+2628800,857,North White Ash Lake,Polk ,45.46289605,-92.31139367,drainage,NA,NA,mg
+2630100,858,Horseshoe Lake,Polk ,45.44294511,-92.15881519,seepage,NA,NA,mg
+2630100,859,Horseshoe Lake - Staff Gage,Polk ,45.43332,-92.17927,seepage,NA,NA,mg
+2630200,860,Echo lake,Barron ,45.44594407,-92.129702,seepage,NA,NA,mg
+2630800,861,North Lake,Barron ,45.52930752,-92.10356993,drainage,NA,NA,mg
+2631200,862,Staples Lake,Polk ,45.49761927,-92.15093213,drainage,NA,NA,mg
+2632100,863,Lake of the Woods,Barron ,45.53142057,-92.15274774,drainage,NA,NA,mg
+2638700,864,Trade Lake,Burnett ,45.6704188,-92.61696324,drainage,NA,NA,mg
+26400,7,Haneman Lake,Ozaukee ,43.3642,-87.98659,drainage,NA,NA,mg
+2640100,865,Round Lake,Burnett ,45.66172909,-92.57895342,drainage,NA,NA,mg
+2640700,866,Little Butternut Lake,Polk ,45.56810515,-92.50211336,drainage,NA,NA,mg
+2641500,867,Freedom Lake,Polk ,45.63570553,-92.56661424,drainage,NA,NA,mg
+2642000,868,Coon Lake,Polk ,45.65836004,-92.4600035,seepage,NA,NA,mg
+2642900,869,Wood Lake,Burnett,45.74522978,-92.593258,drainage,NA,NA,mg
+2649800,870,Wood Lake,Burnett ,45.74115711,-92.58199657,drainage,NA,NA,mg
+265100,160,McCrossen Lake,Waupaca ,44.33349566,-89.16027695,drainage,NA,NA,mg
+265300,161,Rainbow Lake,Waupaca ,44.34206003,-89.14991651,drainage,NA,NA,mg
+2655900,871,Taylor Lake,Burnett ,45.81187012,-92.28978998,seepage,NA,NA,mg
+265600,162,Taylor Lake,Waupaca ,44.341987,-89.14033714,drainage,NA,NA,mg
+2656200,872,Clam Lake,Burnett,45.79466979,-92.3174151,drainage,NA,NA,mg
+2656400,873,Long Lake,Burnett ,45.76584281,-92.36122807,drainage,NA,NA,mg
+2657200,874,Pokegama Lake,Burnett ,45.77935802,-92.20131381,drainage,NA,NA,mg
+2658400,875,Spencer Lake,Burnett ,45.73791055,-92.1849545,drainage,NA,NA,mg
+2661600,876,Little Sand Lake,Barron ,45.56980411,-92.0913512,drainage,NA,NA,mg
+2662400,877,Bashaw Lake,Burnett ,45.77443832,-92.14112819,drainage,NA,NA,mg
+2664500,878,Long Lake,Washburn ,45.73605047,-91.95276437,drainage,NA,NA,mg
+2664900,879,Sand Lake,Burnett ,45.75984873,-92.34018205,drainage,NA,NA,mg
+2665900,880,Somers Lake,Polk ,45.65979071,-92.34340149,drainage,NA,NA,mg
+2667300,881,McKenzie lake,Polk ,45.61031041,-92.30300583,drainage,NA,NA,mg
+2668500,882,Lamont Lake,Polk ,45.57906793,-92.28153538,drainage,NA,NA,mg
+2669300,883,Grenquist Lake,Polk ,45.5680297,-92.18429249,drainage,NA,NA,mg
+2671400,884,Burlingame Lake,Burnett ,46.01091156,-92.29756849,drainage,NA,NA,mg
+2671700,885,Tabor Lake,Burnett ,46.0283824,-92.2818966,drainage,NA,NA,mg
+2671900,886,Briggs Lake,Burnett ,46.00276629,-92.26311723,drainage,NA,NA,mg
+2672500,887,Twentysix Lake,Burnett ,46.00692003,-92.21819915,drainage,NA,NA,mg
+2673800,888,Shoal Lake,Burnett ,45.957622,-92.18876675,seepage,NA,NA,mg
+2674000,889,Hanscom Lake,Burnett ,45.97595594,-92.14368988,seepage,NA,NA,mg
+2674200,890,Des Moines Lake,Burnett ,45.99661252,-92.13501391,seepage,NA,NA,mg
+2674800,891,Little Yellow Lake,Burnett,45.92772468,-92.4210284,drainage,NA,NA,mg
+2675000,892,Bass Lake,Burnett ,45.95158496,-92.4247974,seepage,NA,NA,mg
+2675200,893,Yellow Lake,Burnett,45.9271691,-92.4207507,drainage,NA,NA,mg
+2675700,894,Austin Lake,Burnett ,45.88848871,-92.271665,drainage,NA,NA,mg
+2676800,896,Big Sand Lake,Burnett ,45.82459631,-92.21951795,drainage,NA,NA,mg
+2677200,897,Warner Lake ,Burnett ,45.79844073,-92.22202417,seepage,NA,NA,mg
+2677700,898,Gaslyn Lake,Burnett ,45.89991212,-92.11675349,drainage,NA,NA,mg
+2677900,899,Rice Lake,Burnett ,45.86788056,-92.07901449,drainage,NA,NA,mg
+267800,163,Adams Lake,Portage,44.4366393,-89.3778932,drainage,NA,NA,mg
+2678100,900,Lipsett Lake,Burnett ,45.87254596,-92.04924,drainage,NA,NA,mg
+2678300,901,Benoit Lake,Burnett ,45.88894166,-92.08955224,drainage,NA,NA,mg
+2691200,904,Spring Lake,Washburn ,46.12043916,-92.00930753,drainage,NA,NA,mg
+2691500,905,Nancy Lake,Washburn ,46.09320624,-91.98471919,drainage,NA,NA,mg
+2692200,906,Chicog Lake,Washburn ,46.05698799,-91.92286041,drainage,NA,NA,mg
+2693100,907,Cranberry Lake,Douglas ,46.19063993,-91.92799844,drainage,NA,NA,mg
+2693700,908,Bond Lake,Douglas ,46.18341672,-91.87452518,drainage,NA,NA,mg
+2694000,910,Whitefish Lake,Douglas ,46.21391195,-91.87220009,seepage,NA,NA,mg
+2694000,909,Whitefish Lake,Douglas,46.20327536,-91.8757426,seepage,NA,NA,mg
+2694000,911,Whitefish Lake - Water Level Gage (Reference Point 6),Douglas ,46.203804,-91.86767,seepage,NA,NA,mg
+2695800,912,Gilmore Lake,Washburn ,46.12268774,-91.88779661,drainage,NA,NA,mg
+2696000,913,Rice Lake,Washburn ,46.12567037,-91.8709776,drainage,NA,NA,mg
+270200,164,Collins Lake,Portage ,44.60052909,-89.34207875,drainage,NA,NA,mg
+2705000,915,Totagatic Lake,Bayfield ,46.16806199,-91.40310413,drainage,NA,NA,mg
+2705700,916,Big Bear Lake,Burnett ,46.01700343,-92.15302778,seepage,NA,NA,mg
+2706300,918,Lower McKenzie Lake,Washburn ,45.9841061,-92.02135977,drainage,NA,NA,mg
+2706500,919,Middle McKenzie Lake,Burnett ,45.94316734,-92.04097785,drainage,NA,NA,mg
+2706800,920,McKenzie Lake,Burnett,45.93272235,-92.0382387,drainage,NA,NA,mg
+2706800,921,McKenzie Lake,Burnett ,45.91830183,-92.03855323,drainage,NA,NA,mg
+2707300,922,Rocky Ridge Lake,Washburn ,45.87905306,-91.99790597,drainage,NA,NA,mg
+2709100,923,Casey Lake,Washburn ,45.94348879,-91.96792699,drainage,NA,NA,mg
+2709400,924,Loon Lake,Washburn ,45.92823472,-91.96861456,seepage,NA,NA,mg
+2709800,925,Dunn Lake,Washburn ,45.9373955,-91.93714988,drainage,NA,NA,mg
+2710100,926,McKinley Lake,Washburn ,45.9121329,-91.92401257,drainage,NA,NA,mg
+2710300,927,Lincoln Lake,Washburn ,45.91119051,-91.91128308,drainage,NA,NA,mg
+2710800,928,Matthews Lake,Washburn ,46.02350544,-91.95763682,seepage,NA,NA,mg
+2712800,929,Dilley Lake,Washburn ,45.86693179,-91.77351928,drainage,NA,NA,mg
+2714200,930,Dugan Lake,Washburn ,45.83159073,-91.62956654,drainage,NA,NA,mg
+2714500,931,Potato Lake,Washburn ,45.82029353,-91.67193665,drainage,NA,NA,mg
+2714500,932,Potato Lake - Deep Hole,Washburn ,45.823887,-91.67335,drainage,NA,NA,mg
+2715900,933,Whalen Lake,Washburn ,45.934951,-91.80981574,drainage,NA,NA,mg
+2718500,934,Bean Lake,Washburn ,45.94683246,-91.58394248,drainage,NA,NA,mg
+2720800,935,Hay Lake,Washburn ,46.00250961,-91.67882221,drainage,NA,NA,mg
+2722000,936,Sugar Bush Lake,Washburn ,46.02927793,-91.64913946,drainage,NA,NA,mg
+2724900,938,Spring Lake,Sawyer ,45.97048726,-91.42353383,drainage,NA,NA,mg
+2729700,939,Cable Lake,Bayfield ,46.22486,-91.30664325,drainage,NA,NA,mg
+2730800,940,Perry Lake,Bayfield ,46.21593773,-91.2678566,seepage,NA,NA,mg
+2731800,941,North Twin Lake,Bayfield ,46.20503837,-91.14236998,seepage,NA,NA,mg
+2734000,943,Atkins Lake,Bayfield ,46.27820305,-91.03640255,seepage,NA,NA,mg
+2734100,944,Taylor Lake,Bayfield ,46.26002452,-91.04729348,drainage,NA,NA,mg
+2734200,946,Jackson Lake,Bayfield ,46.2492668,-91.11614815,drainage,NA,NA,mg
+2734500,947,Trapper Lake,Bayfield ,46.26225833,-91.0914005,drainage,NA,NA,mg
+2741700,950,Granberry Lake,Bayfield ,46.26317856,-91.54485069,drainage,NA,NA,mg
+2742500,951,Bony Lake,Bayfield ,46.31760229,-91.5071948,drainage,NA,NA,mg
+2742700,952,Upper Eau Claire Lake,Bayfield,46.30438969,-91.500468,drainage,NA,NA,mg
+2743200,953,Birch Lake,Bayfield ,46.31923108,-91.49106944,drainage,NA,NA,mg
+2743300,954,Robinson Lake,Bayfield ,46.3272383,-91.49383578,drainage,NA,NA,mg
+2743700,955,Sweet Lake,Bayfield ,46.32983923,-91.44960167,drainage,NA,NA,mg
+2744500,956,Bass Lake,Douglas ,46.33599853,-91.75920904,drainage,NA,NA,mg
+2744700,957,Upper Ox Lake,Douglas ,46.29157115,-91.70433596,drainage,NA,NA,mg
+2747300,958,Upper Saint Croix Lake,Douglas ,46.35656039,-91.8038733,drainage,NA,NA,mg
+2753900,959,Ahmeek Lake,Bayfield ,46.52285079,-91.46626306,seepage,NA,NA,mg
+2755600,960,Beaver Lake,Bayfield ,46.41852359,-91.2702065,seepage,NA,NA,mg
+2759100,961,Cranberry Lake,Iron ,46.2937484,-89.97031479,seepage,NA,NA,mg
+2760100,962,Deep Lake,Bayfield ,46.5553306,-91.45981214,seepage,NA,NA,mg
+2761400,964,Esox Lake,Bayfield ,46.36961648,-91.25360998,drainage,NA,NA,mg
+2761900,965,Five Island Lake,Bayfield ,46.51283095,-91.34856888,seepage,NA,NA,mg
+2762700,967,Half Moon lake,Bayfield ,46.55934416,-91.39742373,seepage,NA,NA,mg
+2763300,968,Hewitt Lake,Iron ,46.30057453,-89.97668329,seepage,NA,NA,mg
+2767100,970,Long Lake,Bayfield,46.5816081,-91.3385232,seepage,NA,NA,mg
+2767300,971,Loon Lake - Staff Gage,Ashland ,46.350147,-90.6463,seepage,NA,NA,mg
+2767600,972,Lost Lake,Bayfield ,46.5347631,-91.38080154,seepage,NA,NA,mg
+2768900,973,Moon Lake,Bayfield ,46.55464322,-91.40902526,seepage,NA,NA,mg
+2770800,975,Perch Lake,Bayfield ,46.54222838,-91.38671036,seepage,NA,NA,mg
+2772800,977,Rush Lake,Douglas ,46.48917525,-91.55495887,seepage,NA,NA,mg
+278600,165,Rinehart Lake,Portage ,44.51883375,-89.26865116,drainage,NA,NA,mg
+279300,166,Graham Lake,Waupaca ,44.56636289,-89.15184097,drainage,NA,NA,mg
+279700,167,Bear Lake,Waupaca ,44.41298948,-88.94283104,drainage,NA,NA,mg
+284300,168,Campbell Lake,Waupaca ,44.5570981,-89.00387487,drainage,NA,NA,mg
+2858100,979,Amnicon Lake,Douglas,46.48299648,-92.0671365,drainage,NA,NA,mg
+2858300,980,Dowling Lake,Douglas ,46.47405979,-92.04487653,drainage,NA,NA,mg
+28600,8,Lenwood Lake,Washington ,43.4465825,-88.16290981,drainage,NA,NA,mg
+286400,169,Lily Lake,Marathon ,44.7774945,-89.24047137,drainage,NA,NA,mg
+2865000,982,Nebagamon Lake,Douglas ,46.50253839,-91.70130217,drainage,NA,NA,mg
+2866000,983,Steele Lake,Douglas ,46.51329591,-91.76289671,seepage,NA,NA,mg
+2866200,984,Minnesuing Lake,Douglas ,46.46759449,-91.7448792,drainage,NA,NA,mg
+2874700,986,Crystal Lake,Bayfield ,46.55178492,-91.47581866,drainage,NA,NA,mg
+289400,170,Tree Lake,Portage ,44.67289804,-89.27386944,drainage,NA,NA,mg
+2896600,987,Porcupine Lake,Bayfield ,46.28681436,-91.15439651,drainage,NA,NA,mg
+2897300,1048,Crystal Lake,Bayfield ,46.24885,-91.14201,drainage,NA,NA,mg
+2901100,990,Bass Lake - Staff Gage,Bayfield ,46.444244,-91.264336,seepage,NA,NA,mg
+2901100,989,Bass Lake,Bayfield ,46.44147762,-91.26341229,seepage,NA,NA,mg
+2903200,991,Hart Lake,Bayfield ,46.5185413,-91.36190041,drainage,NA,NA,mg
+2903400,992,McCarry Lake,Bayfield ,46.5173657,-91.37187241,drainage,NA,NA,mg
+2903600,993,Muskelllunge Lake,Bayfield ,46.49792245,-91.37486909,drainage,NA,NA,mg
+2904000,994,Pike Lake,Bayfield ,46.53637203,-91.37115036,drainage,NA,NA,mg
+2908500,995,Upson Lake,Iron ,46.38966117,-90.43952954,drainage,NA,NA,mg
+2909000,996,Weber Lake,Iron ,46.41081497,-90.40079551,seepage,NA,NA,mg
+2914800,997,English Lake,Ashland ,46.31287447,-90.76823302,drainage,NA,NA,mg
+2918600,998,Spider Lake,Ashland ,46.23303884,-90.85951126,drainage,NA,NA,mg
+2928400,999,O'Brien Lake,Iron ,46.29773134,-90.39796021,drainage,NA,NA,mg
+2934800,1000,Long Lake,Ashland ,46.25952948,-90.64586931,drainage,NA,NA,mg
+2935600,1001,Eureka Lake,Ashland ,46.28894932,-90.57922805,drainage,NA,NA,mg
+2952100,1004,Stateline Lake,Vilas ,46.25897322,-89.71183009,drainage,NA,NA,mg
+2952500,1005,Crab Lake,Vilas ,46.20382095,-89.71353039,drainage,NA,NA,mg
+2953200,1028,Armour Lake,Vilas,46.2216,-89.71985,drainage,NA,NA,mg
+2953500,1031,Crab Lake,Vilas,46.1974,-89.72674,drainage,NA,NA,mg
+2954800,1010,Oxbow Lake,Vilas ,46.24089354,-89.68285674,drainage,NA,NA,mg
+2954800,1039,Oxbow Lake,Vilas,46.24089354,-89.68285674,drainage,NA,NA,mg
+2957000,1037,Katinka Lake,Vilas,46.20529,-89.79278,drained,NA,NA,mg
+2960200,1014,Sanborn Lake,Vilas ,46.1998032,-89.54687741,drainage,NA,NA,mg
+2960300,1015,Morton Lake,Vilas ,46.18909188,-89.58018275,drainage,NA,NA,mg
+2969300,1020,Tenderfoot Lake,Vilas ,46.2260599,-89.5293153,drainage,NA,NA,mg
+310500,171,Mayflower Lake,Marathon ,44.91194985,-89.25495091,seepage,NA,NA,mg
+321300,172,Long Lake,Shawano ,44.69709741,-88.64104109,drainage,NA,NA,mg
+323800,173,Loon Lake,Shawano ,44.83353569,-88.51054208,drainage,NA,NA,mg
+326400,174,White Clay Lake,Shawano ,44.80074709,-88.40470476,drainage,NA,NA,mg
+337600,175,Moose Lake,Langlade ,45.07523098,-89.04904461,drainage,NA,NA,mg
+337600,176,Moose Lake - Staff Gage,Langlade ,45.074287,-89.05054,drainage,NA,NA,mg
+345100,182,Big Lake,Shawano ,44.92808026,-88.76759909,drainage,NA,NA,mg
+365500,183,White Lake,Langlade ,45.16447881,-88.76820118,drainage,NA,NA,mg
+37900,10,Crooked Lake,Sheboygan ,43.62303815,-88.15644351,drainage,NA,NA,mg
+387200,186,Otter Lake,Langlade ,45.44365324,-89.18634657,drainage,NA,NA,mg
+387200,185,Otter Lake,Langlade,45.4419056,-89.1906739,drainage,NA,NA,mg
+388500,187,Crane Lake,Forest ,45.41154482,-88.89227888,drainage,NA,NA,mg
+388700,188,Saint Johns Lake,Forest ,45.43978431,-88.87741317,seepage,NA,NA,mg
+390600,191,Mole Lake,Forest ,45.4792017,-88.97688846,drainage,NA,NA,mg
+392100,192,Bishop Lake,Forest ,45.48780564,-89.01415499,drainage,NA,NA,mg
+415000,197,Pensaukee Lake,Shawano ,44.81608817,-88.38990252,drainage,NA,NA,mg
+417300,198,Ada Lake,Langlade ,45.37177528,-88.73651189,seepage,NA,NA,mg
+417400,199,Archibald Lake,Oconto ,45.28299922,-88.5866449,seepage,NA,NA,mg
+417400,200,Archibald Lake - Staff Gage,Oconto ,45.28162,-88.59973,seepage,NA,NA,mg
+417900,201,Bass Lake,Oconto ,45.27634967,-88.62091917,seepage,NA,NA,mg
+418000,202,Bear Paw Lake,Oconto ,45.18138252,-88.39409948,seepage,NA,NA,mg
+418300,203,Berry Lake,Oconto,44.8875,-88.4722222,seepage,NA,NA,mg
+418300,204,Berry Lake,Oconto ,44.88920668,-88.47905223,seepage,NA,NA,mg
+418700,205,Boot Lake,Oconto,45.27163496,-88.6331618,seepage,NA,NA,mg
+41900,11,Dickman Lake,Fon du Lac ,43.59070071,-88.22917196,seepage,NA,NA,mg
+421600,206,Grindle Lake - Staff Gage,Oconto ,45.23316,-88.370834,seepage,NA,NA,mg
+421800,207,Halfmoon Lake,Oconto ,45.18588363,-88.20228521,seepage,NA,NA,mg
+42400,12,Aubum Lake,Fon du Lac ,43.59874305,-88.20671234,drainage,NA,NA,mg
+425600,208,Paya Lake,Oconto ,45.27601723,-88.48478687,seepage,NA,NA,mg
+425600,209,Paya Lake - Staff Gage,Oconto ,45.27279,-88.48794,seepage,NA,NA,mg
+427300,210,Shay Lake,Oconto ,45.25946764,-88.64622124,seepage,NA,NA,mg
+427500,211,Smoke Lake,Oconto ,45.34493545,-88.59037928,drainage,NA,NA,mg
+427900,212,Star Lake,Oconto ,45.22658411,-88.58509273,seepage,NA,NA,mg
+42800,13,Cedar Lake,Fon du Lac ,43.66049116,-88.19088962,seepage,NA,NA,mg
+428100,213,Surprise Lake,Oconto ,45.35216649,-88.60762664,seepage,NA,NA,mg
+43700,14,Mud Lake,Fon du Lac ,43.65695195,-88.22323438,drainage,NA,NA,mg
+43900,15,Kettle Moraine Lake,Fon du Lac ,43.65326715,-88.2103188,seepage,NA,NA,mg
+439500,214,Waubee Lake,Oconto ,45.3453033,-88.44221501,seepage,NA,NA,mg
+439800,217,Wheeler Lake - Staff Gage,Oconto ,45.30947,-88.47362,seepage,NA,NA,mg
+439800,216,Wheeler Lake,Oconto ,45.31883275,-88.47614941,seepage,NA,NA,mg
+439800,215,Wheeler Lake,Oconto,45.31857896,-88.4828845,seepage,NA,NA,mg
+447000,218,White Lake,Oconto ,45.03008622,-88.24979859,drainage,NA,NA,mg
+45100,16,Cedar Lake,Manitowoc ,43.92490459,-87.93845927,seepage,NA,NA,mg
+45200,17,Crystal Lake,Sheboygan ,43.80633513,-88.01742686,seepage,NA,NA,mg
+455300,220,Wescott Lake,Oconto ,45.06699616,-88.25703002,drainage,NA,NA,mg
+457300,221,Pickerel Lake,Oconto ,45.19391848,-88.19789548,drainage,NA,NA,mg
+466900,222,Explosion Lake,Oconto ,45.31414408,-88.64405577,drainage,NA,NA,mg
+470600,223,John Lake,Oconto ,45.33691193,-88.49253085,drainage,NA,NA,mg
+479300,224,Trump Lake,Forest ,45.47610791,-88.65646437,drainage,NA,NA,mg
+487500,225,Maiden Lake,Langlade ,45.26930258,-88.53605405,drainage,NA,NA,mg
+49400,18,Weyers Lake,Marathon ,44.0407612,-87.73134195,seepage,NA,NA,mg
+494200,226,Rose Lake,Langlade ,45.23234287,-88.71932463,drainage,NA,NA,mg
+498800,227,Newton Lake,Marathon ,45.36863543,-88.11620006,seepage,NA,NA,mg
+499000,228,Boundary Lake,Oconto ,45.26144949,-88.31171809,drainage,NA,NA,mg
+501200,229,Hilbert Lake,Marinette ,45.70884915,-88.41582845,seepage,NA,NA,mg
+502000,231,LaFaye Lake,Marinette ,45.71333118,-88.39333756,seepage,NA,NA,mg
+502300,232,Little Newton Lake,Marathon ,45.36582294,-88.12427682,seepage,NA,NA,mg
+503300,233,Oneonta Lake,Marinette ,45.71838693,-88.4190854,seepage,NA,NA,mg
+5035724,1022,"South Fork Pheasant Branch-Detention Outlet-At Middleton, WI",Dane,44.58610379,-87.9817702,drainage,NA,NA,mg
+5039050,1023,"GLADHURST LANE DETENTION POND NEAR LAUDERDALE, WI",Walworth,44.58610379,-87.9817702,drainage,NA,NA,mg
+504300,234,Rost Lake,Oconto ,45.05613391,-88.13995938,seepage,NA,NA,mg
+518300,235,Montana Lake,Marinette ,45.04843863,-88.11588894,drainage,NA,NA,mg
+519700,236,Underwood Lake - Staff Gage,Oconto ,45.045612,-88.24212,seepage,NA,NA,mg
+523300,237,Gilas Lake,Marinette ,45.16195348,-88.17300833,drainage,NA,NA,mg
+528500,239,Elbow Lake,Marinette ,45.39185822,-88.10829195,drainage,NA,NA,mg
+530500,240,Mary Lake,Marinette ,45.30413509,-87.81614299,drainage,NA,NA,mg
+530700,241,Stephenson Lake,Marinette ,45.32243655,-87.8132742,drainage,NA,NA,mg
+533600,242,Thunder Lake,Marinette ,45.25461732,-88.24144084,drainage,NA,NA,mg
+537900,243,McCaslin Lake,Marinette,45.37802215,-88.380109,drainage,NA,NA,mg
+5519266,1024,Wabikon Lake,Forest,45.5574647,-88.7670556,drainage,NA,NA,mg
+556900,244,Wabikon Lake,Forest ,45.55869454,-88.77831015,drainage,NA,NA,mg
+5570032,1025,Mud Lake,Columbia,43.4238749,-89.27594959,drainage,NA,NA,mg
+585100,246,Cosgrove Lake,Florence ,45.89388237,-88.1652623,seepage,NA,NA,mg
+586800,1036,Imogene Lake,Vilas,45.99,-89.03,seepage,NA,NA,mg
+589800,249,Mud Lake,Florence ,45.93693733,-88.24583921,seepage,NA,NA,mg
+614200,250,Wolf Lake,Marinette ,45.41955016,-87.9172237,drainage,NA,NA,mg
+614900,251,Island Lake,Marinette ,45.42469331,-87.94252175,drainage,NA,NA,mg
+617900,252,Town Corner Lake,Marinette ,45.54210333,-88.05967082,drainage,NA,NA,mg
+626200,253,Duck Lake,Marinette ,45.4954935,-88.1326979,drainage,NA,NA,mg
+632800,254,Coleman Lake,Marinette ,45.60973826,-88.26885394,drainage,NA,NA,mg
+633100,255,Moon Lake,Marinette ,45.62693223,-88.25891882,drainage,NA,NA,mg
+63700,20,Spring Lake,Manitowoc ,43.96897075,-87.89580737,seepage,NA,NA,mg
+64000,21,Pigeon Lake,Manitowoc ,43.98689251,-87.87387125,seepage,NA,NA,mg
+642100,256,Fischer Lake,Florence ,45.72578463,-88.10602548,drainage,NA,NA,mg
+650000,257,Bush Lake,Florence ,45.76556272,-88.30583284,drainage,NA,NA,mg
+650500,258,Ellwood Lake,Florence ,45.85831516,-88.14237781,drainage,NA,NA,mg
+653700,260,Patten Lake,Florence ,45.85418223,-88.41986674,drainage,NA,NA,mg
+653900,261,Price Lake,Florence ,45.85675932,-88.39939146,drainage,NA,NA,mg
+672300,262,Sea Lion Lake,Florence ,45.87744133,-88.32286903,drainage,NA,NA,mg
+67400,22,Silver Lake,Manitowoc ,44.0697885,-87.73697184,drainage,NA,NA,mg
+677100,263,Fay Lake,Florence ,45.86728814,-88.63757973,drainage,NA,NA,mg
+677400,264,Long Lake,Florence,45.84968145,-88.6670665,drainage,NA,NA,mg
+679300,265,Halsey Lake,Florence ,45.84804234,-88.63282017,drainage,NA,NA,mg
+68300,23,Bullhead Lake,Manitowoc ,44.10334256,-88.03720851,seepage,NA,NA,mg
+683000,266,Stevens Lake,Forest ,45.92601484,-88.70274446,drainage,NA,NA,mg
+68600,24,Round Lake,Calumet ,44.1527975,-88.04911773,seepage,NA,NA,mg
+692600,268,Three Johns Lake,Forest ,45.92319464,-88.98029623,seepage,NA,NA,mg
+692900,270,Franklin Lake,Forest,45.9252352,-88.9987382,drainage,NA,NA,mg
+692900,269,Franklin Lake,Forest ,45.93554158,-89.0014066,drainage,NA,NA,mg
+702800,271,Railroad Lake,Florence ,45.88430957,-88.13719638,drainage,NA,NA,mg
+703300,272,Montgomery Lake,Florence ,45.91415228,-88.1641427,drainage,NA,NA,mg
+704200,273,Fisher Lake,Florence ,45.91952539,-88.2458222,drainage,NA,NA,mg
+706900,274,Boot Lake,Florence ,45.95569258,-88.41784796,drainage,NA,NA,mg
+716800,275,Kentuck Lake,Vilas,45.99412336,-88.9826295,drainage,NA,NA,mg
+716800,276,Kentuck Lake,Vilas ,45.98521689,-88.99981168,drainage,NA,NA,mg
+72800,25,Schisel Lake,Manitowoc ,44.12145617,-87.81983138,drainage,NA,NA,mg
+740700,280,Wandawega Lake,Walworth ,42.74338896,-88.56699482,seepage,NA,NA,mg
+740900,281,Lily Lake,Kenosha ,42.56325826,-88.21252821,seepage,NA,NA,mg
+741200,282,North Lake,Walworth,42.74390169,-88.6292696,seepage,NA,NA,mg
+741500,284,Pleasant Lake,Walworth ,42.7878957,-88.5518617,seepage,NA,NA,mg
+741500,283,Pleasant Lake,Walworth,42.79084599,-88.55648959,seepage,NA,NA,mg
+741600,285,Rockland Lake,Racine,42.6761283,-88.2492572,seepage,NA,NA,mg
+741600,286,Rockland Lake,Racine ,42.67657972,-88.25270459,seepage,NA,NA,mg
+741700,287,Silver Lake,Walworth ,42.72640084,-88.57078458,seepage,NA,NA,mg
+741800,288,Swift Lake,Walworth ,42.8176978,-88.5129896,seepage,NA,NA,mg
+747900,294,Silver Lake,Kenosha,42.55001856,-88.1653652,drainage,NA,NA,mg
+748800,295,Flanagan Lake,Kenosha ,42.61132559,-88.17927399,seepage,NA,NA,mg
+750300,296,Browns Lake,Racine,42.68057276,-88.241757,drainage,NA,NA,mg
+755600,298,Mill Lake,Walworth,42.7655687,-88.5570452,drainage,NA,NA,mg
+756700,301,Ivanhoe Lake,Walworth ,42.58309685,-88.34826022,drainage,NA,NA,mg
+759800,303,Eagle Lake,Racine,42.7083512,-88.1153641,drainage,NA,NA,mg
+761700,307,Wind Lake,Racine,42.81334964,-88.1420325,drainage,NA,NA,mg
+762400,308,Big Muskego Lake,Waukesha,42.8525157,-88.1306438,drainage,NA,NA,mg
+768800,313,Lulu Lake,Walworth ,42.83311042,-88.44973318,drainage,NA,NA,mg
+770600,314,Spring Lake,Waukesha ,42.91463275,-88.37221514,drainage,NA,NA,mg
+77300,26,Becker Lake,Calumet ,44.13089759,-88.04772566,drainage,NA,NA,mg
+774200,315,Bean Lake,Jefferson ,43.05819473,-88.94465374,seepage,NA,NA,mg
+774400,316,Beaver Lake,Waukesha,43.12361845,-88.3614848,seepage,NA,NA,mg
+77500,27,Long Lake,Manitowoc ,44.13834421,-88.03791079,drainage,NA,NA,mg
+775000,317,Clear Lake,Rock ,42.79943689,-88.97949008,drainage,NA,NA,mg
+77600,28,Boot Lake,Calumet ,44.14647208,-88.04505537,seepage,NA,NA,mg
+776000,318,Goose Lake,Columbia ,43.31873151,-89.36594494,seepage,NA,NA,mg
+778100,319,Lower Genesee Lake,Waukesha ,43.04426828,-88.48036157,drainage,NA,NA,mg
+778300,321,Middle Genesee Lake,Waukesha ,43.05091368,-88.47921537,seepage,NA,NA,mg
+778300,320,Middle Genesee Lake,Waukesha,43.0475,-88.4797222,seepage,NA,NA,mg
+779200,322,Pine Lake,Waukesha,43.125007,-88.3903744,seepage,NA,NA,mg
+779300,323,Pretty Lake,Waukesha ,42.95497772,-88.49890784,seepage,NA,NA,mg
+783730,325,"ESSER'S POND AT MIDDLETON, WI",Dane,43.09277,-89.5229,drainage,NA,NA,mg
+783740,326,Tiedemans Pond,Dane,43.0902731,-89.5048432,seepage,NA,NA,mg
+783750,328,Strickers Pond,Dane ,43.08712604,-89.50954045,seepage,NA,NA,mg
+783750,327,Strickers Pond,Dane,43.0872176,-89.5098433,seepage,NA,NA,mg
+793600,329,Delavan Lake,Walworth,42.59057109,-88.6337134,drainage,NA,NA,mg
+795100,330,Turtle Lake,Walworth,42.72917917,-88.6820488,drainage,NA,NA,mg
+802600,331,Lake Kegonsa,Dane,42.95416667,-89.2797222,drainage,NA,NA,mg
+803700,332,Lake Waubesa,Dane,43.00888889,-89.3052778,drainage,NA,NA,mg
+804600,333,Lake Monona,Dane,43.0633297,-89.3970636,drainage,NA,NA,mg
+805000,334,Lake Wingra,Dane,43.05777428,-89.4062305,drainage,NA,NA,mg
+805400,335,Lake Mendota,Dane,43.09832875,-89.4078969,drainage,NA,NA,mg
+808700,336,Lake Koshkonong,Jefferson,42.85750645,-88.9409429,drainage,NA,NA,mg
+809600,337,Lake Ripley,Jefferson,43.0055567,-89.0014991,drainage,NA,NA,mg
+809800,338,Hope Lake,Jefferson,43.02111195,-88.9878876,drainage,NA,NA,mg
+809800,339,Hope Lake,Jefferson ,43.02486934,-88.98409053,drainage,NA,NA,mg
+81200,29,Chilton Millpond 75,Calumet,44.02415808,-88.1684342,drainage,NA,NA,mg
+813100,340,Red Cedar Lake,Jefferson ,42.9768446,-88.98356222,seepage,NA,NA,mg
+816600,341,Rice Lake,Walworth,42.7747335,-88.6992714,drainage,NA,NA,mg
+816800,342,Whitewater Lake,Walworth,42.7502896,-88.706494,drainage,NA,NA,mg
+823700,343,Goose Lake,Jefferson ,43.04969899,-88.58245601,drainage,NA,NA,mg
+827500,345,Upper Nashotah Lake,Waukesha ,43.08545303,-88.42891303,drainage,NA,NA,mg
+828000,346,Nagawicka Lake,Waukesha,43.06306418,-88.402319,drainage,NA,NA,mg
+828600,347,Bark Lake,Washington ,43.22032967,-88.20916587,drainage,NA,NA,mg
+82900,30,Lily Lake,Brown ,44.42601077,-87.85274858,seepage,NA,NA,mg
+835800,348,Fox Lake,Dodge,43.5827641,-88.9351102,drainage,NA,NA,mg
+837100,349,Lost Lake,Dodge ,43.44359261,-88.97000284,drainage,NA,NA,mg
+837300,350,Chub Lake,Dodge ,43.22370928,-88.89229057,drainage,NA,NA,mg
+847100,351,Hahns Lake,Jefferson ,43.13551827,-88.78319674,drainage,NA,NA,mg
+850100,355,Upper Oconomowoc Lake,Waukesha,43.10917355,-88.453987,drainage,NA,NA,mg
+850800,358,North Lake,Waukesha ,43.1502789,-88.38200736,drainage,NA,NA,mg
+850800,357,North Lake,Waukesha,43.145562,-88.3925968,drainage,NA,NA,mg
+85200,31,Heidmann Lake,Kewaunee ,44.3449789,-87.71304207,drainage,NA,NA,mg
+852400,359,Lake Keesus,Waukesha,43.16583997,-88.3095393,drainage,NA,NA,mg
+85300,32,Engledinger Lake,Kewaunee ,44.35175927,-87.71470737,drainage,NA,NA,mg
+853200,360,Friess Lake,Washington ,43.24449168,-88.27640461,drainage,NA,NA,mg
+85400,33,Shea Lake,Kewaunee ,44.36002525,-87.71344552,drainage,NA,NA,mg
+855200,361,Druid Lake,Washington ,43.27798276,-88.40754668,drainage,NA,NA,mg
+858300,362,Pike Lake,Washington,43.32111297,-88.3348185,drainage,NA,NA,mg
+872600,364,Goose Lake,Dane ,43.00080925,-89.48871263,seepage,NA,NA,mg
+872800,365,Morse Pond,Dane,43.01749699,-89.5342883,seepage,NA,NA,mg
+873950,366,Graber Pond,Dane,43.1197168,-89.5070653,seepage,NA,NA,mg
+8900,4,Forest Lake,Fon du Lac ,43.60762834,-88.16719663,seepage,NA,NA,mg
+903700,367,Yellowstone Lake,Lafayette,42.757224,-89.9576246,drainage,NA,NA,mg
+93100,34,Lake Europe,Door ,45.27262917,-86.98636507,seepage,NA,NA,mg
+94200,35,East Alaska Lake,Kewaunee ,44.54568784,-87.49908802,drainage,NA,NA,mg
+94300,36,West Alaska Lake,Kewaunee ,44.54064373,-87.50587775,seepage,NA,NA,mg
+94700,37,Krohns Lake,Kewaunee ,44.58330353,-87.48855371,drainage,NA,NA,mg
+968200,370,Ament Lake,Lincoln ,45.41734585,-89.51181065,seepage,NA,NA,mg
+972500,376,Bobcat Lake,Oneida ,45.85026465,-89.75737623,seepage,NA,NA,mg
+978500,380,Crescent Lake,Oneida ,45.89450149,-89.75555529,seepage,NA,NA,mg
+978900,381,Crystal Lake,Dane ,43.29040412,-89.62304764,seepage,NA,NA,mg
+979000,382,Crystal Lake,Columbia ,43.53104822,-89.25400573,seepage,NA,NA,mg
+979100,383,Crystal Lake,Lincoln ,45.54195299,-89.7066446,seepage,NA,NA,mg
+980900,385,Devils Lake,Sauk ,43.41736213,-89.73163207,drainage,NA,NA,mg
+980900,384,Devils Lake,Sauk,43.42638889,-89.7277778,drainage,NA,NA,mg
+984400,391,Fetke Lake,Oneida ,45.68933519,-89.47017582,seepage,NA,NA,mg
+985000,393,Fish Lake (Hancock),Waushara,44.1188627,-89.477621,seepage,NA,NA,mg
+985100,395,Fish Lake ,Dane ,43.28754854,-89.65221783,seepage,NA,NA,mg
+985100,394,Fish Lake,Dane,43.28387815,-89.6542885,seepage,NA,NA,mg
+994800,404,Geroge Lake,Columbia ,43.52221917,-89.38100997,seepage,NA,NA,mg
+994900,405,Lake Huron,Waushara,44.19563889,-89.4174722,seepage,NA,NA,mg
+997300,408,Lawrence Lake,Langlade ,45.25956099,-88.98283809,seepage,NA,NA,mg
+998100,409,Little Bass Lake,Marathon ,44.72466829,-89.44304927,seepage,NA,NA,mg
+999200,410,Little Frog Lake,Marathon ,44.76218296,-89.36911359,seepage,NA,NA,mg
+NA,2,"PATS POND NEAR MOUNT VERNON, WI",Dane,44.58610379,-87.9817702,NA,NA,NA,mg

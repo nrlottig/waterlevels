@@ -57,7 +57,7 @@ ggplot() +
 ggsave(filename = "graphics/gnet_map.png",units="in",dpi=300)
 
 #BoxPlots
-dat.box <- dat.gnet[,c(5,10:40)]
+dat.box <- dat.gnet[,c(5,10:41)]
 dat.box.long <- dat.box %>% gather(key = "key",value = "value",-slope_group)
 ggplot(data = dat.box.long) + 
   geom_boxplot(aes(x=as.factor(slope_group),y=value,color=as.factor(slope_group))) + 
@@ -87,7 +87,7 @@ dat.long <- dat.gnet %>% gather(key = variable,value = value,-refcols,-respcols)
 
 p.out <- ggplot(dat.long,aes(x=value,y=mean)) + geom_point(aes(color=as.factor(slope_group))) +
   geom_smooth(method=lm, se=FALSE) + 
-  facet_wrap(vars(ECO_LANDSC,variable),scales="free") +
+  facet_wrap(vars(variable,ECO_LANDSC),scales="free") +
   scale_color_manual(name="Lake Group",
                      labels=c("Low Recharge","Regional Average","High Recharge"),
                      values=c(rgb(27,158,119,255,maxColorValue = 255),

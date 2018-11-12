@@ -52,11 +52,18 @@ dat <- ecocontext_riparian %>% select(-FID,
   select(everything(),-contains("W_")) %>% 
   filter(WBIC != 783730) %>% 
   filter(WBIC != 2014700) %>% 
-  filter(WBIC != 2017500)
+  filter(WBIC != 2017500) %>% 
+  mutate(MeanDepth = replace(MeanDepth,MeanDepth==0,NA))
 #get Conductivity data
 Conductivity_final <- read_csv("data/Conductivity_final.csv")
 dat_cond <- Conductivity_final %>% select(WBIC,final_value) %>% rename(cond=final_value)
 dat <- dat %>% left_join(dat_cond)
+#get Ca and Mg Data
+CaMg <- read_csv("data/CaMg_20181109.csv")
+dat_cations <- CaMg %>% select(WBIC,mg_average,ca_average) %>% 
+  mutate(cation_ratio = (ca_average/40.078)/(mg_average/24.305)) %>% 
+  distinct(WBIC,.keep_all = TRUE)
+dat <- dat %>% left_join(dat_cations)
 #get elevation data
 lake_elevation <- read_excel("data/seepage_lake_shed_elev.xlsx")
 dat_elevation <- lake_elevation %>% select(WBIC,lake_MEAN,watershed_MIN,elevation_difference)
@@ -72,6 +79,11 @@ seepage_lake_slope_data <- read_csv("data/seepage_lake_slope_data.csv") %>%
   mutate(mean_ann_wdrl_gals = replace(mean_ann_wdrl_gals,is.na(mean_ann_wdrl_gals),0)) %>%
   distinct(WBIC,.keep_all = TRUE)
 dat <- dat %>% left_join(seepage_lake_slope_data)
+
+#reduce data to seepage lakes
+dat.gnet <- read_csv("data/Gnet_slopes.csv") %>% select(WBIC)
+dat <- dat %>% right_join(dat.gnet)
+
 
 #cleanup data 
 dat <- remove_zero_cols(as.data.frame(dat))
@@ -104,9 +116,5 @@ trans.data <- function(x) {
 dat_transform <- dat2 %>% 
   mutate_all(funs(trans.data))
 dat_final <- cbind(dat1[,refcols],dat_transform)
-#get Ca and Mg Data
-CaMg <- read_csv("data/CaMg.csv")
-dat_cations <- CaMg %>% select(WBIC,CaConcentration,MgConcentration) %>% 
-  mutate(cation_ratio = CaConcentration/MgConcentration)
-dat_final <- dat_final %>% left_join(dat_cations)
 write_csv(dat_final,"data/ecocontext_transformed_riparian.csv")
+write_csv(dat,"data/ecocontext_riparian.csv")
