@@ -87,7 +87,7 @@ dat.long <- dat.gnet %>% gather(key = variable,value = value,-refcols,-respcols)
 
 p.out <- ggplot(dat.long,aes(x=value,y=mean)) + geom_point(aes(color=as.factor(slope_group))) +
   geom_smooth(method=lm, se=FALSE) + 
-  facet_wrap(vars(variable,ECO_LANDSC),scales="free") +
+  facet_wrap(vars(variable),scales="free") +
   scale_color_manual(name="Lake Group",
                      labels=c("Low Recharge","Regional Average","High Recharge"),
                      values=c(rgb(27,158,119,255,maxColorValue = 255),
@@ -95,7 +95,7 @@ p.out <- ggplot(dat.long,aes(x=value,y=mean)) + geom_point(aes(color=as.factor(s
                               rgb(117,112,179,255,maxColorValue = 255))) +
   labs(y="Groundwater Recharge (mmd)",x="Driver Value")
 p.out
-ggsave(filename = "graphics/Eco_GNET.png",plot = p.out,width = 24,height = 24,units="in",dpi = 300,device = "png")
+ggsave(filename = "graphics/GNET.png",plot = p.out,width = 12,height = 12,units="in",dpi = 300,device = "png")
 
 ##########Random Forest Modeling
 
