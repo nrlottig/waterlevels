@@ -28,7 +28,7 @@ dat <- dat %>% filter(deltaS_mmd <= 17) %>%
   mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==968800 & deltaS_mmd< -15,NA)) %>% 
   mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==2092500 & deltaS_mmd< -7,NA)) %>% drop_na(deltaS_mmd)
 
-ggplot(data = dat, aes(x=PE_mmd,y=deltaS_mmd)) + geom_point() + facet_wrap(vars(WBIC),scales = "free_y")
+ggplot(data = dat, aes(x=PE_mmd,y=deltaS_mmd)) + geom_point() + facet_wrap(vars(WBIC),scales = "free")
 ####Look at the data
 str(dat)
 summary(dat)
@@ -119,8 +119,8 @@ params1 <- c("BB","mu.a","mu.b", "sigma.y","sigma.B","rho.B")
 # rho: covarainces of alpha and beta
 # 
 # MCMC settings
-ni <- 10000
-nb <- 1000
+ni <- 3000
+nb <- 2000
 nc <- 3
 nt <- 1
 # (nt <- ceiling((ni-nb)*nc/1500))
@@ -137,7 +137,8 @@ print(out, dig = 3)
 BugsOut <- out$summary
 write.csv(BugsOut, "GW_Models/BUGSutputSummary.csv", row.names = T)
 
-
+sims <- data.frame(mu.a = out$sims.list$mu.a,mu.b=out$sims.list$mu.b)
+write_csv(sims,"data/gnet_mu_sims.csv")
 #Identify lakes that have different gnets from regional pattern
 SlopeDiff <- matrix(NA, ncol=J, nrow=out$mcmc.info$n.samples)
 for(i in 1:J){
