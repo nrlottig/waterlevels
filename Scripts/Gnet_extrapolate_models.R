@@ -1,5 +1,10 @@
 library(tidyverse)
 library(lubridate)
+library(foreach)
+library(doParallel)
+library(iterators)
+
+registerDoParallel(cores = 7)
 
 # ####The Data
 # Gnet_slopes <- read_csv("data/Gnet_slopes.csv") %>% select(WBIC)
@@ -31,16 +36,23 @@ for(i in 1:length(lakes)) {
     dplyr:::select(year,Evap,Precip) %>% 
     group_by(year) %>% 
     summarise_all(funs(sum))
+  ggplot(data= met_summary) + geom_line(aes(x=year,y=Precip)) + geom_line(aes(x=year,y=Evap))
   
-  S = matrix(nrow = nrow(dat),ncol = 100)
-  S[1,] = 100*1000
-  for(j in 1:100) {
-    for(z in 2:nrow(dat)){
+  trials = 100
+  out_loop <- foreach(icount(trials), .combine=cbind) %dopar% {
+    S = matrix(nrow = nrow(dat),ncol = 1)
+    S[1,] = 100*1000
+    for(z in 2:nrow(S)){
       sims <- sample_n(gnet_mu_sims,1)
-      S[z,j] <- S[(z-1),j] + sims[[1,2]]*(dat$Precip[z] + dat$Evap[z]) + sims[[1,1]]
+      S[z,1] <- S[(z-1),1] + sims[[1,2]]*(dat$Precip[z] + dat$Evap[z]) + (-9.100742e-5*(S[(z-1),1]-99276.71) + sims[[1,1]])
     } #end of time series loop
-    plot(dat$Date,S[,j]/1000,type="l")
+    S
+    plot(dat$Date,S[,1]/1000,type="l")
   } #end 1000 simulation loop
-  out <- as.data.frame(t(apply(S, 1, quantile, c(0.025,0.5,0.975))))
-  out <- cbind(dat$Date,dat$WBIC,out)
+  out <- as.data.frame(t(apply(out_loop, 1, quantile, c(0.025,0.5,0.975))))
+  out <- cbind(dat$WBIC,dat$Date,out)
+  names(out) <- c("WBIC","Date","ll_val","median_val","ul_val")
   } #end lake loop
+
+ggplot(data = out,aes(x=Date,y=median_val)) + geom_line() +
+  geom_line(aes(x=Date,y=ll_val),color="lightblue") + geom_line(aes(x=Date,y=ul_val),color="lightblue")

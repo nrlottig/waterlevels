@@ -19,6 +19,11 @@ dat <- dt %>% dplyr::select(WiscID,WBIC,Date1,DeltaDate,Stage1_mm,Stage2_mm,Delt
   mutate(missing = PE_mmd - deltaS_mmd) %>% 
   filter(missing < 5) %>% 
   filter(missing > -5)
+dat_stage <- dat %>% dplyr:::select(WiscID,Stage1_mm) %>% 
+  group_by(WiscID) %>% 
+  summarise(min_stage = min(Stage1_mm))
+dat <- dat %>% left_join(dat_stage) %>% 
+  mutate (uniform_stage = (Stage1_mm-min_stage)+98500)
 #Filter the data so that we have at least 5 obs for each lake
 (num.rec = table(dat$WBIC))
 keep.rec = as.numeric(names((num.rec[which(num.rec>=10)])))
@@ -125,7 +130,7 @@ params1 <- c("BB","mu.a","mu.b", "sigma.y","sigma.B","rho.B")
 # MCMC settings
 ni <- 7000
 nb <- 2000
-nc <- 3
+nc <- 5
 nt <- 1
 nadp <- 10000
 # (nt <- ceiling((ni-nb)*nc/1500))
@@ -141,6 +146,106 @@ print(out, dig = 3)
 
 BugsOut <- out$summary
 write.csv(BugsOut, "GW_Models/BUGSutputSummary.csv", row.names = T)
+
+
+#Residual Model
+lake_params <- data.frame(WBIC = allLakeList, intercept=BugsOut[1:J,1],slope=BugsOut[(J+1):(J*2),1])
+dat <- dat %>% left_join(lake_params) %>% 
+  mutate(residual_val = deltaS_mmd -(PE_mmd*slope + intercept))
+plot(dat$uniform_stage,dat$residual_val)
+# The Model
+sink("Model.txt")
+cat("
+    model {
+    for (i in 1:n){
+    y[i] ~ dnorm (y.hat[i], tau.y)
+    y.hat[i] <- alpha[group[i]] + beta[group[i]] * x[i]  
+    }
+    
+    tau.y <- pow(sigma.y, -2)
+    sigma.y ~ dunif (0, 10)
+    nu <- nuMinusOne + 1
+    nuMinusOne ~ dexp( 1/29 )
+    
+    # Level-2 of the model
+    for(j in 1:J){
+    alpha[j] <- BB[j,1]
+    beta[j] <- BB[j,2]
+    
+    BB[j,1:K] ~ dmnorm (BB.hat[j,], Tau.B[,])
+    BB.hat[j,1] <- mu.a 
+    BB.hat[j,2] <- mu.b 
+    
+    }
+    
+    
+    mu.a ~ dnorm(0,0.0001)
+    mu.b ~ dnorm(0,0.0001)
+    
+    
+    # Model variance-covariance
+    Tau.B[1:K,1:K] ~ dwish(W[,], df)
+    df <- K+1
+    Sigma.B[1:K,1:K] <- inverse(Tau.B[,])
+    for (k in 1:K){
+    for (k.prime in 1:K){
+    rho.B[k,k.prime] <- Sigma.B[k,k.prime]/sqrt(Sigma.B[k,k]*Sigma.B[k.prime,k.prime])
+    }
+    sigma.B[k] <- sqrt(Sigma.B[k,k])
+    }
+    
+    }
+    ",fill=TRUE)
+sink()
+
+# Set up the parameters before run the model
+# Number of parameters
+K = 2
+W <- diag(K)
+# Number of lakes
+J = length(unique(dat$BHMID))
+# Load data raw water level data
+dat = as.data.frame(dat)
+data = list(y =dat$residual_val, group = as.numeric(dat$BHMID), n = dim(dat)[1], J = J,
+            x = scale(dat$uniform_stage,scale = F), K = K, W = W)
+# Initial values
+r <- cor(data$x,data$y)
+inits <- function (){
+  list (BB=array(c(rep(rnorm(1,0,1),J),rep(rnorm(1,0,1),J)), c(J,K)), 
+        mu.a=rnorm(1,0,1),mu.b=rnorm(1,0,1),
+        sigma.y=runif(1,0,10), 
+        Tau.B=rwish(K+1,diag(K))	 )
+}
+
+params1 <- c("BB","mu.a","mu.b", "sigma.y","sigma.B","rho.B")
+
+# Parameters monitored
+# mu.alpha: global alpha
+# mu.beta: global beta
+# BB: local alphas and betas
+# sigma: local error term
+# sigma.a: variances of alpha
+# sigma.b: variances of beta
+# rho: covarainces of alpha and beta
+# 
+# MCMC settings
+ni <- 10000
+nb <- 5000
+nc <- 5
+nt <- 1
+nadp <- 30000
+# (nt <- ceiling((ni-nb)*nc/1500))
+
+# Run the model
+out2 <- jags(data, inits, params1, "Model.txt", n.chains = nc, 
+            n.thin = nt, n.iter = ni, n.burnin = nb,n.adapt = nadp,parallel = TRUE)
+
+(BugsOut2 <- out2$summary)[1:nrow(BugsOut2),]
+BugsOut2[99:100,]
+
+
+
+
 
 sims <- data.frame(mu.a = out$sims.list$mu.a,mu.b=out$sims.list$mu.b)
 write_csv(sims,"data/gnet_mu_sims.csv")
