@@ -15,20 +15,24 @@ dt = read_csv("GW_Models/lake_climate_20180414_openWaterSeason.csv")
 dat <- dt %>% dplyr::select(WiscID,WBIC,Date1,DeltaDate,Stage1_mm,Stage2_mm,DeltaWaterLevel_mm,
                      Precip_mm,Evap_mm) %>% drop_na() %>% arrange(WiscID,Date1) %>% 
   mutate(PE_mmd = (Precip_mm+Evap_mm)/DeltaDate) %>% 
-  mutate(deltaS_mmd=DeltaWaterLevel_mm/DeltaDate)
+  mutate(deltaS_mmd=DeltaWaterLevel_mm/DeltaDate) %>% 
+  mutate(missing = PE_mmd - deltaS_mmd) %>% 
+  filter(missing < 5) %>% 
+  filter(missing > -5)
 #Filter the data so that we have at least 5 obs for each lake
 (num.rec = table(dat$WBIC))
 keep.rec = as.numeric(names((num.rec[which(num.rec>=10)])))
 dat = dat[which(dat$WBIC %in% keep.rec),] %>% arrange(WBIC,Date1)
 length(unique(dat$WBIC))
 #data cleanup for clear outlier leverage data points
-dat <- dat %>% filter(deltaS_mmd <= 17) %>% 
-  mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==197600 & deltaS_mmd< -5,NA)) %>% 
-  mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==589400 & deltaS_mmd< -10,NA)) %>% 
-  mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==968800 & deltaS_mmd< -15,NA)) %>% 
-  mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==2092500 & deltaS_mmd< -7,NA)) %>% drop_na(deltaS_mmd)
+# dat <- dat %>% filter(deltaS_mmd <= 17) %>% 
+  # mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==197600 & deltaS_mmd< -5,NA)) %>% 
+  # mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==589400 & deltaS_mmd< -10,NA)) %>% 
+  # mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==968800 & deltaS_mmd< -15,NA)) %>% 
+  # mutate(deltaS_mmd = replace(deltaS_mmd,WBIC==2092500 & deltaS_mmd< -7,NA)) %>% drop_na(deltaS_mmd)
 
-ggplot(data = dat, aes(x=PE_mmd,y=deltaS_mmd)) + geom_point() + facet_wrap(vars(WBIC),scales = "free")
+ggplot(data = dat, aes(x=PE_mmd,y=deltaS_mmd)) + geom_point() + facet_wrap(vars(WBIC),scales = "free") +
+  geom_abline(slope = 1,intercept = 0)
 ####Look at the data
 str(dat)
 summary(dat)
@@ -48,7 +52,7 @@ sink("Model.txt")
 cat("
     model {
     for (i in 1:n){
-    y[i] ~ dt (y.hat[i], tau.y, nu)
+    y[i] ~ dnorm (y.hat[i], tau.y)
     y.hat[i] <- alpha[group[i]] + beta[group[i]] * x[i]  
     }
     
@@ -69,8 +73,8 @@ cat("
     }
     
     
-    mu.a ~ dnorm(0,0.0001)
-    mu.b ~ dnorm(0,0.0001)
+    mu.a ~ dnorm(-1.1,0.0001)
+    mu.b ~ dnorm(1,0.0001)
     
     
     # Model variance-covariance
@@ -101,8 +105,8 @@ data = list(y =dat$deltaS_mmd, group = as.numeric(dat$BHMID), n = dim(dat)[1], J
 # Initial values
 r <- cor(data$x,data$y)
 inits <- function (){
-  list (BB=array(c(rep(rnorm(1,0,1),J),rep(rnorm(1,0,1),J)), c(J,K)), 
-        mu.a=rnorm(1,0,1),mu.b=rnorm(1,0,1),
+  list (BB=array(c(rep(rnorm(1,-1.1,1),J),rep(rnorm(1,1,1),J)), c(J,K)), 
+        mu.a=rnorm(1,-1,1),mu.b=rnorm(1,1,1),
         sigma.y=runif(1,0,10), 
         Tau.B=rwish(K+1,diag(K))	 )
 }
@@ -119,15 +123,16 @@ params1 <- c("BB","mu.a","mu.b", "sigma.y","sigma.B","rho.B")
 # rho: covarainces of alpha and beta
 # 
 # MCMC settings
-ni <- 3000
+ni <- 7000
 nb <- 2000
 nc <- 3
 nt <- 1
+nadp <- 10000
 # (nt <- ceiling((ni-nb)*nc/1500))
 
 # Run the model
 out <- jags(data, inits, params1, "Model.txt", n.chains = nc, 
-             n.thin = nt, n.iter = ni, n.burnin = nb)
+             n.thin = nt, n.iter = ni, n.burnin = nb,n.adapt = nadp,parallel = TRUE)
 
 saveRDS(out,"GW_Models/HLM_reduced.rds")
 out <- readRDS(file ="GW_Models/HLM_reduced.rds")
@@ -154,7 +159,7 @@ sum.slopediff <- sum.slopediff %>%
   dplyr::select(WBIC,gnet.reg)
 
 ### Slope plots
-dat.slope <- as.data.frame(BugsOut[1:50,])
+dat.slope <- as.data.frame(BugsOut[1:49,])
 dat.slope$WBIC <- allLakeList
 names(dat.slope)[c(3,7)] <- c("ll","ul")
 dat.slope <- dat.slope %>% left_join(sum.slopediff,by = "WBIC")
@@ -162,8 +167,8 @@ dat.slope$WBIC <- factor(dat.slope$WBIC,levels=dat.slope$WBIC[order(dat.slope$me
 dat.slope <- dat.slope %>% arrange(mean)
 dat.slope <- dat.slope %>% dplyr::select(WBIC,mean,ll,ul,gnet.reg) %>% rename(slope_group = gnet.reg)
 ggplot(data = dat.slope,aes(x=WBIC,y=mean,color=slope_group)) + 
-  geom_hline(yintercept = BugsOut[101,3],col="blue") + 
-  geom_hline(yintercept = BugsOut[101,7],col="blue")+
+  geom_hline(yintercept = BugsOut[99,3],col="blue") + 
+  geom_hline(yintercept = BugsOut[99,7],col="blue")+
   geom_point() +
   geom_errorbar(aes(ymin=ll,ymax=ul)) +
   labs(x="Lake",y="Gnet")

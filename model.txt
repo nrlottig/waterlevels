@@ -1,7 +1,7 @@
 
     model {
     for (i in 1:n){
-    y[i] ~ dt (y.hat[i], tau.y, nu)
+    y[i] ~ dnorm (y.hat[i], tau.y)
     y.hat[i] <- alpha[group[i]] + beta[group[i]] * x[i]  
     }
     
@@ -22,8 +22,8 @@
     }
     
     
-    mu.a ~ dnorm(0,0.0001)
-    mu.b ~ dnorm(0,0.0001)
+    mu.a ~ dnorm(-1.1,0.0001)
+    mu.b ~ dnorm(1,0.0001)
     
     
     # Model variance-covariance
