@@ -3,6 +3,7 @@ library(lubridate)
 library(foreach)
 library(doParallel)
 library(iterators)
+library(Metrics)
 
 registerDoParallel(cores = 3)
 
@@ -48,18 +49,38 @@ for(i in 1:length(lakes)) {
   out_loop <- foreach(icount(trials), .combine=cbind) %dopar% {
     S = matrix(nrow = nrow(dat),ncol = 1)
     S[1,] = 100*1000
+    sims <- c(mean(gnet_mu_sims$mu.a),mean(gnet_mu_sims$mu.b)) 
+    rmse.vec = rep(NA,10)
+    rmse.diff <- 10^100
+    b.levels <- seq(from = 0.000001,to = 0.0001,length.out=10)
+    n = 0
+    while(rmse.diff > 0.001 ) {
+    for(t in 1:10){
     for(z in 2:nrow(S)){
-      sims <- sample_n(gnet_mu_sims,1)
-      S[z,1] <- S[(z-1),1] + sims[[1,2]]*(dat$Precip[z] + dat$Evap[z]) - (.000024*(S[(z-1),1]) + sims[[1,1]])
+      S[z,1] <- S[(z-1),1] + sims[[2]]*(dat$Precip[z] + dat$Evap[z]) - (b.levels[t]*(S[(z-1),1]) + sims[[1]])
     } #end of time series loop
     # S
-    extrap_level <- data.frame(Date= dat$Date, level = S)
+    extrap_level <- data.frame(Date= dat$Date, level = S) # predicted lake levels
     dat.compare = dat_level %>% left_join(extrap_level) %>% 
-      mutate(offset = level-Value)
-    offset <- mean(dat.compare$offset)
-    ggplot(data = extrap_level,aes(x=Date,y=level)) + 
-      geom_line(data=dat_level,aes(x=Date,y=(Value + offset)),color="red") + 
-      geom_line()
+      mutate(offset = level-Value)  # join observed and modeled data
+                                    # estimate  offset b/w observed and predicted so I can always
+                                    # start predicted time series at 100m
+    offset <- mean(dat.compare$offset) #calculate arbitrary datum adjustment
+    dat.compare$Value <- dat.compare$Value + offset
+    rmse.vec[t] <- rmse(actual = dat.compare$Value,predicted = dat.compare$level)
+    }
+    min.rmse <- which(rmse.vec==min(rmse.vec))
+    if(n == 0) rmse.best <- rmse.vec[min.rmse] else rmse.best = c(rmse.best,rmse.vec[min.rmse])
+    best.b <- b.levels[min.rmse]
+    if (n >= 1) rmse.diff <- (rmse.best[n]-rmse.best[n+1])
+    b.levels <- seq(from = b.levels[min.rmse-1],to = b.levels[min.rmse+1],length.out=10)
+    n = n + 1
+    }
+    
+    
+    # ggplot(data = extrap_level,aes(x=Date,y=level)) + 
+    #   geom_line(data=dat_level,aes(x=Date,y=(Value + offset)),color="red") + 
+    #   geom_line() #plot modeled and observed data
       
 } #end 1000 simulation loop
   out <- as.data.frame(t(apply(out_loop, 1, quantile, c(0.025,0.5,0.975))))
