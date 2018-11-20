@@ -5,7 +5,8 @@ library(doParallel)
 library(iterators)
 library(Metrics)
 
-registerDoParallel(cores = 4)
+registerDoParallel(cores = 7)
+
 
 # ####The Data
 # Gnet_slopes <- read_csv("data/Gnet_slopes.csv") %>% select(WBIC)
@@ -66,7 +67,9 @@ stage_coef <- foreach(i=1:length(lakes), .combine='c') %dopar% {
     extrap_level <- data.frame(Date= dat$Date, level = S) # predicted lake levels
     dat.compare = dat_level %>% left_join(extrap_level) %>% 
       mutate(offset = level-Value) %>% drop_na()
-    offset <- mean(dat.compare$offset) #calculate arbitrary datum adjustment
+    dat.offset_top <- dat.compare %>% select(offset) %>% top_n(10)
+    dat.offset_bottom <- dat.compare %>% select(offset) %>% top_n(10)
+    offset <- median(c(dat.offset_bottom$offset,dat.offset_top$offset)) #calculate arbitrary datum adjustment
     dat.compare$Value <- dat.compare$Value + offset
     rmse.vec[t] <- rmse(actual = dat.compare$Value,predicted = dat.compare$level)
     }
@@ -80,15 +83,26 @@ stage_coef <- foreach(i=1:length(lakes), .combine='c') %dopar% {
     best.b
 } #lake foreach loop
 
-s_coef = median(stage_coef)
+s_coef = median(stage_coef) #2.397409e-05
 
 ######Generate predictions and plots of time series
-lakes = unique(gnet_met_data$WBIC)
+# evap_daily <- read_csv("big_data/evap_daily.csv",
+#                        col_types = cols(X1 = col_skip())) %>%
+#   distinct(WBIC, Date,.keep_all = TRUE)
+# precip_daily <- read_csv("big_data/precip_daily.csv",
+#                          col_types = cols(X1 = col_skip())) %>%
+#   distinct(WBIC, Date,.keep_all = TRUE)
+# 
+# dat_met <- evap_daily %>% full_join(precip_daily)
+# dat_met <- dat_met[which(dat_met$WBIC %in% waterlevel$WBIC),]
+# write_csv(dat_met,"big_data/met_seepage.csv")
+
+lakes = unique(dat_met$WBIC)
 pdf("graphics/seepage_predictions.pdf",width=8,height=10.5,onefile = TRUE)
 par(mfrow=c(3,1),oma=c(0,0,0,0),mar=c(4,4,4,.1))
 
 for(i in 1:length(lakes)) {
-  dat <- gnet_met_data %>% filter(WBIC==lakes[i])
+  dat <- dat_met %>% filter(WBIC==lakes[i])
   #Extact observed data with longest record
   dat_level <- waterlevel %>% filter(WBIC==lakes[i])
   obs.sites <- length(unique(dat_level$WiscID))
@@ -110,15 +124,20 @@ for(i in 1:length(lakes)) {
   extrap_level <- data.frame(Date= dat$Date, level = S) # predicted lake levels
   dat.compare = extrap_level %>% left_join(dat_level) %>% 
     mutate(offset = level-Value)
-  offset <- mean(dat.compare$offset,na.rm = TRUE) #calculate arbitrary datum adjustment
+  dat.offset_top <- dat.compare %>% select(offset) %>% drop_na() %>% top_n(10)
+  dat.offset_bottom <- dat.compare %>% select(offset) %>% drop_na() %>% top_n(-10)
+  offset <- median(c(dat.offset_bottom$offset,dat.offset_top$offset)) #calculate arbitrary datum adjustment
   dat.compare$Value <- dat.compare$Value + offset
+  # median(dat.compare$Value-dat.compare$level,na.rm=TRUE)
+  # offset
   if(i == 1 ) global_out <- dat.compare else global_out <- rbind(global_out,dat.compare)
   global_out <- global_out %>% drop_na()
   y.range = range(dat.compare$Value/1000,dat.compare$level/1000,na.rm = TRUE)
   plot(dat.compare$Date,dat.compare$level/1000,type="l",col="black",
        xlab="Date",ylab="Water Level (m)",main=paste("WBIC ",lakes[i],sep=""),
        ylim=y.range)
-  lines(dat.compare$Date,dat.compare$Value/1000,col='red',type="b",cex=0.75,pch=16)
+  miss <- dat.compare[!is.na(dat.compare$Value),]
+  lines(miss$Date,miss$Value/1000,col='red',type="b",pch=16,lwd=2)
 }
 dev.off()
 
