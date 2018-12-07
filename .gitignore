@@ -10,3 +10,6 @@ BayHModels/waterlevels.RData
 .DS_Store
 .Rhistory
 big_data/
+GW_Models/HLM_reduced.rds
+.Rhistory
+graphics/seepage_predictions.pdf
