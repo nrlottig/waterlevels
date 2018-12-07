@@ -11,17 +11,17 @@ library(randomForest)
 ####Original Data
 dat.gnet <- read_csv("data/Gnet_slopes.csv")
 eco <- read_csv("data/ecocontext_transformed_riparian.csv")
-dat.gnet <- dat.gnet %>% left_join(eco)
+BugsOut <- read.csv("GW_Models/BUGSutputSummary.csv")
+J <- length(unique(dat.gnet$WBIC))
+# dat.gnet <- dat.gnet %>% left_join(eco)
 dat.gnet$WBIC_name <- factor(dat.gnet$WBIC,levels=dat.gnet$WBIC[order(dat.gnet$mean)]) #Code to order gnet variables for plotting
 dat.gnet <- dat.gnet %>% mutate(slope_group = as.numeric(slope_group)) %>% 
-  mutate(slope_group = replace(slope_group,which(mean < -1.622698818 & slope_group==0),2))
+  mutate(slope_group = replace(slope_group,which(mean < BugsOut[J*2+1,2] & slope_group==0),2))
 
 
 #Ordered plot of Gnet
-ggplot(data = dat.gnet,aes(x = WBIC_name,y=mean,color=as.factor(slope_group))) + 
+ggplot(data = dat.gnet,aes(x = (WBIC_name),y=mean,color=as.factor(slope_group))) + 
   #Turn this into a grey polygon band
-  geom_hline(yintercept = -1.622698818,col="blue") + 
-  geom_hline(yintercept = -1.23224061632639,col="blue")+
   geom_point() +
   geom_errorbar(aes(ymin=ll,ymax=ul)) +
   labs(x="WiscID",y="Groundwater Recharge (mm/d)", color="Lake Group") +
@@ -31,7 +31,10 @@ ggplot(data = dat.gnet,aes(x = WBIC_name,y=mean,color=as.factor(slope_group))) +
                       labels=c("Low Recharge","Regional Average","High Recharge"),
                       values=c(rgb(27,158,119,255,maxColorValue = 255),
                                rgb(217,95,2,255,maxColorValue = 255),
-                               rgb(117,112,179,255,maxColorValue = 255)))
+                               rgb(117,112,179,255,maxColorValue = 255))) + 
+  annotate("rect", ymin = BugsOut[J*2+1,4], ymax = BugsOut[J*2+1,8], xmin=-Inf,xmax=Inf,
+           alpha = .3,fill="grey") +
+  annotate("text",x = 30,y=1,label = "Grey bar denotes 95% confidence interval of regional groundwater recharge for seepage lakes",size=2)
 ggsave(filename = "graphics/gnet_by_gnet.png",units = "in",dpi = 300,width=8,height=5)
 
 #########Tasks for WU################
