@@ -5,20 +5,28 @@ precip <- read_csv("big_data/precip.csv") %>% rename(Precip=Rain) %>%
   rename(Date = time) %>% 
   select(WBIC,Date,Precip) %>% 
   mutate(Date = as.Date(Date))
-evap <- read_csv("big_data/evap_daily.csv") %>% select(WBIC,Date,Evap)
+evap <- read_csv("big_data/evap.csv") %>% rename(Evap = evaporation.mm.d.) %>% 
+  rename(Date = DateTime) %>% 
+  select(WBIC,Date,Evap)
 
 #merge met data and remove other files
-dat <- evap %>% left_join(precip)
+dat <- precip %>% left_join(evap)
 dat$Year = year(dat$Date)
 rm(evap)
 rm(precip)
+write_csv(dat,path = "big_data/gnet_met_data.csv")
 
 #get waterlevel data
 waterlevels <- read.csv("big_data/seepage_20180414.csv")
+# dat <- read_csv("big_data/gnet_met_data.csv")
 
 #Filter data to lakes with observations
 waterlevels <- waterlevels[which(waterlevels$WBIC %in% dat$WBIC),]
-dat <- dat[which(dat$WBIC %in% waterlevels$WBIC),]
+dat <- dat[which(dat$WBIC %in% waterlevels$WBIC),] 
+# %>% drop_na() %>% 
+  # mutate(Year=year(Date)) %>% 
+  # mutate(Evap=as.numeric(Evap))
+
 waterlevels <- waterlevels %>% select(WiscID,WBIC,Value,Date) %>% 
   mutate(Value = as.numeric(as.character(Value))) %>% 
   mutate(Date = as.Date(as.character(Date),"%m/%d/%Y")) %>% 
@@ -46,7 +54,7 @@ for(i in 1:length(lakes)){
     if(nrow(temp.year)<2) next else {
       max.t = nrow(temp.year)
       for(t in 1:(max.t-1)){
-        which.date <- min(which((temp.year$DoY[t:max.t] - temp.year$DoY[t])>9))-1
+        which.date <- min(which((temp.year$DoY[t:max.t] - temp.year$DoY[t])>30))-1
         if(is.infinite(which.date)) break() else {
           waterlevel_deltas[nrow(waterlevel_deltas) + 1,1:6] = c(temp.year$WiscID[t],
                                                                  temp.year$WBIC[t],
@@ -111,9 +119,9 @@ p1 <- ggplot(data = waterlevel_deltas,aes(x=deltaPE,y=delta_level)) + geom_point
 p1
 ggplot(data = waterlevel_deltas, aes(x=1,y=missing)) + 
   geom_point(alpha=0.2,position='jitter') +
-  geom_boxplot(outlier.size=4, outlier.colour='blue', alpha=0.1,coef=5.5)
+  geom_boxplot(outlier.size=4, outlier.colour='blue', alpha=0.1,coef=4.5)
 
-(outlier.stats <- boxplot.stats(waterlevel_deltas$missing,coef = 5.5))
+(outlier.stats <- boxplot.stats(waterlevel_deltas$missing,coef = 4.5))
 waterlevel_deltas <- waterlevel_deltas %>% filter(missing >outlier.stats$stats[1] & missing < outlier.stats$stats[5])
 p1 + geom_point(data=waterlevel_deltas,aes(x=deltaPE,y=delta_level),color="red")
 hist(waterlevel_deltas$missing)

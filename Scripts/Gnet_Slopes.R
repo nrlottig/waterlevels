@@ -16,7 +16,8 @@ J <- length(unique(dat.gnet$WBIC))
 # dat.gnet <- dat.gnet %>% left_join(eco)
 dat.gnet$WBIC_name <- factor(dat.gnet$WBIC,levels=dat.gnet$WBIC[order(dat.gnet$mean)]) #Code to order gnet variables for plotting
 dat.gnet <- dat.gnet %>% mutate(slope_group = as.numeric(slope_group)) %>% 
-  mutate(slope_group = replace(slope_group,which(mean < BugsOut[J*2+1,2] & slope_group==0),2))
+  mutate(slope_group = replace(slope_group,which(mean < BugsOut[J*2+1,2] & slope_group==0),2)) %>% 
+  left_join(eco %>% select(WBIC,lat,long))
 
 
 #Ordered plot of Gnet
@@ -60,7 +61,8 @@ ggplot() +
 ggsave(filename = "graphics/gnet_map.png",units="in",dpi=300)
 
 #BoxPlots
-dat.box <- dat.gnet[,c(5,10:41)]
+dat.box <- dat.gnet %>% left_join(eco)
+dat.box <- dat.box[,c(5,13:43)]
 dat.box.long <- dat.box %>% gather(key = "key",value = "value",-slope_group)
 ggplot(data = dat.box.long) + 
   geom_boxplot(aes(x=as.factor(slope_group),y=value,color=as.factor(slope_group))) + 
@@ -85,7 +87,10 @@ respcols <- c("mean",
               "ul",
               "slope_group")
 
-dat.long <- dat.gnet %>% gather(key = variable,value = value,-refcols,-respcols)
+dat.long <- dat.gnet %>%
+  select(-lat,-long) %>% 
+  left_join(eco) %>% 
+  gather(key = variable,value = value,-refcols,-respcols)
 
 
 p.out <- ggplot(dat.long,aes(x=value,y=mean)) + geom_point(aes(color=as.factor(slope_group))) +

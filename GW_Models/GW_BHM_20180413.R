@@ -11,7 +11,7 @@ library(MCMCpack)
 library(arm)
 
 # Input data
-dt = read.csv("data/cleaned_waterlevel_deltas.csv")
+dt = read.csv("data/cleaned_waterlevel_deltas.csv") %>% filter(WBIC !=197600)
 dat <- dt %>% dplyr::select(WiscID,WBIC,Date1,Value1,delta_level,deltaPE) %>% drop_na() %>%
   mutate(Date1 = as.Date(Date1))
 dat_stage <- dat %>% dplyr:::select(WiscID,Value1) %>% 

@@ -115,6 +115,6 @@ trans.data <- function(x) {
 
 dat_transform <- dat2 %>% 
   mutate_all(funs(trans.data))
-dat_final <- cbind(dat1[,refcols],dat_transform)
+dat_final <- cbind(dat1[,c(refcols,non_transformed)],dat_transform)
 write_csv(dat_final,"data/ecocontext_transformed_riparian.csv")
 write_csv(dat,"data/ecocontext_riparian.csv")
