@@ -18,10 +18,10 @@ dat_stage <- dat %>% dplyr:::select(WiscID,Value1) %>%
   group_by(WiscID) %>% 
   summarise(min_stage = min(Value1))
 dat <- dat %>% left_join(dat_stage) %>% 
-  mutate (uniform_stage = (Value1-min_stage)+98500)
+  mutate (uniform_stage = (Value1-min_stage)+9850)
 #Filter the data so that we have at least 5 obs for each lake
 (num.rec = table(dat$WBIC))
-keep.rec = as.numeric(names((num.rec[which(num.rec>=5)])))
+keep.rec = as.numeric(names((num.rec[which(num.rec>=3)])))
 dat = dat[which(dat$WBIC %in% keep.rec),] %>% arrange(WBIC,Date1)
 length(unique(dat$WBIC))
 #data cleanup for clear outlier leverage data points
@@ -105,8 +105,8 @@ data = list(y =dat$delta_level, group = as.numeric(dat$BHMID), n = dim(dat)[1], 
 # Initial values
 r <- cor(data$x,data$y)
 inits <- function (){
-  list (BB=array(c(rep(rnorm(1,-1.1,1),J),rep(rnorm(1,1,1),J)), c(J,K)), 
-        mu.a=rnorm(1,-1,1),mu.b=rnorm(1,1,1),
+  list (BB=array(c(rep(rnorm(1,0,1),J),rep(rnorm(1,0,1),J)), c(J,K)), 
+        mu.a=rnorm(1,0,1),mu.b=rnorm(1,0,1),
         sigma.y=runif(1,0,10), 
         Tau.B=rwish(K+1,diag(K))	 )
 }
@@ -123,16 +123,15 @@ params1 <- c("BB","mu.a","mu.b", "sigma.y","sigma.B","rho.B")
 # rho: covarainces of alpha and beta
 # 
 # MCMC settings
-ni <- 7000
-nb <- 2000
-nc <- 5
+ni <- 5000
+nb <- 3000
+nc <- 7
 nt <- 1
-nadp <- 10000
-# (nt <- ceiling((ni-nb)*nc/1500))
+# nadp <- 15000
 
 # Run the model
 out <- jags(data, inits, params1, "Model.txt", n.chains = nc, 
-             n.thin = nt, n.iter = ni, n.burnin = nb,n.adapt = nadp,parallel = TRUE)
+            n.thin = nt, n.iter = ni, n.burnin = nb,parallel = TRUE)
 
 saveRDS(out,"GW_Models/HLM_reduced.rds")
 out <- readRDS(file ="GW_Models/HLM_reduced.rds")
@@ -140,6 +139,7 @@ out <- readRDS(file ="GW_Models/HLM_reduced.rds")
 print(out, dig = 3)
 
 BugsOut <- out$summary
+BugsOut
 write.csv(BugsOut, "GW_Models/BUGSutputSummary.csv", row.names = T)
 
 

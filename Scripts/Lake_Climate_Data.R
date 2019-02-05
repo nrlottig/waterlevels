@@ -5,15 +5,30 @@ precip <- read_csv("big_data/precip.csv") %>% rename(Precip=Rain) %>%
   rename(Date = time) %>% 
   select(WBIC,Date,Precip) %>% 
   mutate(Date = as.Date(Date))
+# precip <- precip %>% filter(year(Date)>=1981)
 evap <- read_csv("big_data/evap.csv") %>% rename(Evap = evaporation.mm.d.) %>% 
   rename(Date = DateTime) %>% 
   select(WBIC,Date,Evap)
+####Get daily average Precip
+evap <- evap %>% mutate(DoY = yday(Date)) %>% 
+  group_by(DoY) %>% 
+  summarize(Evap = median(Evap,na.rm=T))
+dat <- precip %>% mutate(DoY = yday(Date)) %>% left_join(evap) %>% select(-DoY)
+
+# evap <- evap %>% filter(year(Date)>=1981) %>% 
+  # group_by(WBIC, year(Date)) %>% summarise(Evap = median(Evap,na.rm=T)) %>% 
+  # group_by(WBIC) %>% summarise(Evap = median(Evap,na.rm=T))
+# evap <- median(evap$Evap,na.rm=T) #-0.648636
+# dat <- precip %>% mutate(Evap = evap)
 
 #merge met data and remove other files
 dat <- precip %>% left_join(evap)
+
+
 dat$Year = year(dat$Date)
 rm(evap)
 rm(precip)
+dat <- dat %>% filter(Year >= 1981)
 write_csv(dat,path = "big_data/gnet_met_data.csv")
 
 #get waterlevel data
@@ -23,6 +38,7 @@ waterlevels <- read.csv("big_data/seepage_20180414.csv")
 #Filter data to lakes with observations
 waterlevels <- waterlevels[which(waterlevels$WBIC %in% dat$WBIC),]
 dat <- dat[which(dat$WBIC %in% waterlevels$WBIC),] 
+
 # %>% drop_na() %>% 
   # mutate(Year=year(Date)) %>% 
   # mutate(Evap=as.numeric(Evap))
@@ -30,6 +46,7 @@ dat <- dat[which(dat$WBIC %in% waterlevels$WBIC),]
 waterlevels <- waterlevels %>% select(WiscID,WBIC,Value,Date) %>% 
   mutate(Value = as.numeric(as.character(Value))) %>% 
   mutate(Date = as.Date(as.character(Date),"%m/%d/%Y")) %>% 
+  filter(year(Date)>= 1981) %>% 
   mutate(Value = Value*304.8) %>% 
   mutate(Year = year(Date)) %>% 
   mutate(DoY = yday(Date)) %>% 

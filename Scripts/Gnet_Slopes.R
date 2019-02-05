@@ -11,6 +11,7 @@ library(randomForest)
 ####Original Data
 dat.gnet <- read_csv("data/Gnet_slopes.csv")
 eco <- read_csv("data/ecocontext_transformed_riparian.csv")
+eco_nt <- read_csv("data/ecocontext_riparian.csv") %>% select(-mean,-ll,-ul,-slope_group)
 BugsOut <- read.csv("GW_Models/BUGSutputSummary.csv")
 J <- length(unique(dat.gnet$WBIC))
 # dat.gnet <- dat.gnet %>% left_join(eco)
@@ -108,19 +109,24 @@ ggsave(filename = "graphics/GNET.png",plot = p.out,width = 12,height = 12,units=
 ##########Random Forest Modeling
 
 #set response variable
-model.data <- dat.gnet
+model.data <- dat.gnet %>% left_join(eco_nt,by = "WBIC")
 Y.col = 5
 Y = as.factor(model.data[[Y.col]])
 names(model.data)[Y.col]
 #check counts for balancing RF model
 table(Y)
 
-
-X = model.data[,c(8,10:37)]
+names(model.data)
+X = model.data[,c(10:11,15:18,20:33,35,37:45)]
+drop.na <- cbind(Y,X) %>% drop_na()
+Y <- drop.na[,1]
+X <- drop.na[,2:ncol(drop.na)]
+table(Y)
 names(X)
 X$ECO_LANDSC = as.factor(X$ECO_LANDSC)
+X$US_L3NAME <- as.factor(X$US_L3NAME)
 #,sampsize=rep(min(table(Y)),nlevels(Y)),strata=Y
-(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=10001,sampsize = c(6,6,6),strata=Y))
+(rf.data = randomForest(y = Y,x = X,keep.inbag=TRUE,importance=TRUE,ntree=20001,sampsize = c(2,2,2),strata=Y))
 pred = predict(rf.data)
 plot(Y,pred)
 abline(a=0,b=1)
