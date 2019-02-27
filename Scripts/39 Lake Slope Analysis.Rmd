@@ -1,0 +1,192 @@
+---
+title: "Water Level Model Analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(caret)
+library(leaps)
+library(VSURF)
+library(randomForest)
+# devtools::install_github("drsimonj/corrr") #install corrr package if not already installed
+library(corrr)
+```
+
+Analysis of ecological context variables and regression models for prediction the relationship (slope) between lake water level and cummulative precipitation deviation using 39 Lake dataset generated on Feb. 21 2019.
+
+```{r load_data, include=FALSE}
+ecocontext_full <- read_csv("/Users/noahlottig/Documents/GitHub/waterlevels/data/ecocontext_full.csv")
+regressionstats <- read_csv("/Users/noahlottig/Documents/GitHub/waterlevels/BayHModels/regressionstats.csv")
+```
+
+## Initial Data
+```{r data}
+dat <- regressionstats %>% left_join(ecocontext_full) %>% select(-W_LAT,
+                                                                 -MeanDepth,
+                                                                 -SHAPE_AREA,
+                                                                 -W_AREA,
+                                                                 -W_PRCP_ANN,
+                                                                 -W_TEMP_ANN,
+                                                                 -W_TEMP_GS,
+                                                                 -W_TEMP_JUL,
+                                                                 -mg_average,
+                                                                 -ca_average) %>% 
+    select_if(~ !any(is.na(.)))
+```
+Removed several variables that were duplicated along with ones that have missing values and/or are not of interest initially. 
+```{r}
+dat
+```
+
+## Correlated Variables
+Identify correlations between all pairs of ecocontext variables
+```{r}
+dat.ld <- dat[,c(10:ncol(dat))]
+x <- dat.ld %>%
+    correlate() %>%    # Create correlation data frame (cor_df)
+    rearrange() %>%  # rearrange by correlations
+    shave() # Shave off the upper triangle for a clean result
+```
+
+
+```{r echo=FALSE, fig.height=8.5, fig.width=8.5}
+rplot(x)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+<br>Identify variables that are strongly correlated and then remove from the predictor dataset
+
+```{r}
+dat <- regressionstats %>% left_join(ecocontext_full) %>% select(-W_LAT,
+                                                                 -MeanDepth,
+                                                                 -SHAPE_AREA,
+                                                                 -W_AREA,
+                                                                 -W_PRCP_ANN,
+                                                                 -W_TEMP_ANN,
+                                                                 -W_TEMP_GS,
+                                                                 -W_TEMP_JUL,
+                                                                 -mg_average,
+                                                                 -ca_average,
+                                                                 -slope3,
+                                                                 -watershed_MIN,
+                                                                 -area_depth_ratio,
+                                                                 -TRW_AREA,
+                                                                 -R_AREA,
+                                                                 -R_PERM,
+                                                                 -SHAPE_LEN,
+                                                                 -slope2,
+                                                                 -slope4,
+                                                                 -slope5,
+                                                                 -R_LU06_21,
+                                                                 -R_LU06_11,
+                                                                 -R_SLOPE,
+                                                                 -r_develop
+                                                                 ) %>% 
+    select_if(~ !any(is.na(.)))
+
+dat.ld <- dat[,c(10:ncol(dat))]
+x <- dat.ld %>%
+    correlate() %>%    # Create correlation data frame (cor_df)  # Focus on cor_df without 'cyl' and 'vs'
+    rearrange() %>%  # rearrange by correlations
+    shave() # Shave off the upper triangle for a clean result
+```
+```{r echo=FALSE, fig.height=8.5, fig.width=8.5}
+rplot(x)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## Random Forest Model for variable selection using the VSURF Package
+```{r RF Model, echo=TRUE, cache=TRUE}
+out <- VSURF(x=dat.ld,y=dat$slope,ntree=10000,nfor.thres = 1000,nfor.interp = 500,nfor.pred = 500,parallel = T)
+names(dat.ld)[out$varselect.thres]
+names(dat.ld)[out$varselect.interp]
+names(dat.ld)[out$varselect.pred]
+rf.fit <- randomForest(x=dat[,names(dat.ld)[out$varselect.pred]],y=dat$slope,ntree = 10000)
+rf.fit
+```
+```{r echo=FALSE}
+rf_data <- tibble(y=dat$slope,yhat= predict(rf.fit))
+ggplot(data=rf_data,aes(x=y,y=yhat)) + geom_point() +
+  theme(aspect.ratio = 1) + geom_smooth(method="lm") +
+  geom_abline(slope = 1,intercept = 0,color="grey",linetype=2)
+```
+
+##Linear Regression data to the model
+```{r}
+dat_reg <- dat[,c("slope",names(dat.ld)[out$varselect.pred])]
+fit <- lm(slope~.,data = dat_reg)
+summary(fit)
+```
+```{r echo=FALSE}
+lm_data <- tibble(y=dat$slope,yhat= predict(fit))
+ggplot(data=lm_data,aes(x=y,y=yhat)) + geom_point() +
+  theme(aspect.ratio = 1) + geom_smooth(method="lm") +
+  geom_abline(slope = 1,intercept = 0,color="grey",linetype=2)
+
+```
+
+## look at the biplots of the variables identified in the interpretaton step and correlation among variables
+```{r echo=FALSE,fig.width=8.5,fig.height=6}
+dat <- dat[,c("slope",names(dat.ld)[out$varselect.interp])]
+dat.long <- gather(dat,key = parameter,value = value,-slope)
+ggplot(data = dat.long,aes(x=value,y=slope)) + geom_point() + facet_wrap(vars(parameter),scales="free") + geom_smooth(method="lm")
+x <- dat %>% select(-slope) %>%
+    correlate() %>%    # Create correlation data frame (cor_df)  # Focus on cor_df without 'cyl' and 'vs'
+    rearrange() %>%  # rearrange by correlations
+    shave() # Shave off the upper triangle for a clean result
+dat %>% correlate() %>%
+  network_plot(min_cor = .2)
+rplot(x)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+
+
+```{r,fig.height=8.5,fig.width=8.5}
+dat.ld = dat[,names(dat.ld)[out$varselect.interp]]
+models <- regsubsets(x = dat.ld,y = dat$slope,nbest = 8)
+plot(models)
+#identify best model based on different criteria
+res.sum <- summary(models)
+sum.out <- data.frame(
+    model = 1:length(res.sum$adjr2),
+    Adj.R2 = (res.sum$adjr2),
+    CP = (res.sum$cp),
+    BIC = (res.sum$bic)
+) %>% arrange(BIC) %>% 
+  filter((min(BIC)-BIC) >=-2)
+sum.out
+res.sum$which[sum.out$model,]
+
+```
+
+<!-- <br> Based on all three criteria, the three parameter model is best which includes -->
+
+<!-- * W_LU06_22 -->
+<!-- * R_LU06_90 -->
+<!-- * elevation_difference -->
+
+<!-- ## Fit Linear Model -->
+<!-- ```{r} -->
+<!-- fit <- lm(dat$slope ~ dat$elevation_difference + dat$W_LU06_82 + dat$r_wetland) -->
+<!-- summary(fit) -->
+<!-- plot(fit) -->
+<!-- ``` -->
+
+<!-- ## Examine relationships with driver variables -->
+<!-- ```{r,echo=FALSE} -->
+<!-- ggplot(data = dat,aes(x=cond,y=slope)) + geom_point() + geom_smooth(method="lm") -->
+<!-- ggplot(data = dat,aes(x=elevation_difference,y=slope)) + geom_point() + geom_smooth(method="lm") -->
+<!-- ggplot(data = dat,aes(x=R_LU06_90,y=slope)) + geom_point() + geom_smooth(method="lm") -->
+<!-- ``` -->
+<!-- <br> I'm a little bit concerned about leverage points for the development category. We will also have to be careful about extrapolating too far outside of our driver variable gradients. I'm not sure what the range is for all seepage lakes relative to the range included in our models. -->
+
+<!-- ## Compare Modeled vs Obs Slopes -->
+<!-- ```{r} -->
+<!-- Y <- dat$slope -->
+<!-- Y_pred <- predict(fit) -->
+<!-- dat_compare <- tibble(Y,Y_pred) -->
+<!-- ``` -->
+<!-- ```{r,echo=FALSE} -->
+<!-- ggplot(data = dat_compare,aes(x=Y,y=Y_pred)) + geom_point() +  -->
+<!--     geom_abline(slope = 1,intercept = 0,color="blue",lwd=2) -->
+<!-- ``` -->
+
