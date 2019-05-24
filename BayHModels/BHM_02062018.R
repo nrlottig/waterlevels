@@ -10,39 +10,65 @@ options(max.print=10000)
 library(tidyverse)
 library(lubridate)
 library(modelr)
-library(jagsUI)
-library(lattice)
-library(MCMCpack)
-library(arm)
+
 
 # Input data
 cmdv = read.csv("big_data/cdev.csv")
-levels_mo <- read.csv("data/monthly_waterlevels.csv")
 cmdv$Date = as.Date(as.character(cmdv$obs_mo))
+levels_mo <- read.csv("data/monthly_waterlevels.csv")
 levels_mo$Date <- as.Date(levels_mo$Date)
-lakes_choose <- c(15L, 16L, 17L, 52L, 53L, 54L, 60L, 62L, 99L, 103L, 111L, 114L, 
-  118L, 122L, 123L, 132L, 134L, 143L, 205L, 215L, 247L, 282L, 283L, 
-  284L, 285L, 316L, 318L, 320L, 322L, 323L, 364L, 365L, 369L, 371L, 
-  393L, 394L, 395L, 405L, 428L, 442L, 444L, 539L, 562L, 576L, 583L, 
-  584L, 586L, 587L, 592L, 720L, 727L, 731L, 733L, 739L, 743L, 746L, 
-  749L, 750L, 753L, 757L, 766L, 772L, 781L, 795L, 812L, 814L, 819L, 
-  821L, 824L, 838L, 892L, 909L, 940L, 970L, 1026L, 1030L, 1038L, 
-  1047L)
-levels_mo <- levels_mo[which(levels_mo$WiscID %in% lakes_choose),]
+seepage_lake_slope_data <- read_csv("data/seepage_lake_slope_data.csv") %>% 
+  select(WiscID,mean_ann_wdrl_gals) %>% 
+  mutate(mean_ann_wdrl_gals = replace_na(mean_ann_wdrl_gals,0))
+levels_mo <- levels_mo %>% left_join(seepage_lake_slope_data) %>% filter(mean_ann_wdrl_gals<=10000000) %>% select(-mean_ann_wdrl_gals)
+
+levels_mo <- levels_mo %>% 
+  filter(WiscID != 394) %>% 
+  filter(WiscID != 58) %>% 
+  filter(WiscID !=62) %>% 
+  filter(WiscID !=393) %>% 
+  filter(WiscID !=428) %>% 
+  filter(WiscID !=583) %>% 
+  filter(WiscID !=405)  %>% 
+  filter(WiscID !=57)
+
+#filter out two outliers from early record of 772
+levels_mo$Value[which(levels_mo$WiscID==772 & levels_mo$Year==1953)] = NA
+levels_mo <- levels_mo %>% drop_na()
 
 dat <- levels_mo %>% left_join(cmdv %>% dplyr:::select(WiscID,Date,ppt_cdm_96mo_mm)) %>% 
   filter(Month <= 10 & Month >=4) %>% 
-  group_by(WiscID) %>% 
-  # mutate(count=n()) %>%
-  # filter(count>=5) %>%
-  # ungroup() %>% 
+  group_by(WiscID,Year) %>% group_by(WiscID) %>% 
+  mutate(count=length(unique(Year))) %>% 
+  filter(count >=8) 
+# %>% 
+#   group_by(WiscID) %>% 
+#   mutate(fraction = length(unique(Year))/(max(Year)-min(Year))) %>%
+#   filter(fraction >= 0.5)
+
+lakes_choose <- unique(dat$WiscID)  
+
+levels_mo <- levels_mo[which(levels_mo$WiscID %in% lakes_choose),]
+ggplot(data = levels_mo,aes(x=Date,y=scale(Value,scale = F))) + geom_point() + geom_line() + facet_wrap(vars(WiscID),scales = "free")
+
+dat <- levels_mo %>% right_join(cmdv %>% dplyr:::select(WiscID,Date,ppt_cdm_96mo_mm)) %>% 
   arrange(WiscID,Date) %>% 
   rename(precipCMDV = 6) %>% group_by(WiscID) %>% 
   mutate(Value=scale(Value,center = TRUE,scale = FALSE)) %>% 
   mutate(precipCMDV = scale(precipCMDV,center = TRUE,scale = FALSE)) %>%
   #mutate(precip_range = (max(precipCMDV)-min(precipCMDV))) %>%
   ungroup() #%>% 
-
+dat <- dat[which(dat$WiscID %in% lakes_choose),]
+dat_summary <- dat %>% group_by(WiscID) %>% 
+  summarize(q25=quantile(precipCMDV,probs = .15),q75=quantile(precipCMDV,probs = 0.85)) %>% 
+  mutate(qrange = q75-q25)
+dat_complete <- dat %>% drop_na(Value) %>% 
+  group_by(WiscID) %>% 
+  summarize(cdev_range = max(precipCMDV)-min(precipCMDV)) %>% 
+  left_join(dat_summary) %>% 
+  mutate(overlap = cdev_range-qrange) %>% filter(overlap >=0)
+lakes_choose <- dat_complete$WiscID
+dat <- dat[which(dat$WiscID %in% lakes_choose),]
 #filter(precip_range>=500)
 # lakes <- unique(dat$WiscID)
 # dput(lakes)
@@ -51,8 +77,15 @@ dat <- levels_mo %>% left_join(cmdv %>% dplyr:::select(WiscID,Date,ppt_cdm_96mo_
 # summary(dat.plot)
 # length(unique(dat$WiscID))
 
-ggplot(data = dat,aes(x=precipCMDV,y=Value)) + geom_point() + geom_smooth(method="lm") +
+ggplot(data = dat %>% drop_na(Value),aes(x=Date,y=Value)) + geom_point() + geom_line() +
   facet_wrap(vars(WiscID),scales="free")
+
+ggsave("graphics/LT_Precip_Lakes.pdf",device = "pdf",width=11,height=8.5,units="in",dpi=300)
+
+ggplot(data = dat,aes(x=precipCMDV,y=Value)) + geom_point() + geom_smooth(method="lm") +
+  facet_wrap(vars(WiscID), scales = "free_x") + geom_vline(data = dat_complete,aes(xintercept=q25)) +
+  geom_vline(data = dat_complete,aes(xintercept=q75))
+ggsave("graphics/LT_Precip_regression.pdf",device = "pdf",width=11,height=8.5,units="in",dpi=300)
 
 ####Look at the data
 # str(dat)
@@ -61,6 +94,12 @@ ggplot(data = dat,aes(x=precipCMDV,y=Value)) + geom_point() + geom_smooth(method
 # Reassign a WiscID to all lakes
 # This is not the WiscID used in the big dataset!!!
 # Because the jags methods requires a consecutive ID list starting from 1
+library(jagsUI)
+library(lattice)
+library(MCMCpack)
+library(arm)
+
+dat <- dat %>% drop_na(Value)
 allLakeList = unique(dat$WiscID)
 dat$BHMID = NA
 for (i in 1:length(allLakeList)) {
@@ -160,6 +199,7 @@ BugsOut
 summary(BugsOut[,8])
 BugsOut[which(BugsOut[,8]>=1.1),]
 jagsUI:::traceplot(out)
+
 
 saveRDS(out,"BayHModels/HLM_reduced.rds")
 # out <- readRDS(file ="BayHModels/HLM_reduced.rds")
