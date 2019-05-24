@@ -12,9 +12,11 @@ library(VSURF)
 library(randomForest)
 # devtools::install_github("drsimonj/corrr") #install corrr package if not already installed
 library(corrr)
+library(DEGreport)
+
 ```
 
-Analysis of ecological context variables and regression models for prediction the relationship (slope) between lake water level and cummulative precipitation deviation using 39 Lake dataset generated on Feb. 21 2019.
+Analysis of ecological context variables and regression models for prediction the relationship (slope) between lake water level and cummulative precipitation deviation using 40 Lake dataset generated on Feb. 27 2019.
 
 ```{r load_data, include=FALSE}
 ecocontext_full <- read_csv("/Users/noahlottig/Documents/GitHub/waterlevels/data/ecocontext_full.csv")
@@ -26,27 +28,22 @@ regressionstats <- read_csv("/Users/noahlottig/Documents/GitHub/waterlevels/BayH
 dat <- regressionstats %>% left_join(ecocontext_full) %>% select(-W_LAT,
                                                                  -MeanDepth,
                                                                  -SHAPE_AREA,
+                                                                 -SHAPE_LEN,
                                                                  -W_AREA,
                                                                  -W_PRCP_ANN,
                                                                  -W_TEMP_ANN,
                                                                  -W_TEMP_GS,
-                                                                 -W_TEMP_JUL,
-                                                                 -mg_average,
-                                                                 -ca_average) %>% 
+                                                                 -W_TEMP_JUL) %>% 
     select_if(~ !any(is.na(.)))
+    names(dat)
 ```
-Removed several variables that were duplicated along with ones that have missing values and/or are not of interest initially. 
-```{r}
-dat
-```
-
 ## Correlated Variables
 Identify correlations between all pairs of ecocontext variables
 ```{r}
 dat.ld <- dat[,c(10:ncol(dat))]
 x <- dat.ld %>%
     correlate() %>%    # Create correlation data frame (cor_df)
-    rearrange() %>%  # rearrange by correlations
+    corrr::rearrange() %>%  # rearrange by correlations
     shave() # Shave off the upper triangle for a clean result
 ```
 
@@ -54,7 +51,20 @@ x <- dat.ld %>%
 ```{r echo=FALSE, fig.height=8.5, fig.width=8.5}
 rplot(x)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-<br>Identify variables that are strongly correlated and then remove from the predictor dataset
+### Look at quantile regressions of driver variables and correlations with the slope parameter
+```{r, echo=FALSE,fig.height=8.5, fig.width=8.5}
+ggplot(data = gather(dat[,c("slope",names(dat)[10:ncol(dat)])],key = parameter,value = value,-slope),aes(x=value,y=slope)) + 
+  geom_point() + 
+  facet_wrap(vars(parameter),scales="free") + geom_cor() +
+  geom_quantile(quantiles=0.5)
+```
+
+
+
+
+
+
+
 
 ```{r}
 dat <- regressionstats %>% left_join(ecocontext_full) %>% select(-W_LAT,
@@ -72,7 +82,6 @@ dat <- regressionstats %>% left_join(ecocontext_full) %>% select(-W_LAT,
                                                                  -area_depth_ratio,
                                                                  -TRW_AREA,
                                                                  -R_AREA,
-                                                                 -R_PERM,
                                                                  -SHAPE_LEN,
                                                                  -slope2,
                                                                  -slope4,
@@ -87,12 +96,16 @@ dat <- regressionstats %>% left_join(ecocontext_full) %>% select(-W_LAT,
 dat.ld <- dat[,c(10:ncol(dat))]
 x <- dat.ld %>%
     correlate() %>%    # Create correlation data frame (cor_df)  # Focus on cor_df without 'cyl' and 'vs'
-    rearrange() %>%  # rearrange by correlations
+    corrr:::rearrange() %>%  # rearrange by correlations
     shave() # Shave off the upper triangle for a clean result
 ```
 ```{r echo=FALSE, fig.height=8.5, fig.width=8.5}
 rplot(x)+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
+```{r echo=FALSE, fig.height=8.5, fig.width=8.5}
+
+```
+
 
 ## Random Forest Model for variable selection using the VSURF Package
 ```{r RF Model, echo=TRUE, cache=TRUE}
@@ -103,6 +116,16 @@ names(dat.ld)[out$varselect.pred]
 rf.fit <- randomForest(x=dat[,names(dat.ld)[out$varselect.pred]],y=dat$slope,ntree = 10000)
 rf.fit
 ```
+Examine the relationship between variables identified in the threshold step and slope of the relationship between cdev and water levels
+
+```{r echo=FALSE}
+ggplot(data = gather(dat[,c("slope",names(dat.ld)[out$varselect.thres])],key = parameter,value = value,-slope),aes(x=value,y=slope)) + 
+  geom_point() + 
+  facet_wrap(vars(parameter),scales="free") + 
+  geom_smooth(method="lm")
+```
+
+
 ```{r echo=FALSE}
 rf_data <- tibble(y=dat$slope,yhat= predict(rf.fit))
 ggplot(data=rf_data,aes(x=y,y=yhat)) + geom_point() +
@@ -131,7 +154,7 @@ dat.long <- gather(dat,key = parameter,value = value,-slope)
 ggplot(data = dat.long,aes(x=value,y=slope)) + geom_point() + facet_wrap(vars(parameter),scales="free") + geom_smooth(method="lm")
 x <- dat %>% select(-slope) %>%
     correlate() %>%    # Create correlation data frame (cor_df)  # Focus on cor_df without 'cyl' and 'vs'
-    rearrange() %>%  # rearrange by correlations
+    corrr:::rearrange() %>%  # rearrange by correlations
     shave() # Shave off the upper triangle for a clean result
 dat %>% correlate() %>%
   network_plot(min_cor = .2)

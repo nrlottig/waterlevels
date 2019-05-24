@@ -2,6 +2,7 @@
     model {
     for (i in 1:n){
     y[i] ~ dnorm (y.hat[i], tau.y)
+    #y[i] ~ dt (y.hat[i], tau.y, nu)
     y.hat[i] <- alpha[group[i]] + beta[group[i]] * x[i]  
     }
     

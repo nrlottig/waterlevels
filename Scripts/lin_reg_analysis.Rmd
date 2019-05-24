@@ -1,0 +1,310 @@
+---
+title: "Water Level Model Analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(caret)
+library(leaps)
+library(VSURF)
+library(randomForest)
+# devtools::install_github("drsimonj/corrr") #install corrr package if not already installed
+library(corrr)
+library(DEGreport)
+library(kableExtra)
+
+```
+
+Analysis of ecological context variables and regression models for prediction the relationship (slope) between lake water level and cumulative precipitation deviation using 40 Lake data set generated on Feb. 27 2019. These analyses are driven by semi-informed decisions about what ecological context variables may be important factors influencing water level changes in lakes and their response precipitation.
+
+
+```{r load_data, include=FALSE}
+ecocontext_full <- read_csv("/Users/noahlottig/Documents/GitHub/waterlevels/data/ecocontext_full.csv")
+regressionstats <- read_csv("/Users/noahlottig/Documents/GitHub/waterlevels/BayHModels/regressionstats.csv")
+```
+
+### The Data
+```{r data,echo=FALSE}
+dat <- merge(regressionstats, ecocontext_full, by.x = "WiscID", by.y = "WiscID")
+dat_input <- cbind(dat$slope,dat$MaxDepth, dat$W_PERM, dat$W_DARCY, dat$cond,
+                   dat$elevation_difference,dat$Area,dat$r_forest)
+name_list <- c("slope","MaxDepth", "W_PERM", "W_DARCY", "cond", "elevation_difference", "Area", "r_forest")
+dat_input <- as.data.frame(dat_input)
+colnames(dat_input) <- name_list
+```
+Data in this analysis involves slope values from `r nrow(dat_input)` lakes.
+
+<center>
+**Time series plots of the 40 lakes used in these analyses**
+</center>
+
+![](/Users/noahlottig/Documents/GitHub/waterlevels/graphics/LT_Precip_Lakes.png)
+<center>
+**Relationship between centered water levels and centered long-term commulative precipitation values**
+</center>
+
+![](/Users/noahlottig/Documents/GitHub/waterlevels/graphics/LT_Precip_regression.png)
+ The lakes were chosen by the following criteria:
+
+1. 8+ years of water level observations
+2. The range in precipitation associated with water level observations equal to the q85-q15 for the entire observed precip data file (1920-present). The q15 and q18 are represented by the vertical lines in the above figure.
+3. 8 additional lakes were discarded after this selection for known issues with the data or ecologically unfeasible relationships (e.g., water levels decline during periods of increased precipitation)
+
+The ecological context variables used to understand the variation in the slope of the relationships among lakes between water levels and precip seen above included the following variables `r names(dat_input)`. Slope is the response variable. Forest land type was choose for the land-use variable because it is strongly correlated with other variables. We also choose to use land-use characteristics calculated for the riparian zone (30m buffer) around the lake.
+
+<center>
+**Correlation plot of landuse variables**
+</center>
+
+```{r fig.height=4, fig.width=8.5,echo=FALSE,message=FALSE}
+temp <- dat[,c("r_forest","w_forest","r_develop","w_develop","r_ag","w_ag","r_wetland","w_wetland")]
+temp %>% correlate() %>%
+  network_plot(min_cor = .2)
+```
+
+### Biplots of slope vs potential driver variables
+```{r echo=FALSE,fig.width=8.5,fig.height=6,message=FALSE}
+require(cowplot)
+dat.long <- gather(dat_input,key = parameter,value = value,-slope)
+ggplot(data = dat.long,aes(x=value,y=slope)) + geom_point() + facet_wrap(vars(parameter),scales="free") + geom_smooth(method="lm")
+```
+
+
+### Model Selection
+
+We have tested a variety of model selection approaches to explain the variation in among lake slopes and ecological context variables including black box approaches such as random forest. For easy of interpretation, we have choosen to rely on linear models. Model selection was conducted using the `glmulti` package to quanitify the best 0:4 parameter models including the potential for two-way interactions. We also limited the model to 4 predictor variables which would could include the interaction between two variables and an additional variable (3 parameters) or 4 parameters if no interactions included due to sample size concerns and overfitting the data.
+
+```{r eval=FALSE, include=FALSE}
+library(glmulti)
+library(doParallel)
+cl <- parallel::makeForkCluster(7)
+# cl <- parallel::makeCluster(7)
+doParallel::registerDoParallel(cl)
+getDoParWorkers()
+dat2 <- dat %>%  select(-W_LAT,
+                                                                 -MeanDepth,
+                                                                 -SHAPE_AREA,
+                                                                 -W_AREA,
+                                                                 -W_PRCP_ANN,
+                                                                 -W_TEMP_ANN,
+                                                                 -W_TEMP_GS,
+                                                                 -W_TEMP_JUL,
+                                                                 -mg_average,
+                                                                 -ca_average,
+                                                                 -slope3,
+                                                                 -watershed_MIN,
+                                                                 -area_depth_ratio,
+                                                                 -TRW_AREA,
+                                                                 -R_AREA,
+                                                                 -SHAPE_LEN,
+                                                                 -slope2,
+                                                                 -slope4,
+                                                                 -slope5,
+                                                                 -R_LU06_21,
+                                                                 -R_LU06_11,
+                                                                 -R_SLOPE,
+                                                                 -r_develop,
+                        -WiscID,
+                        -WBIC,
+                        -LakeName,
+                        -US_L3NAME,
+                        -ECO_LANDSC,
+                        -HUC12_CODE,
+                        -lat,
+                        -long
+                                                                 ) %>% 
+    select_if(~ !any(is.na(.)))
+
+system.time(glmulti.lm.out <- 
+    glmulti("slope", c("MaxDepth", "W_PERM", "W_DARCY", "cond", "elevation_difference", "Area", "r_forest"), data = dat2,
+            level = 1,               # No interaction considered
+            method = "g",            # Exhaustive approach
+            marginality = TRUE,      # forces inclusion of main effect parameters in interactions
+            crit = "aicc",            # AIC as criteria
+            confsetsize = 10,         # Keep 5 best modelS
+            fitfunction = "lm",     # lm function
+            maxsize = 4,
+            minsize = 3,
+            chunks=1,chunk = 1,
+            plotty = F, report = T))     
+
+system.time(glmulti.lm.out2 <- 
+    glmulti("slope", c("MaxDepth", "W_PERM", "W_DARCY", "cond", "elevation_difference", "Area", "r_forest"), data = dat2,
+            level = 1,               # No interaction considered
+            method = "h",            # Exhaustive approach
+            marginality = TRUE,      # forces inclusion of main effect parameters in interactions
+            crit = "aicc",            # AIC as criteria
+            confsetsize = 10,         # Keep 5 best modelS
+            fitfunction = "lm",     # lm function
+            maxsize = 4,
+            minsize = -1,
+            chunks=1,chunk = 1,
+            plotty = F, report = T))     
+
+# 
+# 
+# 
+# system.time({
+#   glmulti.lm.out <- foreach(i=1:7) %dopar% {
+#     z<-c(1:7)
+#     t<-z[i]
+#     glmulti::glmulti("slope", c("MaxDepth", "W_PERM", "W_DARCY", "cond", "elevation_difference", "SDI", "slopenearest", "Area", "r_forest"), 
+#             data = dat2,
+#             level = 2,               # No interaction considered
+#             method = "g",            # Exhaustive approach
+#             marginality = TRUE,      # forces inclusion of main effect parameters in interactions
+#             crit = "aicc",            # AIC as criteria
+#             confsetsize = 10,         # Keep 5 best modelS
+#             fitfunction = "lm",     # lm function
+#             maxsize = 4,
+#             minsize = 3,
+#             chunks=7,
+#             chunk = t,
+#             plotty = F,
+#             report = F)
+#     }
+#   
+#   })
+
+
+parallel::stopCluster(cl)
+
+str(glmulti.lm.out)
+model_out <- consensus(glmulti.lm.out,confsetsize = 5)
+model_out@formulas
+glmulti.lm.out@formulas
+glmulti.lm.out@crits
+glmulti.lm.out2@formulas
+glmulti.lm.out2@crits
+
+summary(glmulti.lm.out@objects[[1]])
+```
+
+```{r echo=FALSE}
+load("~/Documents/GitHub/waterlevels/Scripts/model_selection.RData")
+selection_out1 <- data.frame("model" = 
+                               capture.output(print(glmulti.lm.out@formulas))[seq(from=2, to = 40,by=4)],
+                             "aicc" = glmulti.lm.out@crits)
+selection_out2 <- data.frame("model" = 
+                               capture.output(print(glmulti.lm.out2@formulas))[seq(from=2, to = 40,by=4)],
+                             "aicc" = glmulti.lm.out2@crits)
+selection_out <- rbind(selection_out1,selection_out2) %>% arrange(aicc)
+kable(selection_out,caption = "Model Selection formulas and associated AICc values") %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+```
+### Model Performance [Conductivity]
+```{r,echo=FALSE}
+fit <- lm(slope ~ elevation_difference + cond*W_DARCY,data = dat_input)
+summary(fit)
+lm_pred <- data.frame(y=dat_input$slope,yhat=predict(fit))
+ggplot(data = lm_pred,aes(x=y,y=yhat)) + geom_point() + theme(aspect.ratio=1) + 
+  geom_abline(slope = 1,intercept = 0) + xlim(0,4) + ylim(0,4)
+```
+
+### Comparison of Extrapolation Space [Conductivity]
+
+Comparison of the distrubtion of values and predicted slopes for the modeled population (observed) and extrapolation population (exptrapolation) for which the general model was used to extrapolate slopes.
+
+```{r,echo=FALSE,fig.height=4,fig.width=8.5,message=FALSE}
+GeomSplitViolin <- ggproto("GeomSplitViolin", GeomViolin, 
+                           draw_group = function(self, data, ..., draw_quantiles = NULL) {
+  data <- transform(data, xminv = x - violinwidth * (x - xmin), xmaxv = x + violinwidth * (xmax - x))
+  grp <- data[1, "group"]
+  newdata <- plyr::arrange(transform(data, x = if (grp %% 2 == 1) xminv else xmaxv), if (grp %% 2 == 1) y else -y)
+  newdata <- rbind(newdata[1, ], newdata, newdata[nrow(newdata), ], newdata[1, ])
+  newdata[c(1, nrow(newdata) - 1, nrow(newdata)), "x"] <- round(newdata[1, "x"])
+
+  if (length(draw_quantiles) > 0 & !scales::zero_range(range(data$y))) {
+    stopifnot(all(draw_quantiles >= 0), all(draw_quantiles <=
+      1))
+    quantiles <- ggplot2:::create_quantile_segment_frame(data, draw_quantiles)
+    aesthetics <- data[rep(1, nrow(quantiles)), setdiff(names(data), c("x", "y")), drop = FALSE]
+    aesthetics$alpha <- rep(1, nrow(quantiles))
+    both <- cbind(quantiles, aesthetics)
+    quantile_grob <- GeomPath$draw_panel(both, ...)
+    ggplot2:::ggname("geom_split_violin", grid::grobTree(GeomPolygon$draw_panel(newdata, ...), quantile_grob))
+  }
+  else {
+    ggplot2:::ggname("geom_split_violin", GeomPolygon$draw_panel(newdata, ...))
+  }
+})
+
+geom_split_violin <- function(mapping = NULL, data = NULL, stat = "ydensity", position = "identity", ..., 
+                              draw_quantiles = NULL, trim = TRUE, scale = "area", na.rm = FALSE, 
+                              show.legend = NA, inherit.aes = TRUE) {
+  layer(data = data, mapping = mapping, stat = stat, geom = GeomSplitViolin, 
+        position = position, show.legend = show.legend, inherit.aes = inherit.aes, 
+        params = list(trim = trim, scale = scale, draw_quantiles = draw_quantiles, na.rm = na.rm, ...))
+}
+context1 <- dat_input %>% select(elevation_difference,cond,W_DARCY,r_forest) %>% gather() %>% mutate(group="observed")
+context2 <- read_csv("/Users/noahlottig/Documents/GitHub/waterlevels/data/ecocontext_full_all_lakes.csv") %>% 
+  select(elevation_difference,cond,W_DARCY,r_forest) %>% drop_na()  %>% gather() %>% mutate(group="extrapolation")
+context <- rbind(context1,context2)
+
+p1 <- ggplot(data = context %>% filter(key=="elevation_difference"),aes(x=key,y=value,fill=group)) + geom_split_violin()
+p2 <- ggplot(data = context %>% filter(key=="cond"),aes(x=key,y=value,fill=group)) + geom_split_violin()
+p3 <- ggplot(data = context %>% filter(key=="W_DARCY"),aes(x=key,y=value,fill=group)) + geom_split_violin()
+plots <- plot_grid(p1 + theme(legend.position = "none"),
+          p2 + theme(legend.position = "none"),
+          p3 + theme(legend.position = "none"),
+          ncol=3)
+legend <- get_legend(p1)
+plot_grid(plots,legend,rel_widths = c(3,.3))
+
+slopes1 <- data.frame(key="y",value=dat_input$slope,group="observed")
+dat_all <- read_csv("/Users/noahlottig/Documents/GitHub/waterlevels/data/ecocontext_full_all_lakes.csv") %>% 
+  select(elevation_difference,cond,W_DARCY) %>% drop_na()
+slopes2 <- data.frame(key="yhat",value=predict(fit,newdata = dat_all),group="extrapolation")
+slopes_all <- rbind(slopes1,slopes2)
+ggplot(data = slopes_all,aes(x=1,y=value,fill=group)) + geom_split_violin() + 
+  labs(y="Slope",x="Population")
+```
+
+While it is clear that we are missing some of the extreme values in our model population (lakes used to build the model), it does not appear to influence the predictive slopes substantually. The extrapolated slopes (n = 455) are largely bounded by the slopes observed in the modeled population.
+
+### Model Performance [Forest]
+
+We also ran the models using forest landuse data instead of conductivity because it performed only slightly worse and may allow extrapolation in lakes without conductivity data.
+
+```{r,echo=FALSE}
+fit2 <- lm(slope ~ elevation_difference + r_forest*W_DARCY,data = dat_input)
+summary(fit2)
+lm_pred <- data.frame(y=dat_input$slope,yhat=predict(fit2))
+ggplot(data = lm_pred,aes(x=y,y=yhat)) + geom_point() + theme(aspect.ratio=1) + 
+  geom_abline(slope = 1,intercept = 0) + xlim(0,4) + ylim(0,4)
+```
+
+### Comparison of Extrapolation Space [Forest]
+
+Comparison of the distrubtion of values and predicted slopes for the modeled population (observed) and extrapolation population (exptrapolation) for which the general model was used to extrapolate slopes.
+
+```{r,echo=FALSE,message=FALSE}
+p1 <- ggplot(data = context %>% filter(key=="elevation_difference"),aes(x=key,y=value,fill=group)) + geom_split_violin()
+p2 <- ggplot(data = context %>% filter(key=="r_forest"),aes(x=key,y=value,fill=group)) + geom_split_violin()
+p3 <- ggplot(data = context %>% filter(key=="W_DARCY"),aes(x=key,y=value,fill=group)) + geom_split_violin()
+plots <- plot_grid(p1 + theme(legend.position = "none"),
+          p2 + theme(legend.position = "none"),
+          p3 + theme(legend.position = "none"),
+          ncol=3)
+legend <- get_legend(p1)
+plot_grid(plots,legend,rel_widths = c(3,.3))
+
+slopes1 <- data.frame(key="y",value=dat_input$slope,group="observed")
+dat_all <- read_csv("/Users/noahlottig/Documents/GitHub/waterlevels/data/ecocontext_full_all_lakes.csv") %>% 
+  select(elevation_difference,cond,W_DARCY) %>% drop_na()
+slopes2 <- data.frame(key="yhat",value=predict(fit,newdata = dat_all),group="extrapolation")
+slopes_all <- rbind(slopes1,slopes2)
+ggplot(data = slopes_all,aes(x=1,y=value,fill=group)) + geom_split_violin() + 
+  labs(y="Slope",x="Population")
+```
+
+### Comparison of predictions generated using Conductivity and Riparian Forest Cover
+```{r,echo=FALSE,message=FALSE}
+lm_pred <- data.frame(y=predict(fit),yhat=predict(fit2))
+ggplot(data = lm_pred,aes(x=y,y=yhat)) + geom_point() + theme(aspect.ratio=1) + 
+  geom_abline(slope = 1,intercept = 0) + xlim(0,4) + ylim(0,4) + 
+  labs(x="Predicted Slope (cond)",y="Predicted Slope (forest)")
+```
+
